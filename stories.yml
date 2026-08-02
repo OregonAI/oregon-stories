@@ -1,0 +1,95 @@
+# THE MANIFEST IS THE GATE. Every visual on the platform has exactly one entry here;
+# a visual with no entry renders nowhere. `status` is the publication decision:
+#
+#   published   card in the public gallery (local stories also build their page)
+#   draft       local stories build to site/drafts/ (unlinked from the gallery);
+#               external entries are listed only on the drafts index. Flipping
+#               draft -> published IN A PR is the operator's triage act — the
+#               editorial contract in README.md applies to every flip.
+#
+# `kind: local` = built by stories/<id>.py in this repo (corpus_toolkit.viz).
+# `kind: external` = currently renders on a corpus's own Pages site; the gallery
+# indexes it there until its port lands (tracked in this repo's issues). Corpus
+# repos are DATA-ONLY going forward: no new charts land outside this repo.
+#
+# Operator decisions recorded 2026-08-02: one stories repo owns all visuals;
+# gallery generated from this manifest; conflict-candidates and
+# governor-priorities/rulemaking-priorities enter as DRAFTS (interpretive content
+# that never passed triage — guardrails 2 and 5); the mechanical charts
+# grandfather in as published.
+
+stories:
+# ── local: built here ─────────────────────────────────────────────────────────
+- {id: agency_profiles,                    status: published, kind: local}
+- {id: rules_older_than_their_statutes,    status: published, kind: local}
+- {id: county_code_cites_dead_law,         status: published, kind: local}
+- {id: what_agencies_told_the_legislature, status: published, kind: local}
+- {id: can_you_read_your_countys_law,      status: published, kind: local}
+- {id: where_appropriations_actually_land, status: published, kind: local}
+- {id: documents_that_exist_only_as_pictures, status: published, kind: local}
+- {id: the_federal_ceiling,                status: published, kind: local}
+- {id: found_by_meaning,                   status: published, kind: local}
+- {id: the_copy_paste_rulebook,            status: published, kind: local}
+- {id: the_map_of_stale_law,               status: published, kind: local}
+- {id: far_from_their_authority,           status: published, kind: local}
+- id: rulemaking_and_stated_priorities
+  status: draft
+  kind: local
+  note: >-
+    DRAFT by the 2026-08-02 decision: maps rulemaking onto the Governor's stated
+    priorities — interpretive framing that gets operator triage before (re)publication,
+    same risk class as the policy-repo governor-priorities chart it parallels.
+
+# ── external: rendering on corpus pages until their ports land ────────────────
+- {id: chain,                       status: published, kind: external, title: "One program, chained end to end",
+   claim: "PERS traced statute → rule → policy → dollars → measure → audit, gaps drawn honestly",
+   url: "https://oregonai.github.io/chain.html"}
+- {id: audit_mix,                   status: published, kind: external, title: "The audit mix, charted",
+   claim: "Performance audits fell four-fold while financial audits held flat",
+   url: "https://oregonai.github.io/oregon-audits/audit-mix.html"}
+- {id: erf_agency_authority_graph,  status: published, kind: external, title: "The agency authority graph",
+   claim: "Agencies linked by the ORS chapters their rules jointly implement",
+   url: "https://oregonai.github.io/executive-regulatory-frameworks/agency-authority-graph.html"}
+- {id: erf_authority_explorer,      status: published, kind: external, title: "The authority explorer",
+   claim: "Walk any document's authority neighborhood, up and down",
+   url: "https://oregonai.github.io/executive-regulatory-frameworks/authority-explorer.html"}
+- {id: erf_statute_operationalization, status: published, kind: external, title: "Statutes, operationalized",
+   claim: "Which ORS chapters spawn the most rules — and which lie dormant",
+   url: "https://oregonai.github.io/executive-regulatory-frameworks/statute-operationalization.html"}
+- {id: erf_policy_documentation_gap, status: published, kind: external, title: "The policy documentation gap",
+   claim: "93 agencies write rules; 9 have internal policy anywhere public",
+   url: "https://oregonai.github.io/executive-regulatory-frameworks/policy-documentation-gap.html"}
+- {id: erf_topic_map,               status: published, kind: external, title: "The topic map",
+   claim: "Every document in the regulatory corpus, mapped by meaning",
+   url: "https://oregonai.github.io/executive-regulatory-frameworks/topic-map.html"}
+- {id: erf_regulatory_freshness,    status: published, kind: external, title: "Regulatory freshness",
+   claim: "Rules lagging the statutes they implement, by agency",
+   url: "https://oregonai.github.io/executive-regulatory-frameworks/regulatory-freshness.html"}
+- {id: erf_policy_age,              status: published, kind: external, title: "Policy age",
+   claim: "Time since last touch, against a two-year review cadence",
+   url: "https://oregonai.github.io/executive-regulatory-frameworks/policy-age.html"}
+- {id: leg_bill_statute_citations,  status: published, kind: external, title: "What the Legislature amends",
+   claim: "Which ORS chapters each session's measures touch",
+   url: "https://oregonai.github.io/oregon-legislature/bill-statute-citations.html"}
+- {id: leg_topic_map,               status: published, kind: external, title: "The measures topic map",
+   claim: "Enrolled measures, mapped by meaning",
+   url: "https://oregonai.github.io/oregon-legislature/topic-map.html"}
+- id: erf_conflict_candidates
+  status: draft
+  kind: external
+  title: "Conflict candidates (pilot)"
+  claim: "AI-assisted candidate statute/rule inconsistencies across 12 ORS chapters"
+  url: "https://oregonai.github.io/executive-regulatory-frameworks/conflict-candidates.html"
+  note: >-
+    DRAFT by the 2026-08-02 decision: unreviewed AI candidates must never present as
+    findings (guardrail 5). Its cards come OFF the policy-repo page in the same change;
+    publication happens here, after triage, or not at all.
+- id: erf_governor_priorities
+  status: draft
+  kind: external
+  title: "Rulemaking and stated priorities"
+  claim: "Recent OAR rulemaking mapped to four stated priorities (interpretive)"
+  url: "https://oregonai.github.io/executive-regulatory-frameworks/governor-priorities.html"
+  note: >-
+    DRAFT by the 2026-08-02 decision: interpretive mapping, same triage bar as its
+    stories-side sibling. Off the policy-repo page in the same change.

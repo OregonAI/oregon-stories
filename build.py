@@ -17,52 +17,86 @@ import importlib
 import pathlib
 import sys
 
+import yaml
+
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
 
 import data_sources
 from corpus_toolkit import viz
 
 SITE = pathlib.Path(__file__).parent / "site"
+MANIFEST = pathlib.Path(__file__).parent / "stories.yml"
 
-STORIES = ("agency_profiles",
-           "rules_older_than_their_statutes",
-           "county_code_cites_dead_law",
-           "what_agencies_told_the_legislature",
-           "can_you_read_your_countys_law",
-           "where_appropriations_actually_land",
-           "documents_that_exist_only_as_pictures",
-           "the_federal_ceiling",
-           "found_by_meaning",
-           "the_copy_paste_rulebook",
-           "the_map_of_stale_law",
-           "far_from_their_authority",
-           "rulemaking_and_stated_priorities")
+
+def _card(href: str, claim: str, sub: str) -> str:
+    return (f'<div class="panel"><h2 style="margin:0 0 4px;font-size:17px">'
+            f'<a href="{href}">{html.escape(claim)}</a></h2>'
+            f'<p style="margin:0;color:var(--ink2);font-size:13px">{html.escape(sub)}</p></div>')
+
+
+def _build_local(entry: dict, out_root: pathlib.Path) -> tuple[str, str, int]:
+    """Build one local story under out_root; (relpath, claim, n_sources)."""
+    data_sources.FETCHED.clear()
+    mod = importlib.import_module(f"stories.{entry['id']}")
+    if hasattr(mod, "build_many"):
+        slug, claim, pages = mod.build_many()
+        for rel, html_page in pages:
+            out = out_root / rel
+            out.parent.mkdir(parents=True, exist_ok=True)
+            out.write_text(html_page, encoding="utf-8")
+        print(f"  built {len(pages)} page(s) under {slug.rsplit('/', 1)[0]}/")
+    else:
+        s, claim, page = mod.build()
+        slug = f"{s}.html"
+        out_root.mkdir(parents=True, exist_ok=True)
+        (out_root / slug).write_text(page, encoding="utf-8")
+        print(f"  built {slug}")
+    return slug, claim, len(data_sources.FETCHED)
 
 
 def main() -> int:
+    # THE MANIFEST IS THE GATE (stories.yml): published entries render in the public
+    # gallery; drafts build under site/drafts/ — reachable only through the drafts
+    # index, which nothing public links to. Flipping a status is a PR: that diff is
+    # the operator's triage decision, on the record.
+    entries = yaml.safe_load(MANIFEST.read_text(encoding="utf-8"))["stories"]
     SITE.mkdir(exist_ok=True)
-    cards = []
-    for name in STORIES:
-        data_sources.FETCHED.clear()
-        mod = importlib.import_module(f"stories.{name}")
-        if hasattr(mod, "build_many"):
-            # Multi-page story: (entry_relpath, claim, [(relpath, html), ...])
-            slug, claim, pages = mod.build_many()
-            for rel, html_page in pages:
-                out = SITE / rel
-                out.parent.mkdir(parents=True, exist_ok=True)
-                out.write_text(html_page, encoding="utf-8")
-            print(f"  built {len(pages)} page(s) under {slug.rsplit('/', 1)[0]}/")
+    cards, draft_cards = [], []
+    for e in entries:
+        published = e["status"] == "published"
+        if e["kind"] == "local":
+            root = SITE if published else SITE / "drafts"
+            slug, claim, n_src = _build_local(e, root)
+            sub = f"{n_src} cited source artifact(s), hashes on the page."
+            (cards if published else draft_cards).append(
+                _card(slug, claim, sub if published else
+                      f"DRAFT — {e.get('note', 'awaiting triage')}"))
         else:
-            slug, claim, page = mod.build()
-            slug = f"{slug}.html"
-            (SITE / slug).write_text(page, encoding="utf-8")
-        n_src = len(data_sources.FETCHED)
-        cards.append(f'<div class="panel"><h2 style="margin:0 0 4px;font-size:17px">'
-                     f'<a href="{slug}">{html.escape(claim)}</a></h2>'
-                     f'<p style="margin:0;color:var(--ink2);font-size:13px">'
-                     f'{n_src} cited source artifact(s), hashes on the page.</p></div>')
-        print(f"  built {slug}")
+            # External: renders on a corpus page until its port lands (see issues).
+            # The gallery is still the ONE index that knows it exists.
+            sub = "Renders on its corpus page — port into this repo pending."
+            card = _card(e["url"], e["claim"], sub if published else
+                         f"DRAFT — {e.get('note', 'awaiting triage')}")
+            (cards if published else draft_cards).append(card)
+            print(f"  indexed external {e['id']} ({e['status']})")
+
+    if draft_cards:
+        drafts_dir = SITE / "drafts"
+        drafts_dir.mkdir(exist_ok=True)
+        drafts_index = viz.chart_page(
+            title="Drafts — operator review area",
+            eyebrow="oregon-stories · not published",
+            lede_html=("Nothing here is published: no public page links this index, and "
+                       "these entries have no gallery card. Publication is a one-line "
+                       "manifest flip in a PR — that review is the editorial gate "
+                       "(README.md), applied before anything below is presented as a "
+                       "finding."),
+            body_html="".join(draft_cards),
+            caveats_html="<p>Draft content may be wrong, unreviewed, or misframed. Do not cite.</p>",
+            sources=[],
+            generated=datetime.date.today().isoformat())
+        (drafts_dir / "index.html").write_text(drafts_index, encoding="utf-8")
+        print(f"wrote site/drafts/index.html ({len(draft_cards)} draft(s))")
 
     index = viz.chart_page(
         title="Oregon, measured from its own records",
@@ -80,7 +114,7 @@ def main() -> int:
         generated=datetime.date.today().isoformat())
     (SITE / "index.html").write_text(index, encoding="utf-8")
     (SITE / ".nojekyll").write_text("", encoding="utf-8")
-    print(f"wrote site/index.html ({len(STORIES)} stories)")
+    print(f"wrote site/index.html ({len(cards)} published card(s), {len(draft_cards)} draft(s))")
     return 0
 
 
