@@ -30,6 +30,8 @@ STORIES = ("agency_profiles",
            "what_agencies_told_the_legislature",
            "can_you_read_your_countys_law",
            "where_appropriations_actually_land",
+           "documents_that_exist_only_as_pictures",
+           "the_federal_ceiling",
            "rulemaking_and_stated_priorities")
 
 
