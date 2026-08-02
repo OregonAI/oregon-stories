@@ -1,0 +1,2910 @@
+{
+ "generated": "2026-08-02",
+ "model": "BAAI/bge-m3",
+ "erf_fingerprint": "5fa32b67363206efd32c3c04bdfa41311c107c137ae876e049c20d85bc646c9c",
+ "audits_fingerprint": "4f7d6600e68730d0bdcc2eeae989d4560414e0bd4edde7c7ce4ec3559d712465",
+ "method": "cosine over per-document mean of chunk vectors (int8 L2*127 -> float32, renormalized)",
+ "threshold": 0.985,
+ "n_rules": 36953,
+ "n_rules_in_families": 654,
+ "n_families": 239,
+ "n_cross_chapter_families": 18,
+ "families": [
+  {
+   "n": 28,
+   "chapters": [
+    "137",
+    "170",
+    "173",
+    "257",
+    "274",
+    "291",
+    "335",
+    "339",
+    "340",
+    "345",
+    "416",
+    "423",
+    "440",
+    "459",
+    "471",
+    "543",
+    "603",
+    "660",
+    "690",
+    "733",
+    "801",
+    "808",
+    "809",
+    "812",
+    "818",
+    "839",
+    "847",
+    "860"
+   ],
+   "cross_chapter": true,
+   "members": [
+    "oar-137-008-0100",
+    "oar-170-001-0020",
+    "oar-173-001-0015",
+    "oar-257-090-0010",
+    "oar-274-007-0001",
+    "oar-291-001-0115",
+    "oar-335-090-0010",
+    "oar-339-001-0018",
+    "oar-340-011-0003",
+    "oar-345-015-0500",
+    "oar-416-700-0011",
+    "oar-423-001-0007",
+    "oar-440-055-0008",
+    "oar-459-060-0200",
+    "oar-471-008-0000",
+    "oar-543-001-0010",
+    "oar-603-005-0001",
+    "oar-660-001-0400",
+    "oar-690-004-0010",
+    "oar-733-001-0030",
+    "oar-801-001-0050",
+    "oar-808-001-0050",
+    "oar-809-001-0035",
+    "oar-812-001-0500",
+    "oar-818-001-0025",
+    "oar-839-051-0010",
+    "oar-847-006-0000",
+    "oar-860-016-0015"
+   ]
+  },
+  {
+   "n": 16,
+   "chapters": [
+    "604",
+    "607",
+    "611",
+    "623",
+    "642",
+    "645",
+    "646",
+    "647",
+    "656",
+    "657",
+    "658",
+    "664",
+    "668",
+    "670",
+    "678",
+    "972"
+   ],
+   "cross_chapter": true,
+   "members": [
+    "oar-604-040-0030",
+    "oar-607-040-0030",
+    "oar-611-020-0030",
+    "oar-623-020-0030",
+    "oar-642-040-0030",
+    "oar-645-020-0030",
+    "oar-646-020-0030",
+    "oar-647-020-0030",
+    "oar-656-020-0030",
+    "oar-657-040-0030",
+    "oar-658-050-0030",
+    "oar-664-030-0030",
+    "oar-668-020-0030",
+    "oar-670-040-0030",
+    "oar-678-020-0030",
+    "oar-972-020-0030"
+   ]
+  },
+  {
+   "n": 14,
+   "chapters": [
+    "137",
+    "274",
+    "291",
+    "340",
+    "440",
+    "459",
+    "660",
+    "690",
+    "731",
+    "733",
+    "808",
+    "812",
+    "839",
+    "845"
+   ],
+   "cross_chapter": true,
+   "members": [
+    "oar-137-008-0120",
+    "oar-274-007-0002",
+    "oar-291-001-0110",
+    "oar-340-011-0004",
+    "oar-440-055-0010",
+    "oar-459-060-0210",
+    "oar-660-001-0410",
+    "oar-690-004-0030",
+    "oar-731-001-0730",
+    "oar-733-001-0035",
+    "oar-808-001-0060",
+    "oar-812-001-0510",
+    "oar-839-051-0020",
+    "oar-845-001-0009"
+   ]
+  },
+  {
+   "n": 11,
+   "chapters": [
+    "604",
+    "607",
+    "611",
+    "623",
+    "642",
+    "646",
+    "656",
+    "657",
+    "658",
+    "664",
+    "670"
+   ],
+   "cross_chapter": true,
+   "members": [
+    "oar-604-040-0050",
+    "oar-607-040-0050",
+    "oar-611-020-0050",
+    "oar-623-020-0050",
+    "oar-642-040-0050",
+    "oar-646-020-0050",
+    "oar-656-020-0050",
+    "oar-657-040-0050",
+    "oar-658-050-0050",
+    "oar-664-030-0050",
+    "oar-670-040-0050"
+   ]
+  },
+  {
+   "n": 10,
+   "chapters": [
+    "604",
+    "607",
+    "611",
+    "617",
+    "623",
+    "643",
+    "645",
+    "656",
+    "668",
+    "670"
+   ],
+   "cross_chapter": true,
+   "members": [
+    "oar-604-030-0030",
+    "oar-607-030-0030",
+    "oar-611-030-0030",
+    "oar-617-030-0030",
+    "oar-623-030-0030",
+    "oar-643-030-0030",
+    "oar-645-030-0030",
+    "oar-656-030-0030",
+    "oar-668-030-0030",
+    "oar-670-030-0030"
+   ]
+  },
+  {
+   "n": 5,
+   "chapters": [
+    "604",
+    "607",
+    "642",
+    "657",
+    "670"
+   ],
+   "cross_chapter": true,
+   "members": [
+    "oar-604-040-0020",
+    "oar-607-040-0020",
+    "oar-642-040-0020",
+    "oar-657-040-0020",
+    "oar-670-040-0020"
+   ]
+  },
+  {
+   "n": 3,
+   "chapters": [
+    "604",
+    "607",
+    "643"
+   ],
+   "cross_chapter": true,
+   "members": [
+    "oar-604-030-0040",
+    "oar-607-030-0040",
+    "oar-643-030-0040"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "309",
+    "416"
+   ],
+   "cross_chapter": true,
+   "members": [
+    "oar-309-120-0080",
+    "oar-416-425-0020"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "340",
+    "603"
+   ],
+   "cross_chapter": true,
+   "members": [
+    "oar-340-266-0050",
+    "oar-603-077-0112"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "340",
+    "603"
+   ],
+   "cross_chapter": true,
+   "members": [
+    "oar-340-266-0075",
+    "oar-603-077-0119"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "407",
+    "943"
+   ],
+   "cross_chapter": true,
+   "members": [
+    "oar-407-120-0130",
+    "oar-943-120-0130"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "407",
+    "943"
+   ],
+   "cross_chapter": true,
+   "members": [
+    "oar-407-120-0140",
+    "oar-943-120-0140"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "603",
+    "629"
+   ],
+   "cross_chapter": true,
+   "members": [
+    "oar-603-110-0300",
+    "oar-629-021-0300"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "603",
+    "629"
+   ],
+   "cross_chapter": true,
+   "members": [
+    "oar-603-110-0500",
+    "oar-629-021-0500"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "644",
+    "678"
+   ],
+   "cross_chapter": true,
+   "members": [
+    "oar-644-005-0025",
+    "oar-678-005-0025"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "646",
+    "656"
+   ],
+   "cross_chapter": true,
+   "members": [
+    "oar-646-020-0060",
+    "oar-656-020-0060"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "657",
+    "658"
+   ],
+   "cross_chapter": true,
+   "members": [
+    "oar-657-030-0030",
+    "oar-658-030-0030"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "808",
+    "812"
+   ],
+   "cross_chapter": true,
+   "members": [
+    "oar-808-003-0260",
+    "oar-812-003-0240"
+   ]
+  },
+  {
+   "n": 34,
+   "chapters": [
+    "603"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-603-095-0180",
+    "oar-603-095-0380",
+    "oar-603-095-0460",
+    "oar-603-095-0660",
+    "oar-603-095-0760",
+    "oar-603-095-0860",
+    "oar-603-095-0960",
+    "oar-603-095-1060",
+    "oar-603-095-1160",
+    "oar-603-095-1260",
+    "oar-603-095-1460",
+    "oar-603-095-1660",
+    "oar-603-095-1760",
+    "oar-603-095-1860",
+    "oar-603-095-2060",
+    "oar-603-095-2160",
+    "oar-603-095-2260",
+    "oar-603-095-2360",
+    "oar-603-095-2460",
+    "oar-603-095-2560",
+    "oar-603-095-2660",
+    "oar-603-095-2760",
+    "oar-603-095-2860",
+    "oar-603-095-2960",
+    "oar-603-095-3060",
+    "oar-603-095-3160",
+    "oar-603-095-3260",
+    "oar-603-095-3360",
+    "oar-603-095-3460",
+    "oar-603-095-3560",
+    "oar-603-095-3660",
+    "oar-603-095-3760",
+    "oar-603-095-3860",
+    "oar-603-095-3960"
+   ]
+  },
+  {
+   "n": 7,
+   "chapters": [
+    "603"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-603-017-0900",
+    "oar-603-021-0900",
+    "oar-603-022-0900",
+    "oar-603-024-0900",
+    "oar-603-025-0900",
+    "oar-603-028-0900",
+    "oar-603-100-0900"
+   ]
+  },
+  {
+   "n": 6,
+   "chapters": [
+    "125"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-125-125-0528",
+    "oar-125-125-0532",
+    "oar-125-125-0547",
+    "oar-125-125-0552",
+    "oar-125-125-0562",
+    "oar-125-125-0567"
+   ]
+  },
+  {
+   "n": 5,
+   "chapters": [
+    "325"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-325-010-0005",
+    "oar-325-015-0005",
+    "oar-325-020-0005",
+    "oar-325-025-0005",
+    "oar-325-030-0005"
+   ]
+  },
+  {
+   "n": 5,
+   "chapters": [
+    "325"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-325-010-0015",
+    "oar-325-015-0015",
+    "oar-325-020-0015",
+    "oar-325-025-0015",
+    "oar-325-030-0015"
+   ]
+  },
+  {
+   "n": 5,
+   "chapters": [
+    "325"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-325-010-0020",
+    "oar-325-015-0020",
+    "oar-325-020-0020",
+    "oar-325-025-0020",
+    "oar-325-030-0020"
+   ]
+  },
+  {
+   "n": 5,
+   "chapters": [
+    "325"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-325-010-0040",
+    "oar-325-015-0040",
+    "oar-325-020-0035",
+    "oar-325-025-0040",
+    "oar-325-030-0040"
+   ]
+  },
+  {
+   "n": 5,
+   "chapters": [
+    "325"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-325-010-0050",
+    "oar-325-015-0050",
+    "oar-325-020-0045",
+    "oar-325-025-0050",
+    "oar-325-030-0050"
+   ]
+  },
+  {
+   "n": 5,
+   "chapters": [
+    "325"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-325-010-0055",
+    "oar-325-015-0055",
+    "oar-325-020-0050",
+    "oar-325-025-0055",
+    "oar-325-030-0055"
+   ]
+  },
+  {
+   "n": 5,
+   "chapters": [
+    "325"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-325-010-0060",
+    "oar-325-015-0060",
+    "oar-325-020-0055",
+    "oar-325-025-0060",
+    "oar-325-030-0060"
+   ]
+  },
+  {
+   "n": 5,
+   "chapters": [
+    "860"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-860-022-0065",
+    "oar-860-032-0430",
+    "oar-860-034-0505",
+    "oar-860-037-0330",
+    "oar-860-038-0470"
+   ]
+  },
+  {
+   "n": 4,
+   "chapters": [
+    "325"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-325-015-0035",
+    "oar-325-020-0030",
+    "oar-325-025-0035",
+    "oar-325-030-0035"
+   ]
+  },
+  {
+   "n": 4,
+   "chapters": [
+    "340"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-340-214-0005",
+    "oar-340-226-0005",
+    "oar-340-234-0005",
+    "oar-340-236-0005"
+   ]
+  },
+  {
+   "n": 4,
+   "chapters": [
+    "419"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-419-210-0120",
+    "oar-419-220-0120",
+    "oar-419-230-0120",
+    "oar-419-240-0120"
+   ]
+  },
+  {
+   "n": 4,
+   "chapters": [
+    "419"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-419-210-0160",
+    "oar-419-220-0160",
+    "oar-419-230-0160",
+    "oar-419-240-0160"
+   ]
+  },
+  {
+   "n": 4,
+   "chapters": [
+    "603"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-603-021-0930",
+    "oar-603-022-0930",
+    "oar-603-024-0930",
+    "oar-603-025-0930"
+   ]
+  },
+  {
+   "n": 4,
+   "chapters": [
+    "603"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-603-052-0156",
+    "oar-603-052-0175",
+    "oar-603-052-0190",
+    "oar-603-052-0275"
+   ]
+  },
+  {
+   "n": 4,
+   "chapters": [
+    "690"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-690-504-0020",
+    "oar-690-509-0030",
+    "oar-690-510-0020",
+    "oar-690-511-0020"
+   ]
+  },
+  {
+   "n": 4,
+   "chapters": [
+    "813"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-813-010-0715",
+    "oar-813-012-0160",
+    "oar-813-030-0067",
+    "oar-813-060-0062"
+   ]
+  },
+  {
+   "n": 3,
+   "chapters": [
+    "137"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-137-003-0037",
+    "oar-137-003-0590",
+    "oar-137-004-0050"
+   ]
+  },
+  {
+   "n": 3,
+   "chapters": [
+    "230"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-230-080-0120",
+    "oar-230-130-0550",
+    "oar-230-140-0550"
+   ]
+  },
+  {
+   "n": 3,
+   "chapters": [
+    "230"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-230-080-0420",
+    "oar-230-130-0420",
+    "oar-230-140-0420"
+   ]
+  },
+  {
+   "n": 3,
+   "chapters": [
+    "230"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-230-080-0530",
+    "oar-230-130-0530",
+    "oar-230-140-0530"
+   ]
+  },
+  {
+   "n": 3,
+   "chapters": [
+    "230"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-230-080-0540",
+    "oar-230-130-0540",
+    "oar-230-140-0540"
+   ]
+  },
+  {
+   "n": 3,
+   "chapters": [
+    "230"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-230-080-0620",
+    "oar-230-130-0620",
+    "oar-230-140-0620"
+   ]
+  },
+  {
+   "n": 3,
+   "chapters": [
+    "325"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-325-015-0001",
+    "oar-325-020-0001",
+    "oar-325-025-0001"
+   ]
+  },
+  {
+   "n": 3,
+   "chapters": [
+    "325"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-325-015-0025",
+    "oar-325-025-0025",
+    "oar-325-030-0025"
+   ]
+  },
+  {
+   "n": 3,
+   "chapters": [
+    "340"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-340-206-0020",
+    "oar-340-210-0020",
+    "oar-340-222-0030"
+   ]
+  },
+  {
+   "n": 3,
+   "chapters": [
+    "340"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-340-246-0190",
+    "oar-340-246-0210",
+    "oar-340-246-0230"
+   ]
+  },
+  {
+   "n": 3,
+   "chapters": [
+    "419"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-419-220-0150",
+    "oar-419-230-0150",
+    "oar-419-240-0150"
+   ]
+  },
+  {
+   "n": 3,
+   "chapters": [
+    "419"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-419-220-0170",
+    "oar-419-230-0170",
+    "oar-419-240-0170"
+   ]
+  },
+  {
+   "n": 3,
+   "chapters": [
+    "419"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-419-220-0200",
+    "oar-419-230-0200",
+    "oar-419-240-0200"
+   ]
+  },
+  {
+   "n": 3,
+   "chapters": [
+    "437"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-437-002-0382",
+    "oar-437-003-1000",
+    "oar-437-004-9000"
+   ]
+  },
+  {
+   "n": 3,
+   "chapters": [
+    "603"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-603-013-0910",
+    "oar-603-017-0910",
+    "oar-603-025-0910"
+   ]
+  },
+  {
+   "n": 3,
+   "chapters": [
+    "603"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-603-052-0155",
+    "oar-603-052-0170",
+    "oar-603-052-0189"
+   ]
+  },
+  {
+   "n": 3,
+   "chapters": [
+    "603"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-603-052-0157",
+    "oar-603-052-0180",
+    "oar-603-052-0191"
+   ]
+  },
+  {
+   "n": 3,
+   "chapters": [
+    "635"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-635-052-0010",
+    "oar-635-053-0045",
+    "oar-635-054-0025"
+   ]
+  },
+  {
+   "n": 3,
+   "chapters": [
+    "690"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-690-501-0040",
+    "oar-690-516-0040",
+    "oar-690-518-0060"
+   ]
+  },
+  {
+   "n": 3,
+   "chapters": [
+    "839"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-839-001-0780",
+    "oar-839-020-1020",
+    "oar-839-026-0140"
+   ]
+  },
+  {
+   "n": 3,
+   "chapters": [
+    "839"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-839-015-0507",
+    "oar-839-017-0275",
+    "oar-839-019-0015"
+   ]
+  },
+  {
+   "n": 3,
+   "chapters": [
+    "851"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-851-050-0035",
+    "oar-851-052-0035",
+    "oar-851-054-0057"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "137"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-137-003-0005",
+    "oar-137-003-0535"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "137"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-137-003-0007",
+    "oar-137-003-0540"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "137"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-137-003-0015",
+    "oar-137-003-0565"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "137"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-137-003-0036",
+    "oar-137-003-0573"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "137"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-137-003-0080",
+    "oar-137-003-0675"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "137"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-137-003-0091",
+    "oar-137-003-0695"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "137"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-137-003-0092",
+    "oar-137-003-0700"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "137"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-137-047-0320",
+    "oar-137-049-0300"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "137"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-137-047-0450",
+    "oar-137-049-0330"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "141"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-141-040-0010",
+    "oar-141-040-0200"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "141"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-141-122-0040",
+    "oar-141-123-0040"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "141"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-141-122-0050",
+    "oar-141-123-0050"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "141"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-141-122-0090",
+    "oar-141-123-0090"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "141"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-141-122-0120",
+    "oar-141-123-0110"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "150"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-150-308-0140",
+    "oar-150-308-0570"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "150"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-150-321-0330",
+    "oar-150-321-0800"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "150"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-150-321-0360",
+    "oar-150-321-0820"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "177"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-177-081-0060",
+    "oar-177-099-0060"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "230"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-230-080-0460",
+    "oar-230-140-0460"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "230"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-230-080-0510",
+    "oar-230-130-0510"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "230"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-230-080-0570",
+    "oar-230-130-0570"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "230"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-230-080-0590",
+    "oar-230-130-0590"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "230"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-230-080-0600",
+    "oar-230-130-0600"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "230"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-230-130-0430",
+    "oar-230-140-0430"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "230"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-230-130-0490",
+    "oar-230-140-0490"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "230"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-230-130-0500",
+    "oar-230-140-0500"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "230"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-230-130-0520",
+    "oar-230-140-0520"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "230"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-230-130-0580",
+    "oar-230-140-0580"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "230"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-230-130-0630",
+    "oar-230-140-0630"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "230"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-230-130-0650",
+    "oar-230-140-0640"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "230"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-230-130-0660",
+    "oar-230-140-0660"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "250"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-250-020-0042",
+    "oar-250-020-0300"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "250"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-250-020-0061",
+    "oar-250-020-0101"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "250"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-250-020-0243",
+    "oar-250-020-0260"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "255"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-255-036-0015",
+    "oar-255-037-0015"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "257"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-257-030-0040",
+    "oar-257-030-0110"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "257"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-257-030-0080",
+    "oar-257-030-0150"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "257"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-257-030-0100",
+    "oar-257-030-0170"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "274"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-274-020-0300",
+    "oar-274-045-0035"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "274"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-274-020-0349",
+    "oar-274-045-0085"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "274"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-274-020-0411",
+    "oar-274-045-0190"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "291"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-291-031-0140",
+    "oar-291-031-0210"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "309"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-309-018-0105",
+    "oar-309-019-0105"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "309"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-309-018-0115",
+    "oar-309-022-0115"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "309"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-309-018-0170",
+    "oar-309-019-0175"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "309"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-309-018-0210",
+    "oar-309-019-0215"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "309"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-309-033-0610",
+    "oar-309-033-0910"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "309"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-309-106-0020",
+    "oar-309-108-0020"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "325"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-325-010-0025",
+    "oar-325-020-0025"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "325"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-325-010-0045",
+    "oar-325-020-0040"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "325"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-325-015-0045",
+    "oar-325-025-0045"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "330"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-330-090-0450",
+    "oar-330-091-0450"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "331"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-331-915-0005",
+    "oar-331-915-0007"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "333"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-333-010-0190",
+    "oar-333-010-0285"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "333"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-333-016-0058",
+    "oar-333-016-0059"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "333"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-333-027-0064",
+    "oar-333-536-0093"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "333"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-333-029-0076",
+    "oar-333-031-0005"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "333"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-333-060-0010",
+    "oar-333-062-0010"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "333"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-333-060-0025",
+    "oar-333-062-0025"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "333"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-333-060-0040",
+    "oar-333-062-0040"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "333"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-333-060-0080",
+    "oar-333-062-0075"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "333"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-333-060-0125",
+    "oar-333-062-0100"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "333"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-333-060-0190",
+    "oar-333-062-0160"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "333"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-333-116-0350",
+    "oar-333-116-0390"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "333"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-333-116-0683",
+    "oar-333-116-0687"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "333"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-333-122-0201",
+    "oar-333-122-0210"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "333"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-333-250-0390",
+    "oar-333-255-0120"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "333"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-333-510-0001",
+    "oar-333-515-0001"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "340"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-340-174-0090",
+    "oar-340-176-0090"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "350"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-350-060-0020",
+    "oar-350-070-0020"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "350"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-350-060-0042",
+    "oar-350-070-0042"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "350"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-350-060-0045",
+    "oar-350-070-0045"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "350"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-350-060-0047",
+    "oar-350-070-0046"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "350"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-350-060-0205",
+    "oar-350-070-0225"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "411"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-411-054-0120",
+    "oar-411-089-0030"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "411"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-411-345-0170",
+    "oar-411-360-0160"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "413"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-413-050-0585",
+    "oar-413-055-0160"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "414"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-414-800-0005",
+    "oar-414-800-0105"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "414"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-414-800-0010",
+    "oar-414-800-0110"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "414"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-414-800-0020",
+    "oar-414-800-0120"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "414"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-414-800-0025",
+    "oar-414-800-0125"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "414"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-414-800-0030",
+    "oar-414-800-0130"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "419"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-419-220-0130",
+    "oar-419-230-0130"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "419"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-419-220-0140",
+    "oar-419-240-0140"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "419"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-419-230-0180",
+    "oar-419-240-0180"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "436"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-436-009-0008",
+    "oar-436-010-0008"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "436"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-436-105-0006",
+    "oar-436-110-0006"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "437"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-437-002-0006",
+    "oar-437-003-0006"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "437"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-437-002-0047",
+    "oar-437-003-0047"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "437"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-437-002-0134",
+    "oar-437-003-0134"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "437"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-437-002-1001",
+    "oar-437-003-1101"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "437"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-437-002-1027",
+    "oar-437-003-1127"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "437"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-437-002-1050",
+    "oar-437-003-3060"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "437"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-437-002-2224",
+    "oar-437-003-3224"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "437"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-437-002-2225",
+    "oar-437-003-3225"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "437"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-437-002-2226",
+    "oar-437-003-3226"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "438"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-438-019-0010",
+    "oar-438-085-0210"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "438"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-438-019-0020",
+    "oar-438-085-0220"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "459"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-459-011-0100",
+    "oar-459-080-0100"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "575"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-575-031-0050",
+    "oar-575-039-0110"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "575"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-575-031-0055",
+    "oar-575-035-0055"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "585"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-585-001-0006",
+    "oar-585-030-0055"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "603"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-603-058-0280",
+    "oar-603-058-0290"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "603"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-603-095-1240",
+    "oar-603-095-1340"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "603"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-603-095-1360",
+    "oar-603-095-1960"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "603"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-603-095-2040",
+    "oar-603-095-2540"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "603"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-603-095-2340",
+    "oar-603-095-2440"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "603"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-603-095-3240",
+    "oar-603-095-3640"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "629"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-629-044-0240",
+    "oar-629-044-1040"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "629"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-629-044-0250",
+    "oar-629-044-1045"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "632"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-632-030-0045",
+    "oar-632-035-0045"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "635"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-635-004-0205",
+    "oar-635-005-0230"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "635"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-635-004-0210",
+    "oar-635-005-0235"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "635"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-635-004-0223",
+    "oar-635-005-0263"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "635"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-635-004-0230",
+    "oar-635-005-0270"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "635"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-635-005-0245",
+    "oar-635-005-0370"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "635"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-635-005-0450",
+    "oar-635-006-1120"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "635"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-635-014-0090",
+    "oar-635-019-0090"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "635"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-635-052-0000",
+    "oar-635-053-0000"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "635"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-635-500-0940",
+    "oar-635-500-1330"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "635"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-635-500-4510",
+    "oar-635-500-5010"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "660"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-660-024-0065",
+    "oar-660-038-0160"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "660"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-660-024-0067",
+    "oar-660-038-0170"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "690"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-690-205-0075",
+    "oar-690-240-0240"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "690"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-690-205-0175",
+    "oar-690-240-0340"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "690"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-690-205-0205",
+    "oar-690-240-0385"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "690"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-690-210-0280",
+    "oar-690-215-0060"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "690"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-690-215-0055",
+    "oar-690-240-0026"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "690"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-690-225-0040",
+    "oar-690-240-0590"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "690"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-690-225-0050",
+    "oar-690-240-0600"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "690"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-690-320-0050",
+    "oar-690-330-0030"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "690"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-690-320-0070",
+    "oar-690-330-0040"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "690"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-690-385-4580",
+    "oar-690-385-5680"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "690"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-690-385-4700",
+    "oar-690-385-5800"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "690"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-690-504-0100",
+    "oar-690-508-0100"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "690"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-690-510-0100",
+    "oar-690-511-0100"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "698"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-698-015-0100",
+    "oar-698-025-0070"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "734"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-734-075-0035",
+    "oar-734-082-0035"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "734"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-734-075-0036",
+    "oar-734-082-0055"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "735"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-735-074-0212",
+    "oar-735-076-0052"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "735"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-735-150-0190",
+    "oar-735-152-0090"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "736"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-736-053-0135",
+    "oar-736-053-0230"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "813"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-813-027-0090",
+    "oar-813-028-0090"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "813"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-813-030-0032",
+    "oar-813-060-0032"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "813"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-813-030-0040",
+    "oar-813-060-0040"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "813"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-813-030-0044",
+    "oar-813-060-0044"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "813"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-813-051-0070",
+    "oar-813-053-0070"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "813"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-813-200-0008",
+    "oar-813-202-0007"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "836"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-836-080-0531",
+    "oar-836-080-0655"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "836"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-836-080-0546",
+    "oar-836-080-0685"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "837"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-837-110-0030",
+    "oar-837-110-0130"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "837"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-837-110-0060",
+    "oar-837-110-0140"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "837"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-837-110-0075",
+    "oar-837-110-0155"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "839"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-839-001-0147",
+    "oar-839-020-0417"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "839"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-839-001-0148",
+    "oar-839-020-0420"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "839"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-839-001-0200",
+    "oar-839-020-0027"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "839"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-839-014-0178",
+    "oar-839-015-0178"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "839"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-839-014-0180",
+    "oar-839-015-0180"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "839"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-839-014-0185",
+    "oar-839-015-0185"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "839"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-839-014-0190",
+    "oar-839-015-0190"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "839"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-839-014-0195",
+    "oar-839-015-0195"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "839"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-839-014-0220",
+    "oar-839-015-0220"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "855"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-855-019-0205",
+    "oar-855-025-0020"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "859"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-859-050-0020",
+    "oar-859-550-0020"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "859"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-859-090-0005",
+    "oar-859-590-0005"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "859"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-859-300-0150",
+    "oar-859-400-0150"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "859"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-859-300-0170",
+    "oar-859-400-0170"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "859"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-859-300-0180",
+    "oar-859-400-0180"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "859"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-859-300-0210",
+    "oar-859-400-0210"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "860"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-860-021-0210",
+    "oar-860-034-0160"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "860"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-860-021-0550",
+    "oar-860-034-0275"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "860"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-860-025-0005",
+    "oar-860-037-0005"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "863"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-863-014-0061",
+    "oar-863-024-0061"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "863"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-863-014-0062",
+    "oar-863-024-0062"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "863"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-863-014-0066",
+    "oar-863-024-0066"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "863"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-863-014-0067",
+    "oar-863-024-0067"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "863"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-863-014-0070",
+    "oar-863-024-0070"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "863"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-863-014-0076",
+    "oar-863-024-0076"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "863"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-863-014-0097",
+    "oar-863-024-0097"
+   ]
+  },
+  {
+   "n": 2,
+   "chapters": [
+    "918"
+   ],
+   "cross_chapter": false,
+   "members": [
+    "oar-918-460-0070",
+    "oar-918-480-0030"
+   ]
+  }
+ ]
+}

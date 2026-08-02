@@ -1,0 +1,464 @@
+{
+ "generated": "2026-08-02",
+ "model": "BAAI/bge-m3",
+ "erf_fingerprint": "5fa32b67363206efd32c3c04bdfa41311c107c137ae876e049c20d85bc646c9c",
+ "audits_fingerprint": "4f7d6600e68730d0bdcc2eeae989d4560414e0bd4edde7c7ce4ec3559d712465",
+ "method": "cosine over per-document mean of chunk vectors (int8 L2*127 -> float32, renormalized)",
+ "n_rules_scored": 24049,
+ "quartiles": [
+  0.563,
+  0.628,
+  0.678,
+  0.736,
+  0.827
+ ],
+ "farthest": [
+  {
+   "rule": "oar-635-049-0195",
+   "statute": "ors-498.002",
+   "cos": 0.426,
+   "agency": "Department of Fish and Wildlife",
+   "n_authorities": 8
+  },
+  {
+   "rule": "oar-582-115-0060",
+   "statute": "ors-344.710",
+   "cos": 0.439,
+   "agency": "Department of Human Services, Vocational Rehabilitation Services",
+   "n_authorities": 4
+  },
+  {
+   "rule": "oar-582-080-0040",
+   "statute": "ors-344.710",
+   "cos": 0.443,
+   "agency": "Department of Human Services, Vocational Rehabilitation Services",
+   "n_authorities": 4
+  },
+  {
+   "rule": "oar-808-002-0390",
+   "statute": "ors-671.525",
+   "cos": 0.446,
+   "agency": "Landscape Contractors Board",
+   "n_authorities": 3
+  },
+  {
+   "rule": "oar-820-001-0035",
+   "statute": "ors-672.325",
+   "cos": 0.457,
+   "agency": "Board of Examiners for Engineering and Land Surveying",
+   "n_authorities": 2
+  },
+  {
+   "rule": "oar-635-049-0073",
+   "statute": "ors-498.002",
+   "cos": 0.457,
+   "agency": "Department of Fish and Wildlife",
+   "n_authorities": 8
+  },
+  {
+   "rule": "oar-695-047-0080",
+   "statute": "ors-541.890",
+   "cos": 0.459,
+   "agency": "Oregon Watershed Enhancement Board",
+   "n_authorities": 2
+  },
+  {
+   "rule": "oar-736-080-0070",
+   "statute": "ors-390.770",
+   "cos": 0.46,
+   "agency": "Parks and Recreation Department",
+   "n_authorities": 4
+  },
+  {
+   "rule": "oar-461-125-0150",
+   "statute": "ors-411.116",
+   "cos": 0.46,
+   "agency": "Department of Human Services, Self-Sufficiency Programs",
+   "n_authorities": 5
+  },
+  {
+   "rule": "oar-695-015-0080",
+   "statute": "ors-541.956",
+   "cos": 0.463,
+   "agency": "Oregon Watershed Enhancement Board",
+   "n_authorities": 1
+  },
+  {
+   "rule": "oar-291-133-0025",
+   "statute": "ors-137.285",
+   "cos": 0.464,
+   "agency": "Department of Corrections",
+   "n_authorities": 5
+  },
+  {
+   "rule": "oar-943-012-0025",
+   "statute": "ors-654.010",
+   "cos": 0.464,
+   "agency": "Oregon Health Authority",
+   "n_authorities": 2
+  },
+  {
+   "rule": "oar-635-049-0205",
+   "statute": "ors-498.002",
+   "cos": 0.467,
+   "agency": "Department of Fish and Wildlife",
+   "n_authorities": 8
+  },
+  {
+   "rule": "oar-859-050-0105",
+   "statute": "ors-161.295",
+   "cos": 0.467,
+   "agency": "Psychiatric Security Review Board",
+   "n_authorities": 2
+  },
+  {
+   "rule": "oar-839-014-0185",
+   "statute": "ors-658.730",
+   "cos": 0.468,
+   "agency": "Bureau of Labor and Industries",
+   "n_authorities": 1
+  },
+  {
+   "rule": "oar-291-133-0015",
+   "statute": "ors-137.285",
+   "cos": 0.469,
+   "agency": "Department of Corrections",
+   "n_authorities": 5
+  },
+  {
+   "rule": "oar-695-047-0070",
+   "statute": "ors-541.890",
+   "cos": 0.47,
+   "agency": "Oregon Watershed Enhancement Board",
+   "n_authorities": 2
+  },
+  {
+   "rule": "oar-333-029-0045",
+   "statute": "ors-446.350",
+   "cos": 0.471,
+   "agency": "Oregon Health Authority, Public Health Division",
+   "n_authorities": 3
+  },
+  {
+   "rule": "oar-950-060-0090",
+   "statute": "ors-414.665",
+   "cos": 0.471,
+   "agency": "Oregon Health Authority Equity and Inclusion Division",
+   "n_authorities": 1
+  },
+  {
+   "rule": "oar-411-069-0150",
+   "statute": "ors-409.750",
+   "cos": 0.471,
+   "agency": "Department of Human Services, Aging and People with Disabilities and Developmental Disabilities",
+   "n_authorities": 1
+  },
+  {
+   "rule": "oar-635-049-0255",
+   "statute": "ors-498.002",
+   "cos": 0.471,
+   "agency": "Department of Fish and Wildlife",
+   "n_authorities": 8
+  },
+  {
+   "rule": "oar-736-002-0042",
+   "statute": "ors-390.300",
+   "cos": 0.472,
+   "agency": "Parks and Recreation Department",
+   "n_authorities": 2
+  },
+  {
+   "rule": "oar-808-003-0850",
+   "statute": "ors-671.570",
+   "cos": 0.473,
+   "agency": "Landscape Contractors Board",
+   "n_authorities": 1
+  },
+  {
+   "rule": "oar-411-069-0120",
+   "statute": "ors-409.750",
+   "cos": 0.474,
+   "agency": "Department of Human Services, Aging and People with Disabilities and Developmental Disabilities",
+   "n_authorities": 1
+  },
+  {
+   "rule": "oar-950-060-0120",
+   "statute": "ors-414.665",
+   "cos": 0.475,
+   "agency": "Oregon Health Authority Equity and Inclusion Division",
+   "n_authorities": 1
+  },
+  {
+   "rule": "oar-635-049-0235",
+   "statute": "ors-498.002",
+   "cos": 0.477,
+   "agency": "Department of Fish and Wildlife",
+   "n_authorities": 8
+  },
+  {
+   "rule": "oar-333-275-0180",
+   "statute": "ors-670.280",
+   "cos": 0.479,
+   "agency": "Oregon Health Authority, Public Health Division",
+   "n_authorities": 2
+  },
+  {
+   "rule": "oar-695-047-0100",
+   "statute": "ors-541.890",
+   "cos": 0.479,
+   "agency": "Oregon Watershed Enhancement Board",
+   "n_authorities": 2
+  },
+  {
+   "rule": "oar-813-310-0095",
+   "statute": "ors-456.506",
+   "cos": 0.48,
+   "agency": "Oregon Housing and Community Services Department",
+   "n_authorities": 2
+  },
+  {
+   "rule": "oar-695-047-0110",
+   "statute": "ors-541.890",
+   "cos": 0.48,
+   "agency": "Oregon Watershed Enhancement Board",
+   "n_authorities": 2
+  },
+  {
+   "rule": "oar-859-550-0110",
+   "statute": "ors-161.295",
+   "cos": 0.48,
+   "agency": "Psychiatric Security Review Board",
+   "n_authorities": 2
+  },
+  {
+   "rule": "oar-339-020-0100",
+   "statute": "ors-657.320",
+   "cos": 0.481,
+   "agency": "Occupational Therapy Licensing Board",
+   "n_authorities": 1
+  },
+  {
+   "rule": "oar-411-069-0060",
+   "statute": "ors-409.750",
+   "cos": 0.482,
+   "agency": "Department of Human Services, Aging and People with Disabilities and Developmental Disabilities",
+   "n_authorities": 1
+  },
+  {
+   "rule": "oar-340-017-0050",
+   "statute": "ors-468.150",
+   "cos": 0.483,
+   "agency": "Department of Environmental Quality",
+   "n_authorities": 2
+  },
+  {
+   "rule": "oar-859-050-0110",
+   "statute": "ors-161.295",
+   "cos": 0.484,
+   "agency": "Psychiatric Security Review Board",
+   "n_authorities": 2
+  },
+  {
+   "rule": "oar-820-080-1000",
+   "statute": "ors-672.325",
+   "cos": 0.484,
+   "agency": "Board of Examiners for Engineering and Land Surveying",
+   "n_authorities": 2
+  },
+  {
+   "rule": "oar-411-069-0110",
+   "statute": "ors-409.750",
+   "cos": 0.484,
+   "agency": "Department of Human Services, Aging and People with Disabilities and Developmental Disabilities",
+   "n_authorities": 1
+  },
+  {
+   "rule": "oar-340-242-0060",
+   "statute": "ors-468a.363",
+   "cos": 0.485,
+   "agency": "Department of Environmental Quality",
+   "n_authorities": 1
+  },
+  {
+   "rule": "oar-461-145-0285",
+   "statute": "ors-410.080",
+   "cos": 0.485,
+   "agency": "Department of Human Services, Self-Sufficiency Programs",
+   "n_authorities": 10
+  },
+  {
+   "rule": "oar-635-049-0225",
+   "statute": "ors-498.002",
+   "cos": 0.486,
+   "agency": "Department of Fish and Wildlife",
+   "n_authorities": 8
+  },
+  {
+   "rule": "oar-411-069-0080",
+   "statute": "ors-409.750",
+   "cos": 0.486,
+   "agency": "Department of Human Services, Aging and People with Disabilities and Developmental Disabilities",
+   "n_authorities": 1
+  },
+  {
+   "rule": "oar-603-001-0145",
+   "statute": "ors-561.040",
+   "cos": 0.487,
+   "agency": "Department of Agriculture",
+   "n_authorities": 1
+  },
+  {
+   "rule": "oar-603-077-0185",
+   "statute": "ors-468a.585",
+   "cos": 0.487,
+   "agency": "Department of Agriculture",
+   "n_authorities": 1
+  },
+  {
+   "rule": "oar-150-308-0740",
+   "statute": "ors-205.320",
+   "cos": 0.487,
+   "agency": "Department of Revenue",
+   "n_authorities": 11
+  },
+  {
+   "rule": "oar-141-121-0020",
+   "statute": "ors-274.400",
+   "cos": 0.488,
+   "agency": "Department of State Lands",
+   "n_authorities": 2
+  },
+  {
+   "rule": "oar-820-001-0040",
+   "statute": "ors-672.325",
+   "cos": 0.489,
+   "agency": "Board of Examiners for Engineering and Land Surveying",
+   "n_authorities": 2
+  },
+  {
+   "rule": "oar-411-069-0090",
+   "statute": "ors-409.750",
+   "cos": 0.489,
+   "agency": "Department of Human Services, Aging and People with Disabilities and Developmental Disabilities",
+   "n_authorities": 1
+  },
+  {
+   "rule": "oar-836-080-0360",
+   "statute": "ors-746.045",
+   "cos": 0.489,
+   "agency": "Department of Consumer and Business Services, Insurance Regulation",
+   "n_authorities": 4
+  },
+  {
+   "rule": "oar-333-030-0023",
+   "statute": "ors-446.350",
+   "cos": 0.489,
+   "agency": "Oregon Health Authority, Public Health Division",
+   "n_authorities": 2
+  },
+  {
+   "rule": "oar-411-069-0170",
+   "statute": "ors-409.750",
+   "cos": 0.489,
+   "agency": "Department of Human Services, Aging and People with Disabilities and Developmental Disabilities",
+   "n_authorities": 1
+  },
+  {
+   "rule": "oar-340-142-0090",
+   "statute": "ors-468b.305",
+   "cos": 0.49,
+   "agency": "Department of Environmental Quality",
+   "n_authorities": 4
+  },
+  {
+   "rule": "oar-141-121-0030",
+   "statute": "ors-274.400",
+   "cos": 0.49,
+   "agency": "Department of State Lands",
+   "n_authorities": 2
+  },
+  {
+   "rule": "oar-632-007-0030",
+   "statute": "ors-195.260",
+   "cos": 0.49,
+   "agency": "Department of Geology and Mineral Industries",
+   "n_authorities": 2
+  },
+  {
+   "rule": "oar-629-022-0230",
+   "statute": "ors-526.775",
+   "cos": 0.491,
+   "agency": "Department of Forestry",
+   "n_authorities": 2
+  },
+  {
+   "rule": "oar-340-090-0420",
+   "statute": "ors-459a.010",
+   "cos": 0.491,
+   "agency": "Department of Environmental Quality",
+   "n_authorities": 1
+  },
+  {
+   "rule": "oar-340-098-0370",
+   "statute": "ors-459a.203",
+   "cos": 0.492,
+   "agency": "Department of Environmental Quality",
+   "n_authorities": 7
+  },
+  {
+   "rule": "oar-411-069-0040",
+   "statute": "ors-409.750",
+   "cos": 0.492,
+   "agency": "Department of Human Services, Aging and People with Disabilities and Developmental Disabilities",
+   "n_authorities": 1
+  },
+  {
+   "rule": "oar-808-003-0840",
+   "statute": "ors-671.570",
+   "cos": 0.493,
+   "agency": "Landscape Contractors Board",
+   "n_authorities": 1
+  },
+  {
+   "rule": "oar-820-020-0025",
+   "statute": "ors-672.325",
+   "cos": 0.493,
+   "agency": "Board of Examiners for Engineering and Land Surveying",
+   "n_authorities": 2
+  },
+  {
+   "rule": "oar-808-002-0650",
+   "statute": "ors-671.607",
+   "cos": 0.493,
+   "agency": "Landscape Contractors Board",
+   "n_authorities": 1
+  }
+ ],
+ "nearest": [
+  {
+   "rule": "oar-801-010-0345",
+   "statute": "ors-673.160",
+   "cos": 0.935
+  },
+  {
+   "rule": "oar-411-067-0086",
+   "statute": "ors-101.115",
+   "cos": 0.935
+  },
+  {
+   "rule": "oar-809-001-0035",
+   "statute": "ors-36.220",
+   "cos": 0.937
+  },
+  {
+   "rule": "oar-137-047-0255",
+   "statute": "ors-279b.055",
+   "cos": 0.941
+  },
+  {
+   "rule": "oar-839-006-0345",
+   "statute": "ors-659a.143",
+   "cos": 0.949
+  }
+ ]
+}

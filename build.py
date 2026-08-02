@@ -32,6 +32,10 @@ STORIES = ("agency_profiles",
            "where_appropriations_actually_land",
            "documents_that_exist_only_as_pictures",
            "the_federal_ceiling",
+           "found_by_meaning",
+           "the_copy_paste_rulebook",
+           "the_map_of_stale_law",
+           "far_from_their_authority",
            "rulemaking_and_stated_priorities")
 
 
