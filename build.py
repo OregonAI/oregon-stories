@@ -24,7 +24,8 @@ from corpus_toolkit import viz
 
 SITE = pathlib.Path(__file__).parent / "site"
 
-STORIES = ("rules_older_than_their_statutes",
+STORIES = ("agency_profiles",
+           "rules_older_than_their_statutes",
            "county_code_cites_dead_law",
            "what_agencies_told_the_legislature",
            "can_you_read_your_countys_law",
@@ -38,14 +39,24 @@ def main() -> int:
     for name in STORIES:
         data_sources.FETCHED.clear()
         mod = importlib.import_module(f"stories.{name}")
-        slug, claim, page = mod.build()
-        (SITE / f"{slug}.html").write_text(page, encoding="utf-8")
+        if hasattr(mod, "build_many"):
+            # Multi-page story: (entry_relpath, claim, [(relpath, html), ...])
+            slug, claim, pages = mod.build_many()
+            for rel, html_page in pages:
+                out = SITE / rel
+                out.parent.mkdir(parents=True, exist_ok=True)
+                out.write_text(html_page, encoding="utf-8")
+            print(f"  built {len(pages)} page(s) under {slug.rsplit('/', 1)[0]}/")
+        else:
+            slug, claim, page = mod.build()
+            slug = f"{slug}.html"
+            (SITE / slug).write_text(page, encoding="utf-8")
         n_src = len(data_sources.FETCHED)
         cards.append(f'<div class="panel"><h2 style="margin:0 0 4px;font-size:17px">'
-                     f'<a href="{slug}.html">{html.escape(claim)}</a></h2>'
+                     f'<a href="{slug}">{html.escape(claim)}</a></h2>'
                      f'<p style="margin:0;color:var(--ink2);font-size:13px">'
                      f'{n_src} cited source artifact(s), hashes on the page.</p></div>')
-        print(f"  built {slug}.html")
+        print(f"  built {slug}")
 
     index = viz.chart_page(
         title="Oregon, measured from its own records",
