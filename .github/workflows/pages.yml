@@ -1,0 +1,38 @@
+# Build the stories from PUBLISHED artifacts and deploy. A fetch failure fails the
+# build before upload, so the previously published site stays live — the same rule
+# the landing page learned in OregonAI.github.io#1.
+name: pages
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "40 9 * * 1"     # weekly, after the corpora's own Monday jobs
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: Build every story (a failed fetch fails the build)
+        run: python3 build.py
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - uses: actions/deploy-pages@v4

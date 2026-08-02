@@ -1,0 +1,67 @@
+#!/usr/bin/env python3
+"""Build every story into site/ plus the gallery index.
+
+  python3 build.py
+
+A story builder returns (slug, one_line_claim, page_html). Each runs with a FRESH fetch
+ledger so its sources footer cites exactly the bytes its own numbers came from. Any
+fetch failure raises and the build exits nonzero — a red run instead of a quietly
+shrunken gallery; the previously published site stays live on Pages
+(OregonAI.github.io#1's rule, applied here from day one).
+"""
+from __future__ import annotations
+
+import datetime
+import html
+import importlib
+import pathlib
+import sys
+
+sys.path.insert(0, str(pathlib.Path(__file__).parent))
+
+import data_sources
+from corpus_toolkit import viz
+
+SITE = pathlib.Path(__file__).parent / "site"
+
+STORIES = ("rules_older_than_their_statutes",
+           "county_code_cites_dead_law")
+
+
+def main() -> int:
+    SITE.mkdir(exist_ok=True)
+    cards = []
+    for name in STORIES:
+        data_sources.FETCHED.clear()
+        mod = importlib.import_module(f"stories.{name}")
+        slug, claim, page = mod.build()
+        (SITE / f"{slug}.html").write_text(page, encoding="utf-8")
+        n_src = len(data_sources.FETCHED)
+        cards.append(f'<div class="panel"><h2 style="margin:0 0 4px;font-size:17px">'
+                     f'<a href="{slug}.html">{html.escape(claim)}</a></h2>'
+                     f'<p style="margin:0;color:var(--ink2);font-size:13px">'
+                     f'{n_src} cited source artifact(s), hashes on the page.</p></div>')
+        print(f"  built {slug}.html")
+
+    index = viz.chart_page(
+        title="Oregon, measured from its own records",
+        eyebrow="oregon-stories · Civic Corpus Platform",
+        lede_html=("Each story below derives every number, at build time, from the "
+                   "platform's mirrored public records — and links the exact artifacts "
+                   "and their hashes so anyone can check. Non-authoritative throughout; "
+                   "the records themselves live with the state."),
+        body_html="".join(cards),
+        caveats_html=("<p>Stories state what the records show, never why — cause is "
+                      "not in the data. Every page carries its own caveats; read them "
+                      "before quoting a figure.</p>"),
+        sources=[{"label": "the Civic Corpus Platform",
+                  "url": "https://oregonai.github.io/"}],
+        generated=datetime.date.today().isoformat())
+    (SITE / "index.html").write_text(index, encoding="utf-8")
+    (SITE / ".nojekyll").write_text("", encoding="utf-8")
+    print(f"wrote site/index.html ({len(STORIES)} stories)")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
