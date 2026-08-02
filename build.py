@@ -25,7 +25,11 @@ from corpus_toolkit import viz
 SITE = pathlib.Path(__file__).parent / "site"
 
 STORIES = ("rules_older_than_their_statutes",
-           "county_code_cites_dead_law")
+           "county_code_cites_dead_law",
+           "what_agencies_told_the_legislature",
+           "can_you_read_your_countys_law",
+           "where_appropriations_actually_land",
+           "rulemaking_and_stated_priorities")
 
 
 def main() -> int:
