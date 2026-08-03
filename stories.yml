@@ -63,10 +63,23 @@ stories:
     priorities — interpretive framing that gets operator triage before (re)publication,
     same risk class as the policy-repo governor-priorities chart it parallels.
 
+- {id: named_earmarks, status: published, kind: local,
+   title: "The Legislature's named line items", corpora: [oregon-budget]}
+- {id: vendor_concentration, status: published, kind: local,
+   title: "Vendor concentration", corpora: [oregon-budget]}
+- {id: audits_kpm, status: published, kind: local,
+   title: "Audits and the scorecards", corpora: [oregon-audits, oregon-kpm]}
+
 # ── external: rendering on corpus pages until their ports land ────────────────
-- {id: chain,                       status: published, kind: external, corpora: [executive-regulatory-frameworks, oregon-legislature, oregon-budget, oregon-kpm, oregon-audits], title: "One program, chained end to end",
-   claim: "PERS traced statute → rule → policy → dollars → measure → audit, gaps drawn honestly",
-   url: "https://oregonai.github.io/chain.html"}
+- id: one_thread_pers
+  status: published
+  kind: local
+  title: "One thread, end to end: PERS"
+  corpora: [executive-regulatory-frameworks, oregon-legislature, oregon-budget, oregon-kpm, oregon-audits]
+  note: >-
+    Refactor of the landing repo's chain.html (operator verdict 2026-08-03: the old
+    card-stack told no story). The join walk and the drawn-gap convention survive;
+    the page now leads with data shape and real dollars.
 - {id: audit_mix,                   status: published, kind: external, corpora: [oregon-audits], title: "The audit mix, charted",
    claim: "Performance audits fell four-fold while financial audits held flat",
    url: "https://oregonai.github.io/oregon-audits/audit-mix.html"}
@@ -97,17 +110,16 @@ stories:
 - {id: leg_topic_map,               status: published, kind: external, corpora: [oregon-legislature], title: "The measures topic map",
    claim: "Enrolled measures, mapped by meaning",
    url: "https://oregonai.github.io/oregon-legislature/topic-map.html"}
-- id: erf_conflict_candidates
-  status: draft
-  kind: external
-  corpora: [executive-regulatory-frameworks]
+- id: conflict_candidates
+  status: published
+  kind: local
   title: "Conflict candidates (pilot)"
-  claim: "AI-assisted candidate statute/rule inconsistencies across 12 ORS chapters"
-  url: "https://oregonai.github.io/executive-regulatory-frameworks/conflict-candidates.html"
+  corpora: [executive-regulatory-frameworks]
   note: >-
-    DRAFT by the 2026-08-02 decision: unreviewed AI candidates must never present as
-    findings (guardrail 5). Its cards come OFF the policy-repo page in the same change;
-    publication happens here, after triage, or not at all.
+    PUBLISHED by operator decision 2026-08-03, with the readability redesign that
+    decision required (leads with the candidate-not-finding banner; grouped by
+    agency; type/severity charts; filter+search). Every item remains a CANDIDATE —
+    the page says so before anything else.
 - id: erf_governor_priorities
   status: draft
   kind: external
