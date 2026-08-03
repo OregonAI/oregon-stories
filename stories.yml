@@ -12,6 +12,15 @@
 # indexes it there until its port lands (tracked in this repo's issues). Corpus
 # repos are DATA-ONLY going forward: no new charts land outside this repo.
 #
+# Every entry declares `corpora:` — the platform corpora the story draws on. It is
+# the source of truth for the gallery's by-corpus grouping and the identity chips
+# (DECLARED, not parsed from fetches: the semantic stories read committed caches
+# whose ledger entry points at this repo, and agency profiles also reads
+# data.oregon.gov — runtime attribution misleads for 4 of 13). The build
+# cross-checks declarations against the fetch ledger and WARNS on divergence.
+# Local entries also declare `title:` — claims are dynamic at build time, so the
+# card needs a stable short name the manifest owns.
+#
 # Operator decisions recorded 2026-08-02: one stories repo owns all visuals;
 # gallery generated from this manifest; conflict-candidates and
 # governor-priorities/rulemaking-priorities enter as DRAFTS (interpretive content
@@ -20,63 +29,78 @@
 
 stories:
 # ── local: built here ─────────────────────────────────────────────────────────
-- {id: agency_profiles,                    status: published, kind: local}
-- {id: rules_older_than_their_statutes,    status: published, kind: local}
-- {id: county_code_cites_dead_law,         status: published, kind: local}
-- {id: what_agencies_told_the_legislature, status: published, kind: local}
-- {id: can_you_read_your_countys_law,      status: published, kind: local}
-- {id: where_appropriations_actually_land, status: published, kind: local}
-- {id: documents_that_exist_only_as_pictures, status: published, kind: local}
-- {id: the_federal_ceiling,                status: published, kind: local}
-- {id: found_by_meaning,                   status: published, kind: local}
-- {id: the_copy_paste_rulebook,            status: published, kind: local}
-- {id: the_map_of_stale_law,               status: published, kind: local}
-- {id: far_from_their_authority,           status: published, kind: local}
+- {id: agency_profiles, status: published, kind: local,
+   title: "Agency profiles", corpora: [executive-regulatory-frameworks, oregon-audits, oregon-kpm]}
+- {id: rules_older_than_their_statutes, status: published, kind: local,
+   title: "Rules older than their statutes", corpora: [executive-regulatory-frameworks]}
+- {id: county_code_cites_dead_law, status: published, kind: local,
+   title: "County code cites dead law", corpora: [oregon-counties, executive-regulatory-frameworks]}
+- {id: what_agencies_told_the_legislature, status: published, kind: local,
+   title: "What agencies told the Legislature", corpora: [oregon-kpm]}
+- {id: can_you_read_your_countys_law, status: published, kind: local,
+   title: "Can you read your county's law?", corpora: [oregon-counties]}
+- {id: where_appropriations_actually_land, status: published, kind: local,
+   title: "Where appropriations actually land", corpora: [oregon-budget]}
+- {id: documents_that_exist_only_as_pictures, status: published, kind: local,
+   title: "Documents that exist only as pictures", corpora: [executive-regulatory-frameworks, oregon-counties]}
+- {id: the_federal_ceiling, status: published, kind: local,
+   title: "The federal ceiling", corpora: [executive-regulatory-frameworks, federal-reference]}
+- {id: found_by_meaning, status: published, kind: local,
+   title: "Found by meaning", corpora: [oregon-audits, executive-regulatory-frameworks]}
+- {id: the_copy_paste_rulebook, status: published, kind: local,
+   title: "The copy-paste rulebook", corpora: [executive-regulatory-frameworks]}
+- {id: the_map_of_stale_law, status: published, kind: local,
+   title: "The map of stale law", corpora: [executive-regulatory-frameworks]}
+- {id: far_from_their_authority, status: published, kind: local,
+   title: "Far from their authority", corpora: [executive-regulatory-frameworks]}
 - id: rulemaking_and_stated_priorities
   status: draft
   kind: local
+  title: "Rulemaking and stated priorities"
+  corpora: [executive-regulatory-frameworks]
   note: >-
     DRAFT by the 2026-08-02 decision: maps rulemaking onto the Governor's stated
     priorities — interpretive framing that gets operator triage before (re)publication,
     same risk class as the policy-repo governor-priorities chart it parallels.
 
 # ── external: rendering on corpus pages until their ports land ────────────────
-- {id: chain,                       status: published, kind: external, title: "One program, chained end to end",
+- {id: chain,                       status: published, kind: external, corpora: [executive-regulatory-frameworks, oregon-legislature, oregon-budget, oregon-kpm, oregon-audits], title: "One program, chained end to end",
    claim: "PERS traced statute → rule → policy → dollars → measure → audit, gaps drawn honestly",
    url: "https://oregonai.github.io/chain.html"}
-- {id: audit_mix,                   status: published, kind: external, title: "The audit mix, charted",
+- {id: audit_mix,                   status: published, kind: external, corpora: [oregon-audits], title: "The audit mix, charted",
    claim: "Performance audits fell four-fold while financial audits held flat",
    url: "https://oregonai.github.io/oregon-audits/audit-mix.html"}
-- {id: erf_agency_authority_graph,  status: published, kind: external, title: "The agency authority graph",
+- {id: erf_agency_authority_graph,  status: published, kind: external, corpora: [executive-regulatory-frameworks], title: "The agency authority graph",
    claim: "Agencies linked by the ORS chapters their rules jointly implement",
    url: "https://oregonai.github.io/executive-regulatory-frameworks/agency-authority-graph.html"}
-- {id: erf_authority_explorer,      status: published, kind: external, title: "The authority explorer",
+- {id: erf_authority_explorer,      status: published, kind: external, corpora: [executive-regulatory-frameworks], title: "The authority explorer",
    claim: "Walk any document's authority neighborhood, up and down",
    url: "https://oregonai.github.io/executive-regulatory-frameworks/authority-explorer.html"}
-- {id: erf_statute_operationalization, status: published, kind: external, title: "Statutes, operationalized",
+- {id: erf_statute_operationalization, status: published, kind: external, corpora: [executive-regulatory-frameworks], title: "Statutes, operationalized",
    claim: "Which ORS chapters spawn the most rules — and which lie dormant",
    url: "https://oregonai.github.io/executive-regulatory-frameworks/statute-operationalization.html"}
-- {id: erf_policy_documentation_gap, status: published, kind: external, title: "The policy documentation gap",
+- {id: erf_policy_documentation_gap, status: published, kind: external, corpora: [executive-regulatory-frameworks], title: "The policy documentation gap",
    claim: "93 agencies write rules; 9 have internal policy anywhere public",
    url: "https://oregonai.github.io/executive-regulatory-frameworks/policy-documentation-gap.html"}
-- {id: erf_topic_map,               status: published, kind: external, title: "The topic map",
+- {id: erf_topic_map,               status: published, kind: external, corpora: [executive-regulatory-frameworks], title: "The topic map",
    claim: "Every document in the regulatory corpus, mapped by meaning",
    url: "https://oregonai.github.io/executive-regulatory-frameworks/topic-map.html"}
-- {id: erf_regulatory_freshness,    status: published, kind: external, title: "Regulatory freshness",
+- {id: erf_regulatory_freshness,    status: published, kind: external, corpora: [executive-regulatory-frameworks], title: "Regulatory freshness",
    claim: "Rules lagging the statutes they implement, by agency",
    url: "https://oregonai.github.io/executive-regulatory-frameworks/regulatory-freshness.html"}
-- {id: erf_policy_age,              status: published, kind: external, title: "Policy age",
+- {id: erf_policy_age,              status: published, kind: external, corpora: [executive-regulatory-frameworks], title: "Policy age",
    claim: "Time since last touch, against a two-year review cadence",
    url: "https://oregonai.github.io/executive-regulatory-frameworks/policy-age.html"}
-- {id: leg_bill_statute_citations,  status: published, kind: external, title: "What the Legislature amends",
+- {id: leg_bill_statute_citations,  status: published, kind: external, corpora: [oregon-legislature], title: "What the Legislature amends",
    claim: "Which ORS chapters each session's measures touch",
    url: "https://oregonai.github.io/oregon-legislature/bill-statute-citations.html"}
-- {id: leg_topic_map,               status: published, kind: external, title: "The measures topic map",
+- {id: leg_topic_map,               status: published, kind: external, corpora: [oregon-legislature], title: "The measures topic map",
    claim: "Enrolled measures, mapped by meaning",
    url: "https://oregonai.github.io/oregon-legislature/topic-map.html"}
 - id: erf_conflict_candidates
   status: draft
   kind: external
+  corpora: [executive-regulatory-frameworks]
   title: "Conflict candidates (pilot)"
   claim: "AI-assisted candidate statute/rule inconsistencies across 12 ORS chapters"
   url: "https://oregonai.github.io/executive-regulatory-frameworks/conflict-candidates.html"
@@ -87,6 +111,7 @@ stories:
 - id: erf_governor_priorities
   status: draft
   kind: external
+  corpora: [executive-regulatory-frameworks]
   title: "Rulemaking and stated priorities"
   claim: "Recent OAR rulemaking mapped to four stated priorities (interpretive)"
   url: "https://oregonai.github.io/executive-regulatory-frameworks/governor-priorities.html"
