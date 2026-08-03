@@ -1,0 +1,2748 @@
+{
+ "generated": "2026-08-02",
+ "model": "BAAI/bge-m3",
+ "audits_fingerprint": "4f7d6600e68730d0bdcc2eeae989d4560414e0bd4edde7c7ce4ec3559d712465",
+ "kpm_fingerprint": "7cf9d59587cfb885bf5bcc2f08c5768fde975862927469312f3a74fe92808774",
+ "note": "Doc-mean cosine between oregon-audits and oregon-kpm embeddings. Proximity SURFACES CANDIDATES, never findings: both corpora are the same agencies writing about the same programs, so agency-level overlap is the null hypothesis. The recovery rate is the method check, not an accuracy claim.",
+ "recovery": {
+  "n_audits_slugged": 223,
+  "n_recovered_same_agency": 96,
+  "rate": 0.4305,
+  "n_kpm_agency_slugs": 85
+ },
+ "excluded": {
+  "audits_without_slug": 19,
+  "audit_agencies_without_kpm": [
+   "department-of-transportation-driver-and-motor-vehicle-services-division",
+   "oregon-forest-resources-institute",
+   "oregon-patient-safety-commission",
+   "oregon-state-lottery",
+   "oregon-tourism-commission",
+   "saif-corporation",
+   "secretary-of-state-audits-division"
+  ]
+ },
+ "n_pairs": 170,
+ "pairs": [
+  {
+   "audit_id": "2020-24",
+   "audit_title": "ODE Can Better Support Students Experiencing Disabilities Through Improved Coordination and Monitoring of Services",
+   "audit_type": "performance",
+   "report_date": "2020-06-01",
+   "agency_registry_slug": "oregon-department-of-education",
+   "kpm_doc": "appr-ode-2019-10-17",
+   "score": 0.8997,
+   "kpm_reporting_year": "2019",
+   "at_target": {
+    "met": 7,
+    "judged": 9,
+    "no_direction": 73,
+    "no_number": 53
+   }
+  },
+  {
+   "audit_id": "2022-35",
+   "audit_title": "Oregon Must Improve Community College Performance, Student Support, and Sustainability Amid Persistent Enrollment Declines",
+   "audit_type": "performance",
+   "report_date": "2022-12-01",
+   "agency_registry_slug": "higher-education-coordinating-commission",
+   "kpm_doc": "appr-hecc-2023-10-01",
+   "score": 0.8921,
+   "kpm_reporting_year": "2023",
+   "at_target": {
+    "met": 21,
+    "judged": 42,
+    "no_direction": 186,
+    "no_number": 8
+   }
+  },
+  {
+   "audit_id": "2020-29",
+   "audit_title": "ODOT Oversees a Robust Project Delivery Process, yet Opportunities Exist to Further Improve Work Zone Safety",
+   "audit_type": "performance",
+   "report_date": "2020-09-01",
+   "agency_registry_slug": "department-of-transportation",
+   "kpm_doc": "apprproposed-odot-2022-09-21",
+   "score": 0.8864,
+   "kpm_reporting_year": "2022",
+   "at_target": {
+    "met": 12,
+    "judged": 30,
+    "no_direction": 6,
+    "no_number": 3
+   }
+  },
+  {
+   "audit_id": "2024-34",
+   "audit_title": "High School Success Grants Have Expanded Important Programs, but ODE Can Do More To Identify and Share Effective Strategies",
+   "audit_type": "performance",
+   "report_date": "2024-12-01",
+   "agency_registry_slug": "oregon-department-of-education",
+   "kpm_doc": "apprproposed-ode-2024-10-15",
+   "score": 0.8849,
+   "kpm_reporting_year": "2024",
+   "at_target": {
+    "met": 0,
+    "judged": 3,
+    "no_direction": 54,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2022-16",
+   "audit_title": "K-12 Education - Systemic Risk Report: State Leaders and Policymakers Must Address Persistent System Risks to Improve K-12 Equity and Student Success",
+   "audit_type": "performance",
+   "report_date": "2022-05-01",
+   "agency_registry_slug": "oregon-department-of-education",
+   "kpm_doc": "appr-ode-2019-10-17",
+   "score": 0.8805,
+   "kpm_reporting_year": "2019",
+   "at_target": {
+    "met": 7,
+    "judged": 9,
+    "no_direction": 73,
+    "no_number": 53
+   }
+  },
+  {
+   "audit_id": "2020-44",
+   "audit_title": "High School Success Planning Is Robust, but ODE Can Enhance Benefits of Measure 98 by Improving Monitoring and Analysis",
+   "audit_type": "performance",
+   "report_date": "2020-12-01",
+   "agency_registry_slug": "oregon-department-of-education",
+   "kpm_doc": "appr-ode-2020-09-25",
+   "score": 0.88,
+   "kpm_reporting_year": "2020",
+   "at_target": {
+    "met": 6,
+    "judged": 11,
+    "no_direction": 84,
+    "no_number": 40
+   }
+  },
+  {
+   "audit_id": "2021-28",
+   "audit_title": "Recommendation Follow-up Report: ODE Must Accelerate Efforts to Monitor Spending and Improve Initiatives to Help Vulnerable Students",
+   "audit_type": "performance",
+   "report_date": "2021-09-01",
+   "agency_registry_slug": "oregon-department-of-education",
+   "kpm_doc": "appr-ode-2019-10-17",
+   "score": 0.8717,
+   "kpm_reporting_year": "2019",
+   "at_target": {
+    "met": 7,
+    "judged": 9,
+    "no_direction": 73,
+    "no_number": 53
+   }
+  },
+  {
+   "audit_id": "2022-33",
+   "audit_title": "ODE Continues to Effectively Implement Measure 98 and Increase Collaboration Across Agency Programs",
+   "audit_type": "performance",
+   "report_date": "2022-12-01",
+   "agency_registry_slug": "oregon-department-of-education",
+   "kpm_doc": "appr-ode",
+   "score": 0.8711,
+   "kpm_reporting_year": "2018",
+   "at_target": {
+    "met": 6,
+    "judged": 11,
+    "no_direction": 45,
+    "no_number": 74
+   }
+  },
+  {
+   "audit_id": "2020-26",
+   "audit_title": "Oregon Can More Effectively Use Family Services to Limit Foster Care and Keep Children Safely at Home",
+   "audit_type": "performance",
+   "report_date": "2020-07-01",
+   "agency_registry_slug": "department-of-human-services",
+   "kpm_doc": "appr-dhs-2017-09-29",
+   "score": 0.862,
+   "kpm_reporting_year": "2017",
+   "at_target": {
+    "met": 25,
+    "judged": 65,
+    "no_direction": 21,
+    "no_number": 59
+   }
+  },
+  {
+   "audit_id": "2021-35",
+   "audit_title": "Additional Resources Needed to Strengthen Police Training and Accountability",
+   "audit_type": "performance",
+   "report_date": "2021-12-01",
+   "agency_registry_slug": "department-of-public-safety-standards-and-training",
+   "kpm_doc": "appr-dpsst-2021-10-01",
+   "score": 0.8559,
+   "kpm_reporting_year": "2021",
+   "at_target": {
+    "met": 17,
+    "judged": 31,
+    "no_direction": 24,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2024-02",
+   "audit_title": "To Protect Patients and Maintain Public Trust, the Oregon Medical Board Should Further its Efforts to Address the Risk of Inequitable Disciplinary Decisions",
+   "audit_type": "performance",
+   "report_date": "2024-01-01",
+   "agency_registry_slug": "oregon-medical-board",
+   "kpm_doc": "appr-omb-2024-07-29",
+   "score": 0.8507,
+   "kpm_reporting_year": "2024",
+   "at_target": {
+    "met": 15,
+    "judged": 26,
+    "no_direction": 30,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2022-02",
+   "audit_title": "Additional Data Analytics Could Better Determine Trooper Staffing Levels and Resource Needs",
+   "audit_type": "performance",
+   "report_date": "2022-01-01",
+   "agency_registry_slug": "department-of-state-police",
+   "kpm_doc": "appr-osp-2020-09-30",
+   "score": 0.8453,
+   "kpm_reporting_year": "2020",
+   "at_target": {
+    "met": 23,
+    "judged": 51,
+    "no_direction": 28,
+    "no_number": 16
+   }
+  },
+  {
+   "audit_id": "2024-13",
+   "audit_title": "Ongoing Strategic Planning Can Help DEQ Address Obstacles to Achieving its Goals",
+   "audit_type": "performance",
+   "report_date": "2024-04-01",
+   "agency_registry_slug": "department-of-environmental-quality",
+   "kpm_doc": "appr-deq-2022-10-03-final",
+   "score": 0.8419,
+   "kpm_reporting_year": "2022",
+   "at_target": {
+    "met": 6,
+    "judged": 24,
+    "no_direction": 91,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2026-19",
+   "audit_title": "Crumbling Facilities, Staffing Shortages, and Obsolete IT Systems Undermine Prison Safety and Reform Efforts",
+   "audit_type": "performance",
+   "report_date": "2026-07-01",
+   "agency_registry_slug": "department-of-corrections",
+   "kpm_doc": "appr-doc-2020-09-30",
+   "score": 0.8402,
+   "kpm_reporting_year": "2020",
+   "at_target": {
+    "met": 25,
+    "judged": 38,
+    "no_direction": 24,
+    "no_number": 38
+   }
+  },
+  {
+   "audit_id": "2025-21",
+   "audit_title": "Oregon Short Term Fund An Investment Pool of the State of Oregon For the Year Ended June 30, 2025",
+   "audit_type": "financial",
+   "report_date": "2025-09-01",
+   "agency_registry_slug": "oregon-state-treasury",
+   "kpm_doc": "appr-ost-2025",
+   "score": 0.8383,
+   "kpm_reporting_year": "2025",
+   "at_target": {
+    "met": 16,
+    "judged": 25,
+    "no_direction": 12,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2020-32",
+   "audit_title": "Chronic and Systemic Issues in Oregon' Mental Health Treatment System Leave Children and Their Families in Crisis",
+   "audit_type": "performance",
+   "report_date": "2020-09-01",
+   "agency_registry_slug": "oregon-health-authority",
+   "kpm_doc": "appr-oha-2023-11-08",
+   "score": 0.8379,
+   "kpm_reporting_year": "2023",
+   "at_target": {
+    "met": 19,
+    "judged": 34,
+    "no_direction": 50,
+    "no_number": 16
+   }
+  },
+  {
+   "audit_id": "2021-17",
+   "audit_title": "Recommendation Follow-up Report: Progress Has Been Made, but COVID-19 Delayed Some Efforts to Improve State Budget Transparency",
+   "audit_type": "performance",
+   "report_date": "2021-05-01",
+   "agency_registry_slug": "department-of-administrative-services",
+   "kpm_doc": "appr-das-2021",
+   "score": 0.8373,
+   "kpm_reporting_year": "2021",
+   "at_target": {
+    "met": 19,
+    "judged": 25,
+    "no_direction": 43,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2025-24",
+   "audit_title": "Veterans' Loan Program Annual Financial Report An Enterprise Fund of the Oregon Department of Veterans' Affairs For the Year Ending June 30, 2025",
+   "audit_type": "financial",
+   "report_date": "2025-11-01",
+   "agency_registry_slug": "department-of-veterans-affairs",
+   "kpm_doc": "appr-odva-2016-09-22",
+   "score": 0.8371,
+   "kpm_reporting_year": "2016",
+   "at_target": {
+    "met": 0,
+    "judged": 0,
+    "no_direction": 60,
+    "no_number": 5
+   }
+  },
+  {
+   "audit_id": "2021-24",
+   "audit_title": "Developmental Disabilities Leadership is Proactively Addressing Program Challenges to Ensure Optimal Service Delivery",
+   "audit_type": "performance",
+   "report_date": "2021-08-01",
+   "agency_registry_slug": "department-of-human-services",
+   "kpm_doc": "appr-dhs-2022",
+   "score": 0.8355,
+   "kpm_reporting_year": "2022",
+   "at_target": {
+    "met": 23,
+    "judged": 57,
+    "no_direction": 22,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2022-36",
+   "audit_title": "Annual Comprehensive Financial Report For the Fiscal Year Ended June 30, 2022",
+   "audit_type": "financial",
+   "report_date": "2022-12-01",
+   "agency_registry_slug": "oregon-public-employees-retirement-system",
+   "kpm_doc": "appr-pers-2022-09-22",
+   "score": 0.8351,
+   "kpm_reporting_year": "2022",
+   "at_target": {
+    "met": 0,
+    "judged": 0,
+    "no_direction": 65,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2024-07",
+   "audit_title": "Ongoing Workforce Crises and Disruption Demand Strategic Workforce Planning",
+   "audit_type": "performance",
+   "report_date": "2024-02-01",
+   "agency_registry_slug": "department-of-administrative-services",
+   "kpm_doc": "apprproposed-das-2024",
+   "score": 0.835,
+   "kpm_reporting_year": "2024",
+   "at_target": {
+    "met": 12,
+    "judged": 19,
+    "no_direction": 56,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2020-43",
+   "audit_title": "By Appropriately Administering Measure 76 Funds, Oregon Is Advancing Constitutional Goals for State Parks and Natural Resources",
+   "audit_type": "financial",
+   "report_date": "2020-12-01",
+   "agency_registry_slug": "parks-and-recreation-department",
+   "kpm_doc": "appr-oprd-2022-08-15",
+   "score": 0.8328,
+   "kpm_reporting_year": "2022",
+   "at_target": {
+    "met": 0,
+    "judged": 0,
+    "no_direction": 60,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2024-22",
+   "audit_title": "Oregon Short Term Fund An Investment Pool of the State of Oregon For the Year Ended June 30, 2024",
+   "audit_type": "financial",
+   "report_date": "2024-08-01",
+   "agency_registry_slug": "oregon-state-treasury",
+   "kpm_doc": "appr-ost-2025",
+   "score": 0.8322,
+   "kpm_reporting_year": "2025",
+   "at_target": {
+    "met": 16,
+    "judged": 25,
+    "no_direction": 12,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2023-10",
+   "audit_title": "Veterans' Loan Program Annual Financial Report Enterprise Fund for the Fiscal Year Ending June 30, 2022",
+   "audit_type": "financial",
+   "report_date": "2023-02-01",
+   "agency_registry_slug": "department-of-veterans-affairs",
+   "kpm_doc": "2018-09-21-appr-odva",
+   "score": 0.831,
+   "kpm_reporting_year": "2018",
+   "at_target": {
+    "met": 19,
+    "judged": 31,
+    "no_direction": 30,
+    "no_number": 4
+   }
+  },
+  {
+   "audit_id": "2021-27",
+   "audit_title": "Oregon Short Term Fund An Investment Pool of the State of Oregon For the Year Ended June 30, 2021",
+   "audit_type": "financial",
+   "report_date": "2021-09-01",
+   "agency_registry_slug": "oregon-state-treasury",
+   "kpm_doc": "appr-ost-2022-10-04",
+   "score": 0.8309,
+   "kpm_reporting_year": "2022",
+   "at_target": {
+    "met": 5,
+    "judged": 10,
+    "no_direction": 12,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2022-26",
+   "audit_title": "Oregon Short Term Fund An Investment Pool of the State of Oregon For the Year Ended June 30, 2022",
+   "audit_type": "financial",
+   "report_date": "2022-09-01",
+   "agency_registry_slug": "oregon-state-treasury",
+   "kpm_doc": "appr-ost-2022-10-04",
+   "score": 0.8304,
+   "kpm_reporting_year": "2022",
+   "at_target": {
+    "met": 5,
+    "judged": 10,
+    "no_direction": 12,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2025-18",
+   "audit_title": "Without a Comprehensive Compliance Function, DAS Cannot Effectively Monitor High-Risk Contracts or Mitigate Contracting Risks",
+   "audit_type": "performance",
+   "report_date": "2025-07-01",
+   "agency_registry_slug": "department-of-administrative-services",
+   "kpm_doc": "apprproposed-das-2024",
+   "score": 0.8281,
+   "kpm_reporting_year": "2024",
+   "at_target": {
+    "met": 12,
+    "judged": 19,
+    "no_direction": 56,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2023-38",
+   "audit_title": "Annual Comprehensive Financial Report For the Fiscal Year Ended June 30, 2023",
+   "audit_type": "financial",
+   "report_date": "2023-12-01",
+   "agency_registry_slug": "oregon-public-employees-retirement-system",
+   "kpm_doc": "appr-pers-2022-09-22",
+   "score": 0.8265,
+   "kpm_reporting_year": "2022",
+   "at_target": {
+    "met": 0,
+    "judged": 0,
+    "no_direction": 65,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2020-22",
+   "audit_title": "DOJ Should Strengthen Performance Management to Optimize Contract Review Services",
+   "audit_type": "performance",
+   "report_date": "2020-06-01",
+   "agency_registry_slug": "department-of-justice",
+   "kpm_doc": "appr-doj-2023-09-29",
+   "score": 0.8264,
+   "kpm_reporting_year": "2023",
+   "at_target": {
+    "met": 6,
+    "judged": 15,
+    "no_direction": 73,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2021-36",
+   "audit_title": "Veterans' Loan Program Annual Financial Report Enterprise Fund for the Fiscal Year Ended June 30, 2021",
+   "audit_type": "financial",
+   "report_date": "2021-12-01",
+   "agency_registry_slug": "department-of-veterans-affairs",
+   "kpm_doc": "appr-odva-2016-09-22",
+   "score": 0.826,
+   "kpm_reporting_year": "2016",
+   "at_target": {
+    "met": 0,
+    "judged": 0,
+    "no_direction": 60,
+    "no_number": 5
+   }
+  },
+  {
+   "audit_id": "2020-11",
+   "audit_title": "DAS Should Build on Recent Enhancements and Further Improve the Facility Planning Process to Better Inform Investments in State Facilities",
+   "audit_type": "performance",
+   "report_date": "2020-03-01",
+   "agency_registry_slug": "department-of-administrative-services",
+   "kpm_doc": "apprproposed-das-2024",
+   "score": 0.8259,
+   "kpm_reporting_year": "2024",
+   "at_target": {
+    "met": 12,
+    "judged": 19,
+    "no_direction": 56,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2023-27",
+   "audit_title": "Oregon Short Term Fund An Investment Pool of the State of Oregon For the Year Ended June 30, 2023",
+   "audit_type": "financial",
+   "report_date": "2023-08-01",
+   "agency_registry_slug": "oregon-state-treasury",
+   "kpm_doc": "appr-ost-2025",
+   "score": 0.825,
+   "kpm_reporting_year": "2025",
+   "at_target": {
+    "met": 16,
+    "judged": 25,
+    "no_direction": 12,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2020-18",
+   "audit_title": "Recommendation Follow-up Report: While Work Remains, the State Is on Track to Modernize Procurement Systems and Practices",
+   "audit_type": "information technology",
+   "report_date": "2020-05-01",
+   "agency_registry_slug": "department-of-administrative-services",
+   "kpm_doc": "appr-das-2021",
+   "score": 0.8248,
+   "kpm_reporting_year": "2021",
+   "at_target": {
+    "met": 19,
+    "judged": 25,
+    "no_direction": 43,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2021-32",
+   "audit_title": "Opportunities Exist to Improve Web Application Security and Tracking of Website Accessibility Remediation Efforts",
+   "audit_type": "information technology",
+   "report_date": "2021-11-01",
+   "agency_registry_slug": "oregon-department-of-education",
+   "kpm_doc": "appr-ode-2019-10-17",
+   "score": 0.8245,
+   "kpm_reporting_year": "2019",
+   "at_target": {
+    "met": 7,
+    "judged": 9,
+    "no_direction": 73,
+    "no_number": 53
+   }
+  },
+  {
+   "audit_id": "2020-40",
+   "audit_title": "July 1, 2019 through June 30, 2020",
+   "audit_type": "financial",
+   "report_date": "2020-11-01",
+   "agency_registry_slug": "columbia-river-gorge-commission",
+   "kpm_doc": "appr-crgc-2020-09-16",
+   "score": 0.8236,
+   "kpm_reporting_year": "2020",
+   "at_target": {
+    "met": 10,
+    "judged": 17,
+    "no_direction": 30,
+    "no_number": 3
+   }
+  },
+  {
+   "audit_id": "2021-38",
+   "audit_title": "July 1, 2020 through June 30, 2021",
+   "audit_type": "financial",
+   "report_date": "2021-12-01",
+   "agency_registry_slug": "columbia-river-gorge-commission",
+   "kpm_doc": "appr-crgc-2021-07-08",
+   "score": 0.8231,
+   "kpm_reporting_year": "2021",
+   "at_target": {
+    "met": 9,
+    "judged": 18,
+    "no_direction": 30,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2025-14",
+   "audit_title": "Oregon Faces Challenges in Addressing Gaps in the Behavioral Health Crisis System",
+   "audit_type": "performance",
+   "report_date": "2025-05-01",
+   "agency_registry_slug": "oregon-health-authority",
+   "kpm_doc": "appr-oha-2023-11-08",
+   "score": 0.8228,
+   "kpm_reporting_year": "2023",
+   "at_target": {
+    "met": 19,
+    "judged": 34,
+    "no_direction": 50,
+    "no_number": 16
+   }
+  },
+  {
+   "audit_id": "2024-35",
+   "audit_title": "Annual Comprehensive Financial Report For the Fiscal Year Ended June 30, 2024",
+   "audit_type": "financial",
+   "report_date": "2024-12-01",
+   "agency_registry_slug": "oregon-public-employees-retirement-system",
+   "kpm_doc": "appr-pers-2022-09-22",
+   "score": 0.8226,
+   "kpm_reporting_year": "2022",
+   "at_target": {
+    "met": 0,
+    "judged": 0,
+    "no_direction": 65,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2023-32",
+   "audit_title": "Veterans' Loan Program Annual Financial Report Enterprise Fund for the Fiscal Year Ending June 30, 2023",
+   "audit_type": "financial",
+   "report_date": "2023-11-01",
+   "agency_registry_slug": "department-of-veterans-affairs",
+   "kpm_doc": "appr-odva-2023-9-26",
+   "score": 0.8225,
+   "kpm_reporting_year": "2023",
+   "at_target": {
+    "met": 6,
+    "judged": 10,
+    "no_direction": 25,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2024-01",
+   "audit_title": "OHCS Prioritized Providing Emergency Rental Assistance Funds to Oregonians in Crisis but Could Have Done More to Ensure Funds Were Properly Distributed",
+   "audit_type": "performance",
+   "report_date": "2024-01-01",
+   "agency_registry_slug": "oregon-housing-and-community-services-department",
+   "kpm_doc": "appr-ohcs-2022-10-03",
+   "score": 0.8222,
+   "kpm_reporting_year": "2022",
+   "at_target": {
+    "met": 23,
+    "judged": 31,
+    "no_direction": 39,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2020-12",
+   "audit_title": "Recommendation Follow-up Report: Progress Made, but Pension Reform Delayed Implementation of Some Recommendations",
+   "audit_type": "performance",
+   "report_date": "2020-03-01",
+   "agency_registry_slug": "oregon-public-employees-retirement-system",
+   "kpm_doc": "appr-pers-2020-09-24",
+   "score": 0.8216,
+   "kpm_reporting_year": "2020",
+   "at_target": {
+    "met": 0,
+    "judged": 0,
+    "no_direction": 65,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2024-30",
+   "audit_title": "Veterans' Loan Program Annual Financial Report An Enterprise Fund for the Year Ending June 30, 2024",
+   "audit_type": "financial",
+   "report_date": "2024-10-01",
+   "agency_registry_slug": "department-of-veterans-affairs",
+   "kpm_doc": "2018-09-21-appr-odva",
+   "score": 0.8205,
+   "kpm_reporting_year": "2018",
+   "at_target": {
+    "met": 19,
+    "judged": 31,
+    "no_direction": 30,
+    "no_number": 4
+   }
+  },
+  {
+   "audit_id": "2021-14",
+   "audit_title": "Oregon' Ethics Commission and Laws Could Be Better Leveraged to Improve Ethical Culture and Trust in Government",
+   "audit_type": "performance",
+   "report_date": "2021-05-01",
+   "agency_registry_slug": "oregon-government-ethics-commission",
+   "kpm_doc": "appr-ogec-2025-09-24",
+   "score": 0.8203,
+   "kpm_reporting_year": "2025",
+   "at_target": {
+    "met": 13,
+    "judged": 25,
+    "no_direction": 30,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2025-30",
+   "audit_title": "Annual Comprehensive Financial Report For the Fiscal Year Ended June 30, 2025, Contract Audit",
+   "audit_type": "financial",
+   "report_date": "2025-12-01",
+   "agency_registry_slug": "oregon-public-employees-retirement-system",
+   "kpm_doc": "appr-pers-2022-09-22",
+   "score": 0.8203,
+   "kpm_reporting_year": "2022",
+   "at_target": {
+    "met": 0,
+    "judged": 0,
+    "no_direction": 65,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2020-35",
+   "audit_title": "Veterans' Loan Program Annual Financial Report Enterprise Fund for the Fiscal Year Ended June 30, 2020",
+   "audit_type": "financial",
+   "report_date": "2020-10-01",
+   "agency_registry_slug": "department-of-veterans-affairs",
+   "kpm_doc": "appr-odva-2020-09-17-1",
+   "score": 0.8202,
+   "kpm_reporting_year": "2020",
+   "at_target": {
+    "met": 21,
+    "judged": 36,
+    "no_direction": 30,
+    "no_number": 4
+   }
+  },
+  {
+   "audit_id": "2020-01",
+   "audit_title": "Oregon's Child Welfare Information System Is Adequate for Case Management, but Enhancements Are Needed to Improve Usability",
+   "audit_type": "performance",
+   "report_date": "2020-02-01",
+   "agency_registry_slug": "department-of-human-services",
+   "kpm_doc": "apprproposed-dhs-2018-10-01",
+   "score": 0.8185,
+   "kpm_reporting_year": "2018",
+   "at_target": {
+    "met": 15,
+    "judged": 48,
+    "no_direction": 19,
+    "no_number": 78
+   }
+  },
+  {
+   "audit_id": "2025-01",
+   "audit_title": "July 1, 2023 through June 30, 2024",
+   "audit_type": "financial",
+   "report_date": "2025-01-01",
+   "agency_registry_slug": "columbia-river-gorge-commission",
+   "kpm_doc": "appr-crgc-2023-07-14",
+   "score": 0.8181,
+   "kpm_reporting_year": "2023",
+   "at_target": {
+    "met": 7,
+    "judged": 15,
+    "no_direction": 30,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2023-14",
+   "audit_title": "July 1, 2021 through June 30, 2022",
+   "audit_type": "financial",
+   "report_date": "2023-04-01",
+   "agency_registry_slug": "columbia-river-gorge-commission",
+   "kpm_doc": "appr-crgc-2023-07-14",
+   "score": 0.8173,
+   "kpm_reporting_year": "2023",
+   "at_target": {
+    "met": 7,
+    "judged": 15,
+    "no_direction": 30,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2021-39",
+   "audit_title": "Annual Comprehensive Financial Report For the Fiscal Year Ended June 30, 2021",
+   "audit_type": "financial",
+   "report_date": "2021-12-01",
+   "agency_registry_slug": "oregon-public-employees-retirement-system",
+   "kpm_doc": "appr-pers-2021-09-23",
+   "score": 0.8172,
+   "kpm_reporting_year": "2021",
+   "at_target": {
+    "met": 0,
+    "judged": 0,
+    "no_direction": 65,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2023-39",
+   "audit_title": "Oversight and Accountability Council Funding and Delivery of Measure 110 Substance Use Disorder Services Shows Progress, but Significant Risks Remain",
+   "audit_type": "performance",
+   "report_date": "2023-12-01",
+   "agency_registry_slug": "oregon-health-authority",
+   "kpm_doc": "appr-oha-2023-11-08",
+   "score": 0.8149,
+   "kpm_reporting_year": "2023",
+   "at_target": {
+    "met": 19,
+    "judged": 34,
+    "no_direction": 50,
+    "no_number": 16
+   }
+  },
+  {
+   "audit_id": "2020-31",
+   "audit_title": "Oregon Short Term Fund An Investment Pool of the State of Oregon For the Year Ended June 30, 2020",
+   "audit_type": "financial",
+   "report_date": "2020-09-01",
+   "agency_registry_slug": "oregon-state-treasury",
+   "kpm_doc": "apprproposed-ost-2020-12-31",
+   "score": 0.8127,
+   "kpm_reporting_year": "2020",
+   "at_target": {
+    "met": 10,
+    "judged": 25,
+    "no_direction": 10,
+    "no_number": 3
+   }
+  },
+  {
+   "audit_id": "2022-34",
+   "audit_title": "Independent Actuarial Review of PERS December 31, 2021 Actuarial Valuation",
+   "audit_type": "financial",
+   "report_date": "2022-12-01",
+   "agency_registry_slug": "oregon-public-employees-retirement-system",
+   "kpm_doc": "appr-pers-2021-09-23",
+   "score": 0.8125,
+   "kpm_reporting_year": "2021",
+   "at_target": {
+    "met": 0,
+    "judged": 0,
+    "no_direction": 65,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2024-04",
+   "audit_title": "July 1, 2022 through June 30, 2023",
+   "audit_type": "financial",
+   "report_date": "2024-01-01",
+   "agency_registry_slug": "columbia-river-gorge-commission",
+   "kpm_doc": "appr-crgc-2023-07-14",
+   "score": 0.8125,
+   "kpm_reporting_year": "2023",
+   "at_target": {
+    "met": 7,
+    "judged": 15,
+    "no_direction": 30,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2022-21",
+   "audit_title": "The Pandemic' Effects on Oregonians Exposed Risks and Highlighted the Need to Modernize Oregon' Unemployment Insurance System",
+   "audit_type": "performance",
+   "report_date": "2022-07-01",
+   "agency_registry_slug": "employment-department",
+   "kpm_doc": "appr-oed-2021-09-24",
+   "score": 0.8115,
+   "kpm_reporting_year": "2021",
+   "at_target": {
+    "met": 35,
+    "judged": 63,
+    "no_direction": 30,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2020-42",
+   "audit_title": "Comprehensive Annual Financial Report For the Fiscal Year Ended June 30, 2020, Contract Audit",
+   "audit_type": "financial",
+   "report_date": "2020-12-01",
+   "agency_registry_slug": "oregon-public-employees-retirement-system",
+   "kpm_doc": "appr-pers-2020-09-24",
+   "score": 0.8111,
+   "kpm_reporting_year": "2020",
+   "at_target": {
+    "met": 0,
+    "judged": 0,
+    "no_direction": 65,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2025-25",
+   "audit_title": "For Years, BOLI’s Leadership Failed to Implement Key Management Principles to the Detriment of Oregon Workers",
+   "audit_type": "performance",
+   "report_date": "2025-11-01",
+   "agency_registry_slug": "bureau-of-labor-and-industries",
+   "kpm_doc": "appr-boli-2025-10-01",
+   "score": 0.8106,
+   "kpm_reporting_year": "2025",
+   "at_target": {
+    "met": 28,
+    "judged": 42,
+    "no_direction": 37,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2023-03",
+   "audit_title": "Too Early to Tell: The Challenging Implementation of Measure 110 Has Increased Risks, but the Effectiveness of the Program Has Yet to Be Determined",
+   "audit_type": "performance",
+   "report_date": "2023-01-01",
+   "agency_registry_slug": "oregon-health-authority",
+   "kpm_doc": "appr-oha-2023-11-08",
+   "score": 0.8099,
+   "kpm_reporting_year": "2023",
+   "at_target": {
+    "met": 19,
+    "judged": 34,
+    "no_direction": 50,
+    "no_number": 16
+   }
+  },
+  {
+   "audit_id": "2023-02",
+   "audit_title": "The Oregon Broadband Office Must Continue to Take Aggressive Steps to Close the Digital Divide and Fully Meet its Statutory Duties",
+   "audit_type": "information technology",
+   "report_date": "2023-01-01",
+   "agency_registry_slug": "oregon-business-development-department",
+   "kpm_doc": "appr-obdd-2023-10-02",
+   "score": 0.806,
+   "kpm_reporting_year": "2023",
+   "at_target": {
+    "met": 0,
+    "judged": 0,
+    "no_direction": 66,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2023-24",
+   "audit_title": "Uncertainty and Risk Remain After Gambling Industry Has Evolved Faster than State Law",
+   "audit_type": "performance",
+   "report_date": "2023-08-01",
+   "agency_registry_slug": "oregon-racing-commission",
+   "kpm_doc": "appr-orc-2025-09-18",
+   "score": 0.8051,
+   "kpm_reporting_year": "2025",
+   "at_target": {
+    "met": 5,
+    "judged": 17,
+    "no_direction": 30,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2020-46",
+   "audit_title": "The Board Should Ensure Facility Inspections Be Performed and Strengthen Controls over Financial Processes",
+   "audit_type": "performance",
+   "report_date": "2020-12-01",
+   "agency_registry_slug": "mortuary-and-cemetery-board",
+   "kpm_doc": "appr-omcb-2020",
+   "score": 0.8045,
+   "kpm_reporting_year": "2020",
+   "at_target": {
+    "met": 11,
+    "judged": 16,
+    "no_direction": 12,
+    "no_number": 22
+   }
+  },
+  {
+   "audit_id": "2025-29",
+   "audit_title": "Measure 110 Lacks Stability, Coordination, and Clear Results",
+   "audit_type": "performance",
+   "report_date": "2025-12-01",
+   "agency_registry_slug": "oregon-health-authority",
+   "kpm_doc": "appr-oha-2023-11-08",
+   "score": 0.8026,
+   "kpm_reporting_year": "2023",
+   "at_target": {
+    "met": 19,
+    "judged": 34,
+    "no_direction": 50,
+    "no_number": 16
+   }
+  },
+  {
+   "audit_id": "2022-28",
+   "audit_title": "Oregon Intermediate Term Pool An Investment Pool of the State of Oregon For the Year Ended June 30, 2022",
+   "audit_type": "financial",
+   "report_date": "2022-09-01",
+   "agency_registry_slug": "oregon-state-treasury",
+   "kpm_doc": "appr-ost-2022-10-04",
+   "score": 0.7989,
+   "kpm_reporting_year": "2022",
+   "at_target": {
+    "met": 5,
+    "judged": 10,
+    "no_direction": 12,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2021-29",
+   "audit_title": "Oregon Intermediate Term Pool An Investment Pool of the State of Oregon For the Year Ended June 30, 2021",
+   "audit_type": "financial",
+   "report_date": "2021-10-01",
+   "agency_registry_slug": "oregon-state-treasury",
+   "kpm_doc": "appr-ost-2021",
+   "score": 0.7977,
+   "kpm_reporting_year": "2021",
+   "at_target": {
+    "met": 2,
+    "judged": 5,
+    "no_direction": 12,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2022-17",
+   "audit_title": "Recommendation Follow-up Report: Some Constraints Still Remain in Oregon's Prescription Drug Monitoring Program",
+   "audit_type": "performance",
+   "report_date": "2022-06-01",
+   "agency_registry_slug": "oregon-health-authority",
+   "kpm_doc": "appr-oha-2018-revised-2019-01-03",
+   "score": 0.7976,
+   "kpm_reporting_year": "2018",
+   "at_target": {
+    "met": 50,
+    "judged": 110,
+    "no_direction": 12,
+    "no_number": 73
+   }
+  },
+  {
+   "audit_id": "2025-23",
+   "audit_title": "Oregon Intermediate Term Pool An Investment Pool of the State of Oregon For the Year Ended June 30, 2025",
+   "audit_type": "financial",
+   "report_date": "2025-09-01",
+   "agency_registry_slug": "oregon-state-treasury",
+   "kpm_doc": "appr-ost-2025",
+   "score": 0.7969,
+   "kpm_reporting_year": "2025",
+   "at_target": {
+    "met": 16,
+    "judged": 25,
+    "no_direction": 12,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2026-11",
+   "audit_title": "Inadequate Safety Inspections and Poor Asset Tracking Increase Risk to Public Safety and Property",
+   "audit_type": "performance",
+   "report_date": "2026-03-01",
+   "agency_registry_slug": "parks-and-recreation-department",
+   "kpm_doc": "appr-oprd-2025-09-29",
+   "score": 0.7969,
+   "kpm_reporting_year": "2025",
+   "at_target": {
+    "met": 13,
+    "judged": 30,
+    "no_direction": 30,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2020-34",
+   "audit_title": "DAS Needs to Provide Oversight to Improve Investigations of Workplace Discrimination and Harassment at State Agencies",
+   "audit_type": "performance",
+   "report_date": "2020-10-01",
+   "agency_registry_slug": "department-of-administrative-services",
+   "kpm_doc": "appr-das-2023-09-29",
+   "score": 0.7967,
+   "kpm_reporting_year": "2023",
+   "at_target": {
+    "met": 16,
+    "judged": 23,
+    "no_direction": 55,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2023-18",
+   "audit_title": "Oregon Health Insurance Marketplace Fiscal Year 2022 Compliance",
+   "audit_type": "financial",
+   "report_date": "2023-05-01",
+   "agency_registry_slug": "oregon-health-authority",
+   "kpm_doc": "appr-oha-2023-11-08",
+   "score": 0.796,
+   "kpm_reporting_year": "2023",
+   "at_target": {
+    "met": 19,
+    "judged": 34,
+    "no_direction": 50,
+    "no_number": 16
+   }
+  },
+  {
+   "audit_id": "2024-15",
+   "audit_title": "Oregon Health Insurance Marketplace Fiscal Year 2023 Compliance",
+   "audit_type": "financial",
+   "report_date": "2024-05-01",
+   "agency_registry_slug": "oregon-health-authority",
+   "kpm_doc": "appr-oha-2023-11-08",
+   "score": 0.7956,
+   "kpm_reporting_year": "2023",
+   "at_target": {
+    "met": 19,
+    "judged": 34,
+    "no_direction": 50,
+    "no_number": 16
+   }
+  },
+  {
+   "audit_id": "2025-22",
+   "audit_title": "Oregon Local Government Intermediate Fund An Investment Pool of the State of Oregon For the Year Ended June 30, 2025",
+   "audit_type": "financial",
+   "report_date": "2025-09-01",
+   "agency_registry_slug": "oregon-state-treasury",
+   "kpm_doc": "appr-ost-2025",
+   "score": 0.7955,
+   "kpm_reporting_year": "2025",
+   "at_target": {
+    "met": 16,
+    "judged": 25,
+    "no_direction": 12,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2020-30",
+   "audit_title": "Oregon Local Government Intermediate Fund An Investment Pool of the State of Oregon For the Year Ended June 30, 2020",
+   "audit_type": "financial",
+   "report_date": "2020-09-01",
+   "agency_registry_slug": "oregon-state-treasury",
+   "kpm_doc": "apprproposed-ost-2020-12-31",
+   "score": 0.7933,
+   "kpm_reporting_year": "2020",
+   "at_target": {
+    "met": 10,
+    "judged": 25,
+    "no_direction": 10,
+    "no_number": 3
+   }
+  },
+  {
+   "audit_id": "2021-30",
+   "audit_title": "Advisory Report: ODOT Worked Quickly to Oversee the Largest Wildfire Debris Removal Operation in State History",
+   "audit_type": "performance",
+   "report_date": "2021-10-01",
+   "agency_registry_slug": "department-of-transportation",
+   "kpm_doc": "appr-odot-2020",
+   "score": 0.7933,
+   "kpm_reporting_year": "2020",
+   "at_target": {
+    "met": 19,
+    "judged": 41,
+    "no_direction": 12,
+    "no_number": 57
+   }
+  },
+  {
+   "audit_id": "2024-25",
+   "audit_title": "Oregon Intermediate Term Pool An Investment Pool of the State of Oregon For the Year Ended June 30, 2024",
+   "audit_type": "financial",
+   "report_date": "2024-09-01",
+   "agency_registry_slug": "oregon-state-treasury",
+   "kpm_doc": "appr-ost-2025",
+   "score": 0.7931,
+   "kpm_reporting_year": "2025",
+   "at_target": {
+    "met": 16,
+    "judged": 25,
+    "no_direction": 12,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2025-13",
+   "audit_title": "Oregon Health Insurance Marketplace Financial Statements For the Fiscal Year Ended June 30, 2024",
+   "audit_type": "financial",
+   "report_date": "2025-04-01",
+   "agency_registry_slug": "oregon-health-authority",
+   "kpm_doc": "apprproposed-oha-2024-10-30",
+   "score": 0.7928,
+   "kpm_reporting_year": "2024",
+   "at_target": {
+    "met": 15,
+    "judged": 29,
+    "no_direction": 29,
+    "no_number": 15
+   }
+  },
+  {
+   "audit_id": "2024-16",
+   "audit_title": "Oregon Health Insurance Marketplace Financial Statements For the Fiscal Year Ended June 30, 2023",
+   "audit_type": "financial",
+   "report_date": "2024-05-01",
+   "agency_registry_slug": "oregon-health-authority",
+   "kpm_doc": "appr-oha-2023-11-08",
+   "score": 0.7926,
+   "kpm_reporting_year": "2023",
+   "at_target": {
+    "met": 19,
+    "judged": 34,
+    "no_direction": 50,
+    "no_number": 16
+   }
+  },
+  {
+   "audit_id": "2021-26",
+   "audit_title": "Oregon Local Government Intermediate Fund An Investment Pool of the State of Oregon For the Year Ended June 30, 2021",
+   "audit_type": "financial",
+   "report_date": "2021-09-01",
+   "agency_registry_slug": "oregon-state-treasury",
+   "kpm_doc": "appr-ost-2022-10-04",
+   "score": 0.7915,
+   "kpm_reporting_year": "2022",
+   "at_target": {
+    "met": 5,
+    "judged": 10,
+    "no_direction": 12,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2025-12",
+   "audit_title": "Oregon Health Insurance Marketplace Fiscal Year 2024 Compliance",
+   "audit_type": "financial",
+   "report_date": "2025-04-01",
+   "agency_registry_slug": "oregon-health-authority",
+   "kpm_doc": "apprproposed-oha-2024-10-30",
+   "score": 0.7909,
+   "kpm_reporting_year": "2024",
+   "at_target": {
+    "met": 15,
+    "judged": 29,
+    "no_direction": 29,
+    "no_number": 15
+   }
+  },
+  {
+   "audit_id": "2022-25",
+   "audit_title": "Oregon Local Government Intermediate Fund An Investment Pool of the State of Oregon For the Year Ended June 30, 2022",
+   "audit_type": "financial",
+   "report_date": "2022-09-01",
+   "agency_registry_slug": "oregon-state-treasury",
+   "kpm_doc": "appr-ost-2022-10-04",
+   "score": 0.7899,
+   "kpm_reporting_year": "2022",
+   "at_target": {
+    "met": 5,
+    "judged": 10,
+    "no_direction": 12,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2024-23",
+   "audit_title": "Oregon Local Government Intermediate Fund An Investment Pool of the State of Oregon For the Year Ended June 30, 2024",
+   "audit_type": "financial",
+   "report_date": "2024-08-01",
+   "agency_registry_slug": "oregon-state-treasury",
+   "kpm_doc": "apprproposed-ost-2018-12-26",
+   "score": 0.7891,
+   "kpm_reporting_year": "2018",
+   "at_target": {
+    "met": 9,
+    "judged": 23,
+    "no_direction": 12,
+    "no_number": 47
+   }
+  },
+  {
+   "audit_id": "2020-16",
+   "audit_title": "Recommendation Follow-up Report: Security at the Data Center Continues to Improve, but More Work Remains to Address Weaknesses",
+   "audit_type": "information technology",
+   "report_date": "2020-04-01",
+   "agency_registry_slug": "department-of-administrative-services",
+   "kpm_doc": "appr-das-2021",
+   "score": 0.7866,
+   "kpm_reporting_year": "2021",
+   "at_target": {
+    "met": 19,
+    "judged": 25,
+    "no_direction": 43,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2020-33",
+   "audit_title": "Oregon Intermediate Term Pool An Investment Pool of the State of Oregon For the Year Ended June 30, 2020",
+   "audit_type": "financial",
+   "report_date": "2020-10-01",
+   "agency_registry_slug": "oregon-state-treasury",
+   "kpm_doc": "apprproposed-ost-2020-12-31",
+   "score": 0.7855,
+   "kpm_reporting_year": "2020",
+   "at_target": {
+    "met": 10,
+    "judged": 25,
+    "no_direction": 10,
+    "no_number": 3
+   }
+  },
+  {
+   "audit_id": "2023-28",
+   "audit_title": "Oregon Local Government Intermediate Fund An Investment Pool of the State of Oregon For the Year Ended June 30, 2023",
+   "audit_type": "financial",
+   "report_date": "2023-08-01",
+   "agency_registry_slug": "oregon-state-treasury",
+   "kpm_doc": "appr-ost-2023",
+   "score": 0.7845,
+   "kpm_reporting_year": "2023",
+   "at_target": {
+    "met": 9,
+    "judged": 15,
+    "no_direction": 12,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2020-20",
+   "audit_title": "High School Graduation and College and Career Readiness Fund Annual Financial Report For Fiscal Year Ended June 30, 2019",
+   "audit_type": "financial",
+   "report_date": "2020-05-01",
+   "agency_registry_slug": "oregon-department-of-education",
+   "kpm_doc": "appr-ode-2020-09-25",
+   "score": 0.7844,
+   "kpm_reporting_year": "2020",
+   "at_target": {
+    "met": 6,
+    "judged": 11,
+    "no_direction": 84,
+    "no_number": 40
+   }
+  },
+  {
+   "audit_id": "2022-08",
+   "audit_title": "Audit of RHIPA Schedule of OPEB Amounts for the Year Ended June 30, 2021",
+   "audit_type": "financial",
+   "report_date": "2022-03-01",
+   "agency_registry_slug": "oregon-public-employees-retirement-system",
+   "kpm_doc": "appr-pers-2021-09-23",
+   "score": 0.7837,
+   "kpm_reporting_year": "2021",
+   "at_target": {
+    "met": 0,
+    "judged": 0,
+    "no_direction": 65,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2026-13",
+   "audit_title": "Oregon Health Insurance Marketplace Financial Statements For the Fiscal Year Ended June 30, 2025",
+   "audit_type": "financial",
+   "report_date": "2026-04-01",
+   "agency_registry_slug": "oregon-health-authority",
+   "kpm_doc": "apprproposed-oha-2024-10-30",
+   "score": 0.7829,
+   "kpm_reporting_year": "2024",
+   "at_target": {
+    "met": 15,
+    "judged": 29,
+    "no_direction": 29,
+    "no_number": 15
+   }
+  },
+  {
+   "audit_id": "2026-14",
+   "audit_title": "Oregon Health Insurance Marketplace Fiscal Year 2025 Compliance",
+   "audit_type": "financial",
+   "report_date": "2026-04-01",
+   "agency_registry_slug": "oregon-health-authority",
+   "kpm_doc": "appr-oha-2023-11-08",
+   "score": 0.7823,
+   "kpm_reporting_year": "2023",
+   "at_target": {
+    "met": 19,
+    "judged": 34,
+    "no_direction": 50,
+    "no_number": 16
+   }
+  },
+  {
+   "audit_id": "2024-27",
+   "audit_title": "The Oregon Eligibility System Appropriately Determines Eligibility, but Input Errors Continue to Occur",
+   "audit_type": "information technology",
+   "report_date": "2024-10-01",
+   "agency_registry_slug": "oregon-health-authority",
+   "kpm_doc": "appr-oha-2023-11-08",
+   "score": 0.7809,
+   "kpm_reporting_year": "2023",
+   "at_target": {
+    "met": 19,
+    "judged": 34,
+    "no_direction": 50,
+    "no_number": 16
+   }
+  },
+  {
+   "audit_id": "2023-06",
+   "audit_title": "Audit of RHIPA Schedule of OPEB Amounts for the Year Ended June 30, 2022",
+   "audit_type": "financial",
+   "report_date": "2023-02-01",
+   "agency_registry_slug": "oregon-public-employees-retirement-system",
+   "kpm_doc": "appr-pers-2022-09-22",
+   "score": 0.7808,
+   "kpm_reporting_year": "2022",
+   "at_target": {
+    "met": 0,
+    "judged": 0,
+    "no_direction": 65,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2023-30",
+   "audit_title": "Oregon Intermediate Term Pool An Investment Pool of the State of Oregon For the Year Ended June 30, 2023",
+   "audit_type": "financial",
+   "report_date": "2023-09-01",
+   "agency_registry_slug": "oregon-state-treasury",
+   "kpm_doc": "appr-ost-2023",
+   "score": 0.7807,
+   "kpm_reporting_year": "2023",
+   "at_target": {
+    "met": 9,
+    "judged": 15,
+    "no_direction": 12,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2023-19",
+   "audit_title": "Oregon Health Insurance Marketplace Financial Statements For the Fiscal Year Ended June 30, 2022",
+   "audit_type": "financial",
+   "report_date": "2023-05-01",
+   "agency_registry_slug": "oregon-health-authority",
+   "kpm_doc": "appr-oha-2023-11-08",
+   "score": 0.7801,
+   "kpm_reporting_year": "2023",
+   "at_target": {
+    "met": 19,
+    "judged": 34,
+    "no_direction": 50,
+    "no_number": 16
+   }
+  },
+  {
+   "audit_id": "2020-09",
+   "audit_title": "Audit of RHIPA Schedule of OPEB Amounts for the Year Ended June 30, 2019, Contract Audit",
+   "audit_type": "financial",
+   "report_date": "2020-02-01",
+   "agency_registry_slug": "oregon-public-employees-retirement-system",
+   "kpm_doc": "appr-pers-2019-09-28",
+   "score": 0.779,
+   "kpm_reporting_year": "2019",
+   "at_target": {
+    "met": 0,
+    "judged": 0,
+    "no_direction": 65,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2023-25",
+   "audit_title": "Pharmacy Benefit Managers Poor Accountability and Transparency Harm Medicaid Patients and Independent Pharmacies",
+   "audit_type": "performance",
+   "report_date": "2023-08-01",
+   "agency_registry_slug": "oregon-health-authority",
+   "kpm_doc": "appr-oha-2018-revised-2019-01-03",
+   "score": 0.7778,
+   "kpm_reporting_year": "2018",
+   "at_target": {
+    "met": 50,
+    "judged": 110,
+    "no_direction": 12,
+    "no_number": 73
+   }
+  },
+  {
+   "audit_id": "2020-15",
+   "audit_title": "Small Scale Energy Loan Program For the Year Ended June 30, 2019",
+   "audit_type": "financial",
+   "report_date": "2020-03-01",
+   "agency_registry_slug": "department-of-energy",
+   "kpm_doc": "appr-doe-2019-09-27",
+   "score": 0.7753,
+   "kpm_reporting_year": "2019",
+   "at_target": {
+    "met": 1,
+    "judged": 4,
+    "no_direction": 76,
+    "no_number": 25
+   }
+  },
+  {
+   "audit_id": "2026-05",
+   "audit_title": "Small Scale Energy Loan Program For the Year Ended June 30, 2025",
+   "audit_type": "financial",
+   "report_date": "2026-03-01",
+   "agency_registry_slug": "department-of-energy",
+   "kpm_doc": "appr-doe-2020-09-30",
+   "score": 0.7749,
+   "kpm_reporting_year": "2020",
+   "at_target": {
+    "met": 2,
+    "judged": 3,
+    "no_direction": 39,
+    "no_number": 63
+   }
+  },
+  {
+   "audit_id": "2022-13",
+   "audit_title": "Small Scale Energy Loan Program For the Year Ended June 30, 2021",
+   "audit_type": "financial",
+   "report_date": "2022-03-01",
+   "agency_registry_slug": "department-of-energy",
+   "kpm_doc": "appr-doe-2022-09-29",
+   "score": 0.7742,
+   "kpm_reporting_year": "2022",
+   "at_target": {
+    "met": 11,
+    "judged": 23,
+    "no_direction": 26,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2023-13",
+   "audit_title": "Small Scale Energy Loan Program For the Year Ended June 30, 2022",
+   "audit_type": "financial",
+   "report_date": "2023-03-01",
+   "agency_registry_slug": "department-of-energy",
+   "kpm_doc": "appr-doe-2022-09-29",
+   "score": 0.7739,
+   "kpm_reporting_year": "2022",
+   "at_target": {
+    "met": 11,
+    "judged": 23,
+    "no_direction": 26,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2026-18",
+   "audit_title": "High School Graduation and College and Career Readiness Fund For Biennium Ended June 30, 2025",
+   "audit_type": "financial",
+   "report_date": "2026-06-01",
+   "agency_registry_slug": "oregon-department-of-education",
+   "kpm_doc": "appr-ode-2020-09-25",
+   "score": 0.7732,
+   "kpm_reporting_year": "2020",
+   "at_target": {
+    "met": 6,
+    "judged": 11,
+    "no_direction": 84,
+    "no_number": 40
+   }
+  },
+  {
+   "audit_id": "2024-29",
+   "audit_title": "Without Federal Action, States Will Continue to Pay Millions of Dollars in Duplicate Medicaid Payments",
+   "audit_type": "performance",
+   "report_date": "2024-10-01",
+   "agency_registry_slug": "oregon-health-authority",
+   "kpm_doc": "appr-oha-2016-10-06",
+   "score": 0.7731,
+   "kpm_reporting_year": "2016",
+   "at_target": {
+    "met": 0,
+    "judged": 0,
+    "no_direction": 64,
+    "no_number": 116
+   }
+  },
+  {
+   "audit_id": "2025-07",
+   "audit_title": "Small Scale Energy Loan Program For the Year Ended June 30, 2024",
+   "audit_type": "financial",
+   "report_date": "2025-02-01",
+   "agency_registry_slug": "department-of-energy",
+   "kpm_doc": "appr-doe-2020-09-30",
+   "score": 0.7707,
+   "kpm_reporting_year": "2020",
+   "at_target": {
+    "met": 2,
+    "judged": 3,
+    "no_direction": 39,
+    "no_number": 63
+   }
+  },
+  {
+   "audit_id": "2026-20",
+   "audit_title": "Youth and Adults in Close-Custody Correctional Facilities Need Better Language Supports",
+   "audit_type": "performance",
+   "report_date": "2026-07-01",
+   "agency_registry_slug": "department-of-corrections",
+   "kpm_doc": "appr-doc-2020-09-30",
+   "score": 0.7683,
+   "kpm_reporting_year": "2020",
+   "at_target": {
+    "met": 25,
+    "judged": 38,
+    "no_direction": 24,
+    "no_number": 38
+   }
+  },
+  {
+   "audit_id": "2024-12",
+   "audit_title": "Special Public Works Fund and Water Fund Enterprise Funds For the Year Ended June 30, 2023",
+   "audit_type": "financial",
+   "report_date": "2024-03-01",
+   "agency_registry_slug": "oregon-business-development-department",
+   "kpm_doc": "appr-obdd-2023-10-02",
+   "score": 0.7674,
+   "kpm_reporting_year": "2023",
+   "at_target": {
+    "met": 0,
+    "judged": 0,
+    "no_direction": 66,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2021-37",
+   "audit_title": "Timely Notification of Inpatient Hospital Stays Could Help Reduce Improper Medicaid Payments",
+   "audit_type": "performance",
+   "report_date": "2021-12-01",
+   "agency_registry_slug": "oregon-health-authority",
+   "kpm_doc": "appr-oha-2016-10-06",
+   "score": 0.7673,
+   "kpm_reporting_year": "2016",
+   "at_target": {
+    "met": 0,
+    "judged": 0,
+    "no_direction": 64,
+    "no_number": 116
+   }
+  },
+  {
+   "audit_id": "2024-11",
+   "audit_title": "Small Scale Energy Loan Program For the Year Ended June 30, 2023",
+   "audit_type": "financial",
+   "report_date": "2024-03-01",
+   "agency_registry_slug": "department-of-energy",
+   "kpm_doc": "appr-doe-2020-09-30",
+   "score": 0.767,
+   "kpm_reporting_year": "2020",
+   "at_target": {
+    "met": 2,
+    "judged": 3,
+    "no_direction": 39,
+    "no_number": 63
+   }
+  },
+  {
+   "audit_id": "2025-26",
+   "audit_title": "Annual Financial Report Enterprise Funds For the Year Ended June 30, 2025",
+   "audit_type": "financial",
+   "report_date": "2025-11-01",
+   "agency_registry_slug": "oregon-housing-and-community-services-department",
+   "kpm_doc": "appr-hcsd-2025-10-01",
+   "score": 0.767,
+   "kpm_reporting_year": "2025",
+   "at_target": {
+    "met": 26,
+    "judged": 28,
+    "no_direction": 40,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2021-08",
+   "audit_title": "Audit of RHIPA Schedule of OPEB Amounts for the Year Ended June 30, 2020, Contract Audit",
+   "audit_type": "financial",
+   "report_date": "2021-03-01",
+   "agency_registry_slug": "oregon-public-employees-retirement-system",
+   "kpm_doc": "appr-pers-2020-09-24",
+   "score": 0.7667,
+   "kpm_reporting_year": "2020",
+   "at_target": {
+    "met": 0,
+    "judged": 0,
+    "no_direction": 65,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2020-13",
+   "audit_title": "Special Public Works Fund and Water Fund for the Fiscal Year Ended June 30, 2019",
+   "audit_type": "financial",
+   "report_date": "2020-03-01",
+   "agency_registry_slug": "oregon-business-development-department",
+   "kpm_doc": "2019-appr-obdd-2019-10-01",
+   "score": 0.7666,
+   "kpm_reporting_year": "2019",
+   "at_target": {
+    "met": 0,
+    "judged": 0,
+    "no_direction": 78,
+    "no_number": 2
+   }
+  },
+  {
+   "audit_id": "2020-21",
+   "audit_title": "Oregon Should Improve Child Safety by Strengthening Child Care Background Checks and the State' Sex Offender Registry",
+   "audit_type": "performance",
+   "report_date": "2020-06-01",
+   "agency_registry_slug": "oregon-department-of-education",
+   "kpm_doc": "appr-ode-2020-09-25",
+   "score": 0.7661,
+   "kpm_reporting_year": "2020",
+   "at_target": {
+    "met": 6,
+    "judged": 11,
+    "no_direction": 84,
+    "no_number": 40
+   }
+  },
+  {
+   "audit_id": "2023-17",
+   "audit_title": "Special Public Works Fund and Water Fund Enterprise Funds For the Year Ended June 30, 2022",
+   "audit_type": "financial",
+   "report_date": "2023-05-01",
+   "agency_registry_slug": "oregon-business-development-department",
+   "kpm_doc": "2019-appr-obdd-2019-10-01",
+   "score": 0.7658,
+   "kpm_reporting_year": "2019",
+   "at_target": {
+    "met": 0,
+    "judged": 0,
+    "no_direction": 78,
+    "no_number": 2
+   }
+  },
+  {
+   "audit_id": "2021-25",
+   "audit_title": "Enterprise Information Services Has Established an IT Governance Framework but Must Do More Regarding Cybersecurity Management",
+   "audit_type": "information technology",
+   "report_date": "2021-09-01",
+   "agency_registry_slug": "department-of-administrative-services",
+   "kpm_doc": "appr-das-2021",
+   "score": 0.7648,
+   "kpm_reporting_year": "2021",
+   "at_target": {
+    "met": 19,
+    "judged": 25,
+    "no_direction": 43,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2021-33",
+   "audit_title": "Annual Financial Report Enterprise Funds of the State of Oregon For the Year Ended June 30, 2021",
+   "audit_type": "financial",
+   "report_date": "2021-11-01",
+   "agency_registry_slug": "oregon-housing-and-community-services-department",
+   "kpm_doc": "appr-hcsd-2025-10-01",
+   "score": 0.7646,
+   "kpm_reporting_year": "2025",
+   "at_target": {
+    "met": 26,
+    "judged": 28,
+    "no_direction": 40,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2024-10",
+   "audit_title": "Audit of RHIPA Schedule of OPEB Amounts for the Year Ended June 30, 2023",
+   "audit_type": "financial",
+   "report_date": "2024-03-01",
+   "agency_registry_slug": "oregon-public-employees-retirement-system",
+   "kpm_doc": "appr-pers-2022-09-22",
+   "score": 0.7635,
+   "kpm_reporting_year": "2022",
+   "at_target": {
+    "met": 0,
+    "judged": 0,
+    "no_direction": 65,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2022-24",
+   "audit_title": "High School Graduation and College and Career Readiness Fund Biennial Financial Report For Biennium Ended June 30, 2021",
+   "audit_type": "financial",
+   "report_date": "2022-08-01",
+   "agency_registry_slug": "oregon-department-of-education",
+   "kpm_doc": "appr-ode-2021-09-29",
+   "score": 0.7631,
+   "kpm_reporting_year": "2021",
+   "at_target": {
+    "met": 2,
+    "judged": 4,
+    "no_direction": 63,
+    "no_number": 6
+   }
+  },
+  {
+   "audit_id": "2025-06",
+   "audit_title": "Audit of RHIPA Schedule of OPEB Amounts for the Year Ended June 30, 2024",
+   "audit_type": null,
+   "report_date": "2025-02-01",
+   "agency_registry_slug": "oregon-public-employees-retirement-system",
+   "kpm_doc": "appr-pers-2022-09-22",
+   "score": 0.7619,
+   "kpm_reporting_year": "2022",
+   "at_target": {
+    "met": 0,
+    "judged": 0,
+    "no_direction": 65,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2021-11",
+   "audit_title": "Small Scale Energy Loan Program For the Year Ended June 30, 2020",
+   "audit_type": "financial",
+   "report_date": "2021-04-01",
+   "agency_registry_slug": "department-of-energy",
+   "kpm_doc": "appr-doe-2020-09-30",
+   "score": 0.7616,
+   "kpm_reporting_year": "2020",
+   "at_target": {
+    "met": 2,
+    "judged": 3,
+    "no_direction": 39,
+    "no_number": 63
+   }
+  },
+  {
+   "audit_id": "2020-39",
+   "audit_title": "Public Employees' Benefit Board and the Oregon Educator' Benefit Board: Efforts Have Helped Limit Some Employee Health Care Costs, but PEBB and OEBB Can Do More to Manage Costs and Optimize Benefits",
+   "audit_type": "performance",
+   "report_date": "2020-11-01",
+   "agency_registry_slug": "oregon-health-authority",
+   "kpm_doc": "appr-oha-2025",
+   "score": 0.7615,
+   "kpm_reporting_year": "2025",
+   "at_target": {
+    "met": 42,
+    "judged": 70,
+    "no_direction": 50,
+    "no_number": 4
+   }
+  },
+  {
+   "audit_id": "2026-12",
+   "audit_title": "Special Public Works Fund and Water Fund Enterprise Funds For the Year Ended June 30, 2025",
+   "audit_type": "financial",
+   "report_date": "2026-04-01",
+   "agency_registry_slug": "oregon-business-development-department",
+   "kpm_doc": "2019-appr-obdd-2019-10-01",
+   "score": 0.7614,
+   "kpm_reporting_year": "2019",
+   "at_target": {
+    "met": 0,
+    "judged": 0,
+    "no_direction": 78,
+    "no_number": 2
+   }
+  },
+  {
+   "audit_id": "2024-31",
+   "audit_title": "Annual Financial Report Enterprise Funds of the State of Oregon For the Year Ended June 30, 2024",
+   "audit_type": "financial",
+   "report_date": "2024-11-01",
+   "agency_registry_slug": "oregon-housing-and-community-services-department",
+   "kpm_doc": "apprproposed-hcsd-2024-10-17",
+   "score": 0.7603,
+   "kpm_reporting_year": "2024",
+   "at_target": {
+    "met": 18,
+    "judged": 24,
+    "no_direction": 24,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2026-08",
+   "audit_title": "Audit of RHIPA Schedule of OPEB Amounts for the Year Ended June 30, 2025",
+   "audit_type": "financial",
+   "report_date": "2026-03-01",
+   "agency_registry_slug": "oregon-public-employees-retirement-system",
+   "kpm_doc": "appr-pers-2022-09-22",
+   "score": 0.7599,
+   "kpm_reporting_year": "2022",
+   "at_target": {
+    "met": 0,
+    "judged": 0,
+    "no_direction": 65,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2022-20",
+   "audit_title": "Cybersecurity Controls Audit",
+   "audit_type": "information technology",
+   "report_date": "2022-07-01",
+   "agency_registry_slug": "department-of-corrections",
+   "kpm_doc": "appr-doc-2020-09-30",
+   "score": 0.7598,
+   "kpm_reporting_year": "2020",
+   "at_target": {
+    "met": 25,
+    "judged": 38,
+    "no_direction": 24,
+    "no_number": 38
+   }
+  },
+  {
+   "audit_id": "2024-19",
+   "audit_title": "High School Graduation and College and Career Readiness Fund Biennial Financial Report For Biennium Ended June 30, 2023",
+   "audit_type": "financial",
+   "report_date": "2024-06-01",
+   "agency_registry_slug": "oregon-department-of-education",
+   "kpm_doc": "appr-ode-2023-09-25",
+   "score": 0.758,
+   "kpm_reporting_year": "2023",
+   "at_target": {
+    "met": 0,
+    "judged": 4,
+    "no_direction": 72,
+    "no_number": 3
+   }
+  },
+  {
+   "audit_id": "2023-35",
+   "audit_title": "Annual Financial Report Enterprise Funds of the State of Oregon For the Year Ended June 30, 2023",
+   "audit_type": "financial",
+   "report_date": "2023-11-01",
+   "agency_registry_slug": "oregon-housing-and-community-services-department",
+   "kpm_doc": "appr-hcsd-2023-10-02",
+   "score": 0.757,
+   "kpm_reporting_year": "2023",
+   "at_target": {
+    "met": 27,
+    "judged": 34,
+    "no_direction": 39,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2025-17",
+   "audit_title": "Clean Water State Revolving Fund Loan Program Enterprise Fund of the State of Oregon for the Fiscal Year Ended June 30, 2024",
+   "audit_type": "financial",
+   "report_date": "2025-06-01",
+   "agency_registry_slug": "department-of-environmental-quality",
+   "kpm_doc": "appr-deq-2025-09-30",
+   "score": 0.7555,
+   "kpm_reporting_year": "2025",
+   "at_target": {
+    "met": 5,
+    "judged": 23,
+    "no_direction": 92,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2020-38",
+   "audit_title": "Annual Financial Report Enterprise Funds of the State of Oregon For the Year Ended June 30, 2020",
+   "audit_type": "financial",
+   "report_date": "2020-11-01",
+   "agency_registry_slug": "oregon-housing-and-community-services-department",
+   "kpm_doc": "appr-hcsd-2025-10-01",
+   "score": 0.7554,
+   "kpm_reporting_year": "2025",
+   "at_target": {
+    "met": 26,
+    "judged": 28,
+    "no_direction": 40,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2021-10",
+   "audit_title": "Special Public Works Fund and Water Fund for the Fiscal Year Ended June 30, 2020",
+   "audit_type": "financial",
+   "report_date": "2021-04-01",
+   "agency_registry_slug": "oregon-business-development-department",
+   "kpm_doc": "2019-appr-obdd-2019-10-01",
+   "score": 0.7551,
+   "kpm_reporting_year": "2019",
+   "at_target": {
+    "met": 0,
+    "judged": 0,
+    "no_direction": 78,
+    "no_number": 2
+   }
+  },
+  {
+   "audit_id": "2022-29",
+   "audit_title": "Special Public Works Fund and Water Fund for the Fiscal Year Ended June 30, 2021",
+   "audit_type": "financial",
+   "report_date": "2022-11-01",
+   "agency_registry_slug": "oregon-business-development-department",
+   "kpm_doc": "2019-appr-obdd-2019-10-01",
+   "score": 0.7543,
+   "kpm_reporting_year": "2019",
+   "at_target": {
+    "met": 0,
+    "judged": 0,
+    "no_direction": 78,
+    "no_number": 2
+   }
+  },
+  {
+   "audit_id": "2022-32",
+   "audit_title": "Annual Financial Report Enterprise Funds of the State of Oregon For the Year Ended June 30, 2022",
+   "audit_type": "financial",
+   "report_date": "2022-12-01",
+   "agency_registry_slug": "oregon-housing-and-community-services-department",
+   "kpm_doc": "appr-hcsd-2023-10-02",
+   "score": 0.7515,
+   "kpm_reporting_year": "2023",
+   "at_target": {
+    "met": 27,
+    "judged": 34,
+    "no_direction": 39,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2021-31",
+   "audit_title": "Cybersecurity Controls Audit",
+   "audit_type": "information technology",
+   "report_date": "2021-11-01",
+   "agency_registry_slug": "department-of-consumer-and-business-services",
+   "kpm_doc": "appr-dcbs-2021",
+   "score": 0.7498,
+   "kpm_reporting_year": "2021",
+   "at_target": {
+    "met": 19,
+    "judged": 60,
+    "no_direction": 30,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2022-14",
+   "audit_title": "Oregon Health Insurance Marketplace Fiscal Year 2021 Compliance",
+   "audit_type": "financial",
+   "report_date": "2022-04-01",
+   "agency_registry_slug": "department-of-consumer-and-business-services",
+   "kpm_doc": "appr-dcbs-2021",
+   "score": 0.7483,
+   "kpm_reporting_year": "2021",
+   "at_target": {
+    "met": 19,
+    "judged": 60,
+    "no_direction": 30,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2020-37",
+   "audit_title": "Enterprise Information Services The State Does Not Have A Privacy Program to Manage Enterprise Data Privacy Risk",
+   "audit_type": "information technology",
+   "report_date": "2020-11-01",
+   "agency_registry_slug": "department-of-administrative-services",
+   "kpm_doc": "appr-das-2021",
+   "score": 0.748,
+   "kpm_reporting_year": "2021",
+   "at_target": {
+    "met": 19,
+    "judged": 25,
+    "no_direction": 43,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2020-36",
+   "audit_title": "Oregon Has an Opportunity to Modernize Groundbreaking Bottle Bill on Its 50th Anniversary",
+   "audit_type": "performance",
+   "report_date": "2020-11-01",
+   "agency_registry_slug": "oregon-liquor-control-commission",
+   "kpm_doc": "appr-olcc-2018-10-02",
+   "score": 0.7467,
+   "kpm_reporting_year": "2018",
+   "at_target": {
+    "met": 16,
+    "judged": 27,
+    "no_direction": 30,
+    "no_number": 8
+   }
+  },
+  {
+   "audit_id": "2023-20",
+   "audit_title": "Safe Drinking Water Revolving Loan Fund Agreed Upon Procedures For Fiscal Years Ended June 30, 2021 and June 30, 2022",
+   "audit_type": "financial",
+   "report_date": "2023-07-01",
+   "agency_registry_slug": "oregon-health-authority",
+   "kpm_doc": "appr-oha-2023-11-08",
+   "score": 0.7464,
+   "kpm_reporting_year": "2023",
+   "at_target": {
+    "met": 19,
+    "judged": 34,
+    "no_direction": 50,
+    "no_number": 16
+   }
+  },
+  {
+   "audit_id": "2022-15",
+   "audit_title": "Oregon Health Insurance Marketplace Financial Statements For the Fiscal Year Ended June 30, 2021",
+   "audit_type": "financial",
+   "report_date": "2022-05-01",
+   "agency_registry_slug": "department-of-consumer-and-business-services",
+   "kpm_doc": "appr-dcbs-2021",
+   "score": 0.745,
+   "kpm_reporting_year": "2021",
+   "at_target": {
+    "met": 19,
+    "judged": 60,
+    "no_direction": 30,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2020-04",
+   "audit_title": "Oregon Health Insurance Marketplace Fiscal Year 2019 Compliance",
+   "audit_type": "financial",
+   "report_date": "2020-02-01",
+   "agency_registry_slug": "department-of-consumer-and-business-services",
+   "kpm_doc": "appr-dcbs-2019-12-19",
+   "score": 0.7423,
+   "kpm_reporting_year": "2019",
+   "at_target": {
+    "met": 14,
+    "judged": 54,
+    "no_direction": 30,
+    "no_number": 6
+   }
+  },
+  {
+   "audit_id": "2021-15",
+   "audit_title": "Clean Water State Revolving Fund Loan Program For the Fiscal Year Ended June 30, 2020",
+   "audit_type": null,
+   "report_date": "2021-05-01",
+   "agency_registry_slug": "department-of-environmental-quality",
+   "kpm_doc": "appr-deq-2021-10-04",
+   "score": 0.7396,
+   "kpm_reporting_year": "2021",
+   "at_target": {
+    "met": 6,
+    "judged": 22,
+    "no_direction": 79,
+    "no_number": 2
+   }
+  },
+  {
+   "audit_id": "2025-15",
+   "audit_title": "Safe Drinking Water Revolving Loan Fund Agreed Upon Procedures for Fiscal Years Ended June 30, 2023 and June 30, 2024",
+   "audit_type": "financial",
+   "report_date": "2025-05-01",
+   "agency_registry_slug": "oregon-health-authority",
+   "kpm_doc": "apprproposed-oha-2024-10-30",
+   "score": 0.7391,
+   "kpm_reporting_year": "2024",
+   "at_target": {
+    "met": 15,
+    "judged": 29,
+    "no_direction": 29,
+    "no_number": 15
+   }
+  },
+  {
+   "audit_id": "2024-17",
+   "audit_title": "Clean Water State Revolving Fund Loan Program Enterprise Fund of the State of Oregon For the Fiscal Year Ended June 30, 2023",
+   "audit_type": "financial",
+   "report_date": "2024-06-01",
+   "agency_registry_slug": "department-of-environmental-quality",
+   "kpm_doc": "appr-deq-2025-09-30",
+   "score": 0.738,
+   "kpm_reporting_year": "2025",
+   "at_target": {
+    "met": 5,
+    "judged": 23,
+    "no_direction": 92,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2021-03",
+   "audit_title": "Oregon Health Insurance Marketplace Fiscal Year 2020 Compliance",
+   "audit_type": "financial",
+   "report_date": "2021-02-01",
+   "agency_registry_slug": "department-of-consumer-and-business-services",
+   "kpm_doc": "appr-dcbs-2020",
+   "score": 0.7369,
+   "kpm_reporting_year": "2020",
+   "at_target": {
+    "met": 17,
+    "judged": 57,
+    "no_direction": 30,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2020-17",
+   "audit_title": "Cybersecurity Controls Audit",
+   "audit_type": "information technology",
+   "report_date": "2020-05-01",
+   "agency_registry_slug": "department-of-state-police",
+   "kpm_doc": "apprproposed-osp-2022-09-29",
+   "score": 0.7368,
+   "kpm_reporting_year": "2022",
+   "at_target": {
+    "met": 9,
+    "judged": 28,
+    "no_direction": 18,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2020-06",
+   "audit_title": "Oregon Health Insurance Marketplace Financial Statements For the Fiscal Year Ended June 30, 2019",
+   "audit_type": "financial",
+   "report_date": "2020-02-01",
+   "agency_registry_slug": "department-of-consumer-and-business-services",
+   "kpm_doc": "appr-dcbs-2019-12-19",
+   "score": 0.7364,
+   "kpm_reporting_year": "2019",
+   "at_target": {
+    "met": 14,
+    "judged": 54,
+    "no_direction": 30,
+    "no_number": 6
+   }
+  },
+  {
+   "audit_id": "2020-25",
+   "audit_title": "Clean Water State Revolving Fund Loan Program For the Fiscal Year Ended June 30, 2019",
+   "audit_type": "financial",
+   "report_date": "2020-06-01",
+   "agency_registry_slug": "department-of-environmental-quality",
+   "kpm_doc": "appr-deq-2019-09-11",
+   "score": 0.7349,
+   "kpm_reporting_year": "2019",
+   "at_target": {
+    "met": 8,
+    "judged": 22,
+    "no_direction": 58,
+    "no_number": 65
+   }
+  },
+  {
+   "audit_id": "2026-17",
+   "audit_title": "Clean Water State Revolving Fund Loan Program Enterprise Fund of the State of Oregon Fiscal Year Ended June 30, 2025",
+   "audit_type": "financial",
+   "report_date": "2026-06-01",
+   "agency_registry_slug": "department-of-environmental-quality",
+   "kpm_doc": "appr-deq-2025-09-30",
+   "score": 0.7347,
+   "kpm_reporting_year": "2025",
+   "at_target": {
+    "met": 5,
+    "judged": 23,
+    "no_direction": 92,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2021-02",
+   "audit_title": "Oregon Health Insurance Marketplace Financial Statements For the Fiscal Year Ended June 30, 2020",
+   "audit_type": "financial",
+   "report_date": "2021-02-01",
+   "agency_registry_slug": "department-of-consumer-and-business-services",
+   "kpm_doc": "appr-dcbs-2020",
+   "score": 0.7334,
+   "kpm_reporting_year": "2020",
+   "at_target": {
+    "met": 17,
+    "judged": 57,
+    "no_direction": 30,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2020-05",
+   "audit_title": "Using the U.S. Treasury's Do Not Pay System for Health and Human Services Programs Will Save Taxpayers Money",
+   "audit_type": "performance",
+   "report_date": "2020-02-01",
+   "agency_registry_slug": "oregon-health-authority",
+   "kpm_doc": "appr-oha-2023-11-08",
+   "score": 0.7288,
+   "kpm_reporting_year": "2023",
+   "at_target": {
+    "met": 19,
+    "judged": 34,
+    "no_direction": 50,
+    "no_number": 16
+   }
+  },
+  {
+   "audit_id": "2022-30",
+   "audit_title": "Common School Fund Annual Financial Report For the Fiscal Year Ended June 30, 2022",
+   "audit_type": "financial",
+   "report_date": "2022-11-01",
+   "agency_registry_slug": "department-of-state-lands",
+   "kpm_doc": "dsl-appr-final11-04-16",
+   "score": 0.7231,
+   "kpm_reporting_year": "2016",
+   "at_target": {
+    "met": 0,
+    "judged": 0,
+    "no_direction": 98,
+    "no_number": 7
+   }
+  },
+  {
+   "audit_id": "2020-41",
+   "audit_title": "Common School Fund Annual Financial Report For the Fiscal Year Ended June 30, 2020, Contract Audit",
+   "audit_type": "financial",
+   "report_date": "2020-12-01",
+   "agency_registry_slug": "department-of-state-lands",
+   "kpm_doc": "appr-dsl-2020-10-19",
+   "score": 0.7223,
+   "kpm_reporting_year": "2020",
+   "at_target": {
+    "met": 26,
+    "judged": 66,
+    "no_direction": 28,
+    "no_number": 16
+   }
+  },
+  {
+   "audit_id": "2022-11",
+   "audit_title": "Without Legislative Action the Mortgage Interest Deduction Will Remain Regressive and Inequitable",
+   "audit_type": "performance",
+   "report_date": "2022-03-01",
+   "agency_registry_slug": "department-of-revenue",
+   "kpm_doc": "kpm-appr-2019-final",
+   "score": 0.7177,
+   "kpm_reporting_year": "2019",
+   "at_target": {
+    "met": 27,
+    "judged": 49,
+    "no_direction": 30,
+    "no_number": 1
+   }
+  },
+  {
+   "audit_id": "2025-28",
+   "audit_title": "Common School Fund Annual Financial Report For the Fiscal Year Ended June 30, 2025",
+   "audit_type": "financial",
+   "report_date": "2025-12-01",
+   "agency_registry_slug": "department-of-state-lands",
+   "kpm_doc": "dsl-appr-final11-04-16",
+   "score": 0.7164,
+   "kpm_reporting_year": "2016",
+   "at_target": {
+    "met": 0,
+    "judged": 0,
+    "no_direction": 98,
+    "no_number": 7
+   }
+  },
+  {
+   "audit_id": "2026-07",
+   "audit_title": "Audit of Pension Schedule of Employer Allocations and Pension Amounts by Employer for the Year Ended June 30, 2025",
+   "audit_type": "financial",
+   "report_date": "2026-03-01",
+   "agency_registry_slug": "oregon-public-employees-retirement-system",
+   "kpm_doc": "appr-pers-2017-10-01",
+   "score": 0.715,
+   "kpm_reporting_year": "2017",
+   "at_target": {
+    "met": 0,
+    "judged": 0,
+    "no_direction": 62,
+    "no_number": 3
+   }
+  },
+  {
+   "audit_id": "2023-33",
+   "audit_title": "Common School Fund Annual Financial Report For the Fiscal Year Ended June 30, 2023",
+   "audit_type": "financial",
+   "report_date": "2023-11-01",
+   "agency_registry_slug": "department-of-state-lands",
+   "kpm_doc": "dsl-appr-final11-04-16",
+   "score": 0.7147,
+   "kpm_reporting_year": "2016",
+   "at_target": {
+    "met": 0,
+    "judged": 0,
+    "no_direction": 98,
+    "no_number": 7
+   }
+  },
+  {
+   "audit_id": "2021-16",
+   "audit_title": "Safe Drinking Water Revolving Loan Fund For Fiscal Year Ended June 30, 2020",
+   "audit_type": "financial",
+   "report_date": "2021-05-01",
+   "agency_registry_slug": "oregon-health-authority",
+   "kpm_doc": "appr-oha-2020-02-24-v3",
+   "score": 0.7141,
+   "kpm_reporting_year": "2019",
+   "at_target": {
+    "met": 55,
+    "judged": 117,
+    "no_direction": 18,
+    "no_number": 60
+   }
+  },
+  {
+   "audit_id": "2021-34",
+   "audit_title": "Common School Fund Annual Financial Report For the Fiscal Year Ended June 30, 2021",
+   "audit_type": "financial",
+   "report_date": "2021-11-01",
+   "agency_registry_slug": "department-of-state-lands",
+   "kpm_doc": "dsl-appr-final11-04-16",
+   "score": 0.7117,
+   "kpm_reporting_year": "2016",
+   "at_target": {
+    "met": 0,
+    "judged": 0,
+    "no_direction": 98,
+    "no_number": 7
+   }
+  },
+  {
+   "audit_id": "2024-32",
+   "audit_title": "Common School Fund Annual Financial Report For the Fiscal Year Ended June 30, 2024",
+   "audit_type": "financial",
+   "report_date": "2024-11-01",
+   "agency_registry_slug": "department-of-state-lands",
+   "kpm_doc": "appr-dsl-2020-10-19",
+   "score": 0.7093,
+   "kpm_reporting_year": "2020",
+   "at_target": {
+    "met": 26,
+    "judged": 66,
+    "no_direction": 28,
+    "no_number": 16
+   }
+  },
+  {
+   "audit_id": "2020-08",
+   "audit_title": "Audit of Pension Schedule of Employer Allocations and Pension Amounts by Employer for the Year Ended June 30, 2019, Contract Audit",
+   "audit_type": "financial",
+   "report_date": "2020-02-01",
+   "agency_registry_slug": "oregon-public-employees-retirement-system",
+   "kpm_doc": "appr-pers-2019-09-28",
+   "score": 0.7036,
+   "kpm_reporting_year": "2019",
+   "at_target": {
+    "met": 0,
+    "judged": 0,
+    "no_direction": 65,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2021-12",
+   "audit_title": "Cybersecurity Controls Audit",
+   "audit_type": "information technology",
+   "report_date": "2021-04-01",
+   "agency_registry_slug": "oregon-state-treasury",
+   "kpm_doc": "appr-ost-2016-10-06",
+   "score": 0.7019,
+   "kpm_reporting_year": "2016",
+   "at_target": {
+    "met": 0,
+    "judged": 0,
+    "no_direction": 46,
+    "no_number": 37
+   }
+  },
+  {
+   "audit_id": "2025-04",
+   "audit_title": "Audit of Pension Schedule of Employer Allocations and Pension Amounts by Employer for the Year Ended June 30, 2024",
+   "audit_type": "financial",
+   "report_date": "2025-02-01",
+   "agency_registry_slug": "oregon-public-employees-retirement-system",
+   "kpm_doc": "appr-pers-2024-09-27",
+   "score": 0.6997,
+   "kpm_reporting_year": "2024",
+   "at_target": {
+    "met": 0,
+    "judged": 0,
+    "no_direction": 65,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2022-31",
+   "audit_title": "Clean Water State Revolving Fund Loan Program For the Fiscal Year Ended June 30, 2021",
+   "audit_type": "financial",
+   "report_date": "2022-11-01",
+   "agency_registry_slug": "department-of-environmental-quality",
+   "kpm_doc": "appr-deq-2022-10-03-final",
+   "score": 0.6995,
+   "kpm_reporting_year": "2022",
+   "at_target": {
+    "met": 6,
+    "judged": 24,
+    "no_direction": 91,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2026-06",
+   "audit_title": "Cybersecurity Controls Audit",
+   "audit_type": "information technology",
+   "report_date": "2026-03-01",
+   "agency_registry_slug": "judicial-department",
+   "kpm_doc": "apprproposed-ojd-2019-02-14",
+   "score": 0.6995,
+   "kpm_reporting_year": "2018",
+   "at_target": {
+    "met": 1,
+    "judged": 13,
+    "no_direction": 0,
+    "no_number": 32
+   }
+  },
+  {
+   "audit_id": "2024-08",
+   "audit_title": "Audit of Pension Schedule of Employer Allocations and Pension Amounts by Employer for the Year Ended June 30, 2023",
+   "audit_type": "financial",
+   "report_date": "2024-03-01",
+   "agency_registry_slug": "oregon-public-employees-retirement-system",
+   "kpm_doc": "appr-pers-2023-09-27",
+   "score": 0.6981,
+   "kpm_reporting_year": "2023",
+   "at_target": {
+    "met": 0,
+    "judged": 0,
+    "no_direction": 65,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2023-37",
+   "audit_title": "Clean Water State Revolving Fund Loan Program For the Fiscal Year Ended June 30, 2022",
+   "audit_type": "financial",
+   "report_date": "2023-12-01",
+   "agency_registry_slug": "department-of-environmental-quality",
+   "kpm_doc": "appr-deq-2025-09-30",
+   "score": 0.6951,
+   "kpm_reporting_year": "2025",
+   "at_target": {
+    "met": 5,
+    "judged": 23,
+    "no_direction": 92,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2023-05",
+   "audit_title": "Audit of Pension Schedule of Employer Allocations and Pension Amounts by Employer for the Year Ended June 30, 2022",
+   "audit_type": "financial",
+   "report_date": "2023-02-01",
+   "agency_registry_slug": "oregon-public-employees-retirement-system",
+   "kpm_doc": "appr-pers-2023-09-27",
+   "score": 0.691,
+   "kpm_reporting_year": "2023",
+   "at_target": {
+    "met": 0,
+    "judged": 0,
+    "no_direction": 65,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2021-06",
+   "audit_title": "Audit of Pension Schedule of Employer Allocations and Pension Amounts by Employer for the Year Ended June 30, 2020, Contract Audit",
+   "audit_type": null,
+   "report_date": "2021-03-01",
+   "agency_registry_slug": "oregon-public-employees-retirement-system",
+   "kpm_doc": "appr-pers-2020-09-24",
+   "score": 0.6895,
+   "kpm_reporting_year": "2020",
+   "at_target": {
+    "met": 0,
+    "judged": 0,
+    "no_direction": 65,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2022-07",
+   "audit_title": "Audit of Pension Schedule of Employer Allocations and Pension Amounts by Employer for the Year Ended June 30, 2021",
+   "audit_type": "financial",
+   "report_date": "2022-03-01",
+   "agency_registry_slug": "oregon-public-employees-retirement-system",
+   "kpm_doc": "appr-pers-2021-09-23",
+   "score": 0.6878,
+   "kpm_reporting_year": "2021",
+   "at_target": {
+    "met": 0,
+    "judged": 0,
+    "no_direction": 65,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2024-09",
+   "audit_title": "Audit of RHIA Schedule of Employer Allocations and OPEB Amounts by Employer for the Year Ended June 30, 2023",
+   "audit_type": "financial",
+   "report_date": "2024-03-01",
+   "agency_registry_slug": "oregon-public-employees-retirement-system",
+   "kpm_doc": "appr-pers-2021-09-23",
+   "score": 0.6677,
+   "kpm_reporting_year": "2021",
+   "at_target": {
+    "met": 0,
+    "judged": 0,
+    "no_direction": 65,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2026-15",
+   "audit_title": "Cybersecurity Controls Audit",
+   "audit_type": "information technology",
+   "report_date": "2026-05-01",
+   "agency_registry_slug": "department-of-justice",
+   "kpm_doc": "appr-doj-2025-10-17",
+   "score": 0.6667,
+   "kpm_reporting_year": "2025",
+   "at_target": {
+    "met": 6,
+    "judged": 15,
+    "no_direction": 77,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2022-09",
+   "audit_title": "Audit of RHIA Schedule of Employer Allocations and OPEB Amounts by Employer for the Year Ended June 30, 2021",
+   "audit_type": "financial",
+   "report_date": "2022-03-01",
+   "agency_registry_slug": "oregon-public-employees-retirement-system",
+   "kpm_doc": "appr-pers-2021-09-23",
+   "score": 0.6479,
+   "kpm_reporting_year": "2021",
+   "at_target": {
+    "met": 0,
+    "judged": 0,
+    "no_direction": 65,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2020-10",
+   "audit_title": "Audit of RHIA Schedule of Employer Allocations and OPEB Amounts by Employer for the Year Ended June 30, 2019, Contract Audit",
+   "audit_type": "financial",
+   "report_date": "2020-02-01",
+   "agency_registry_slug": "oregon-public-employees-retirement-system",
+   "kpm_doc": "appr-pers-2019-09-28",
+   "score": 0.646,
+   "kpm_reporting_year": "2019",
+   "at_target": {
+    "met": 0,
+    "judged": 0,
+    "no_direction": 65,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2023-07",
+   "audit_title": "Audit of RHIA Schedule of Employer Allocations and OPEB Amounts by Employer for the Year Ended June 30, 2022",
+   "audit_type": "financial",
+   "report_date": "2023-02-01",
+   "agency_registry_slug": "oregon-public-employees-retirement-system",
+   "kpm_doc": "appr-pers-2021-09-23",
+   "score": 0.641,
+   "kpm_reporting_year": "2021",
+   "at_target": {
+    "met": 0,
+    "judged": 0,
+    "no_direction": 65,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2021-07",
+   "audit_title": "Audit of RHIA Schedule of Employer Allocations and OPEB Amounts by Employer for the Year Ended June 30, 2020, Contract Audit",
+   "audit_type": "financial",
+   "report_date": "2021-03-01",
+   "agency_registry_slug": "oregon-public-employees-retirement-system",
+   "kpm_doc": "appr-pers-2020-09-24",
+   "score": 0.6311,
+   "kpm_reporting_year": "2020",
+   "at_target": {
+    "met": 0,
+    "judged": 0,
+    "no_direction": 65,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2026-09",
+   "audit_title": "Audit of RHIA Schedule of Employer Allocations and OPEB Amounts by Employer for the Year Ended June 30, 2025",
+   "audit_type": "financial",
+   "report_date": "2026-03-01",
+   "agency_registry_slug": "oregon-public-employees-retirement-system",
+   "kpm_doc": "appr-pers-2021-09-23",
+   "score": 0.6189,
+   "kpm_reporting_year": "2021",
+   "at_target": {
+    "met": 0,
+    "judged": 0,
+    "no_direction": 65,
+    "no_number": 0
+   }
+  },
+  {
+   "audit_id": "2025-05",
+   "audit_title": "Audit of RHIA Schedule of Employer Allocations and OPEB Amounts by Employer for the Year Ended June 30, 2024",
+   "audit_type": "financial",
+   "report_date": "2025-02-01",
+   "agency_registry_slug": "oregon-public-employees-retirement-system",
+   "kpm_doc": "appr-pers-2021-09-23",
+   "score": 0.6179,
+   "kpm_reporting_year": "2021",
+   "at_target": {
+    "met": 0,
+    "judged": 0,
+    "no_direction": 65,
+    "no_number": 0
+   }
+  }
+ ]
+}
