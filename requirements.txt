@@ -1,3 +1,3 @@
 # Charts import the shared chrome; pyyaml reads the disposition catalog.
-corpus-toolkit[mcp] @ git+https://github.com/OregonAI/corpus-toolkit@v1.27.0
+corpus-toolkit[mcp] @ git+https://github.com/OregonAI/corpus-toolkit@v1.28.0
 pyyaml
