@@ -10,7 +10,7 @@ NAMES = {"department-of-agriculture": "Department of Agriculture"}
 
 
 def test_undetermined_relation_still_names_the_parent():
-    """Unknown is not none: the relationship stays on the page, the kind is not claimed."""
+    """Unknown is not none: the relationship stays, the kind is not claimed."""
     org = {"slug": "x", "parent_slug": "department-of-agriculture",
            "relations": [{"target": "department-of-agriculture",
                           "source": "oar-index", "kind": "undetermined"}]}
@@ -34,8 +34,8 @@ def test_part_of_relation_says_part_of():
 
 
 def test_administered_by_relation_cites_its_authority():
-    """A separately constituted body attached to a department for administration. The
-    authority is the point of recording the relation at all (ADR 0004), so it renders."""
+    """A separately constituted body attached to a department for administration.
+    The authority is the point of recording a relation (ADR 0004), so it renders."""
     org = {"slug": "x", "parent_slug": "department-of-agriculture",
            "relations": [{"target": "department-of-agriculture", "source": "statute",
                           "kind": "administered_by", "authority": "ORS 576.066"}]}
@@ -124,9 +124,63 @@ def test_a_kind_this_page_does_not_know_claims_neither():
     """ADR 0004 does not settle that its two kinds are exhaustive (the semi-independent
     boards under ORS 182.456 may be a third). A kind arriving from upstream that this
     page has never seen must not be rendered as one of the two it has."""
-    org = {"slug": "x", "relations": [{"target": "department-of-agriculture",
-                                       "source": "statute", "kind": "semi_independent"}]}
+    org = {"slug": "x",
+           "relations": [{"target": "department-of-agriculture", "source": "statute",
+                          "kind": "semi_independent"}]}
     got = parentage(org, NAMES)
     assert "Department of Agriculture" in got.lede_html
     assert "part of" not in got.lede_html
     assert "administered by" not in got.lede_html
+
+
+def test_two_sources_disagreeing_about_the_same_parent_are_attributed():
+    """Two claims about ONE parent, unattributed, read as the page contradicting itself.
+    Naming the source turns the contradiction back into what ADR 0004 says it is: a
+    disagreement between sources, recorded side by side."""
+    org = {"slug": "x", "relations": [
+        {"target": "department-of-agriculture", "source": "das", "kind": "part_of"},
+        {"target": "department-of-agriculture", "source": "statute",
+         "kind": "administered_by", "authority": "ORS 576.066"}]}
+    lede = parentage(org, NAMES).lede_html
+    assert "part of <a href=\"department-of-agriculture.html\">" in lede
+    assert "(per the DAS listing)" in lede
+    assert "(ORS 576.066, per statute)" in lede
+
+
+def test_two_kinds_at_once_leave_the_eyebrow_claiming_neither():
+    """One word cannot place a body that is a unit of one department and an attached
+    body of another, so the eyebrow claims neither and the lede carries both."""
+    names = dict(NAMES,
+                 **{"department-of-transportation": "Department of Transportation"})
+    org = {"slug": "x", "relations": [
+        {"target": "department-of-agriculture", "source": "statute",
+         "kind": "administered_by"},
+        {"target": "department-of-transportation", "source": "das", "kind": "part_of"}]}
+    got = parentage(org, names)
+    assert got.eyebrow == " · under another body"
+    assert "administered by" in got.lede_html and "part of" in got.lede_html
+
+
+def test_the_same_claim_from_two_sources_is_stated_once_and_keeps_its_citation():
+    """ADR 0004: the citation is the point of recording the relation. Collapsing a
+    duplicate claim must not be what throws the citation away."""
+    org = {"slug": "x", "relations": [
+        {"target": "department-of-agriculture", "source": "das",
+         "kind": "administered_by"},
+        {"target": "department-of-agriculture", "source": "statute",
+         "kind": "administered_by", "authority": "ORS 576.066"}]}
+    lede = parentage(org, NAMES).lede_html
+    assert lede.count("administered by") == 1
+    assert "(ORS 576.066)" in lede
+
+
+def test_a_relation_to_somewhere_else_does_not_hide_the_parent_slug_parent():
+    """`relations` is the source of truth, but while `parent_slug` still exists a row
+    can carry a parent no relation names, and that parent must not vanish."""
+    names = dict(NAMES, **{"oregon-health-authority": "Oregon Health Authority"})
+    org = {"slug": "x", "parent_slug": "oregon-health-authority",
+           "relations": [{"target": "department-of-agriculture", "source": "das",
+                          "kind": "part_of"}]}
+    lede = parentage(org, names).lede_html
+    assert "Oregon Health Authority" in lede
+    assert "Department of Agriculture" in lede
