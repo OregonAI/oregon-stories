@@ -29,6 +29,8 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install -r requirements.txt
+      - name: Test what the pages claim (no network)
+        run: python3 -m pytest tests -q
       - name: Build every story (a failed fetch fails the build)
         run: python3 build.py
       - uses: actions/configure-pages@v5

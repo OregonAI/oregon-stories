@@ -1,0 +1,24 @@
+# The wording tests, run BEFORE a merge. pages.yml runs them too, but it only fires on
+# push to main and on the weekly cron — by then a false claim about a body's place in
+# state government is one merge away from the public site. This is the gate that sees a
+# pull request; no network, so it says nothing about the corpora being reachable.
+name: tests
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pytest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      # The story module imports corpus_toolkit at import time, so the test run
+      # needs the same dependencies the build does.
+      - run: pip install -r requirements.txt
+      - run: python3 -m pytest tests -q
