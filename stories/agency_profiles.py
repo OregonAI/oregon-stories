@@ -79,6 +79,30 @@ def slug_index(reg: list[dict]) -> dict[str, str]:
     return idx
 
 
+def slug_of_das_number(reg: list[dict]) -> dict[str, str]:
+    """DAS agency number -> slug: the key the SODA spending rows join on.
+
+    KEYED ON `das_agency_number`, NOT `budget_agency_code`. ERF #175 renamed the field
+    and left the old name beside it holding the same value on all 80 rows that carry one;
+    ERF #177 removes the old name. Both keys agreeing is not a reason to keep reading the
+    deprecated one — it is the reason a before/after comparison cannot tell them apart,
+    and the reason this moved before the old key went away rather than after.
+
+    THIS PAGE IS BUILT FROM ERF's `main` OVER HTTP, not from a checkout, so #177 lands in
+    this join with no commit to this repo — the same exposure `slug_index` moved ahead of
+    for #168. Measured against a registry with `budget_agency_code` dropped the way #177
+    drops it: on `das_agency_number` the join resolves the same 80 bodies it resolves
+    today; on the deprecated key it resolves 0.
+
+    A row with no DAS agency number is not spending-joinable and is skipped rather than
+    keyed on `None`: 109 of the registry's 189 rows carry no number, because the number
+    identifies a body in the state's financial administration and its absence is not
+    evidence that the body spends nothing. Their pages report no spending, which is what
+    the registry supports.
+    """
+    return {o["das_agency_number"]: o["slug"] for o in reg if o.get("das_agency_number")}
+
+
 class Wording(NamedTuple):
     """How one relation kind reads on the page. `settles` is the question the whole of
     this ticket turns on: does this wording assert one of ADR 0004's two kinds?"""
@@ -241,8 +265,7 @@ def build_many():
     by_chapter = defaultdict(list)
     for o in reg:
         by_chapter[o["oar_chapter"]].append(o)
-    slug_of_code = {o["budget_agency_code"]: o["slug"]
-                    for o in reg if o.get("budget_agency_code")}
+    slug_of_number = slug_of_das_number(reg)
     slug_of_name = slug_index(reg)
     # Display names for every slug, which is also the set of parents that have a
     # page to link to. `name`, not `oar_name`: this is text a page shows, not a join
@@ -277,7 +300,7 @@ def build_many():
 
     spend_per = defaultdict(dict)                 # slug -> {fy: total}
     for row in soda:
-        slug = slug_of_code.get(row["agency"])
+        slug = slug_of_number.get(row["agency"])
         if slug:
             spend_per[slug][int(row["fiscal_year"])] = float(row["sum_expense"])
 
