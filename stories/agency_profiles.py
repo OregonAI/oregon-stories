@@ -17,6 +17,7 @@ import html
 import json
 import re
 from collections import defaultdict
+from typing import NamedTuple
 
 import yaml
 
@@ -78,6 +79,75 @@ def slug_index(reg: list[dict]) -> dict[str, str]:
     return idx
 
 
+# HOW EACH RELATION KIND READS, and the whole of the wording decision. ADR 0004's two
+# kinds are different claims about Oregon law, so they get different words: a `part_of`
+# unit's legal existence IS its parent's, while an `administered_by` body is separately
+# constituted and attached for administration (ORS 576.066's monitoring, appointment,
+# budget review). `undetermined` is neither claim — it states the relationship the
+# registry actually holds and says, in the same breath, that which kind applies is not
+# established. Its wording deliberately contains neither other phrase, so no reader (and
+# no grep) can lift a claim out of the disclaimer.
+UNDETERMINED = ("under", " · under another body",
+                " — the record does not establish whether it is a unit of that body or "
+                "a separate body under its oversight")
+KINDS = {"part_of": ("part of", " · sub-unit", ""),
+         "administered_by": ("administered by", " · attached body", ""),
+         "undetermined": UNDETERMINED}
+
+
+class Parentage(NamedTuple):
+    """What the page says about the bodies this one sits under: the eyebrow's one-word
+    placement, and the lede clause naming each parent."""
+    eyebrow: str
+    lede_html: str
+
+
+def parentage(o: dict, names: dict[str, str]) -> Parentage:
+    """Render a row's `relations` — the relationship, and the KIND only once one is known.
+
+    `undetermined` is the honest majority case today and it renders as a relationship
+    with its kind withheld: the body is under that parent, and which of ADR 0004's two
+    ways is not established. Dropping the parent instead would be a different false
+    statement, that the body stands alone.
+    """
+    rels = o.get("relations") or []
+    if not rels and o.get("parent_slug"):
+        # ERF #174 removes `parent_slug`, and until it does the two fields co-exist.
+        # `relations` wins where both are present; where only the older pointer is, it
+        # still states a real relationship whose kind nobody has established.
+        rels = [{"target": o["parent_slug"], "kind": "undetermined"}]
+    if not rels:
+        return Parentage("", "")
+    # A kind this page does not know is read as `undetermined`, never guessed into one of
+    # the two: ADR 0004 leaves open whether its two kinds are exhaustive, and a third one
+    # landing upstream must not make this page assert one of the two it does know.
+    settled = {r["target"] for r in rels
+               if KINDS.get(r.get("kind"), UNDETERMINED) is not UNDETERMINED}
+    bits, eyebrow, seen = [], UNDETERMINED[1], set()
+    for r in rels:
+        target = r["target"]
+        wording = KINDS.get(r.get("kind"), UNDETERMINED)
+        if wording is UNDETERMINED and target in settled:
+            # A source has settled this parent, so the older "which way is not
+            # established" entry has nothing left to say and would read as the page
+            # contradicting itself.
+            continue
+        lead, brow, tail = wording
+        if (target, lead) in seen:   # two sources, same claim: state it once
+            continue
+        seen.add((target, lead))
+        label = html.escape(names.get(target, target))
+        # ONLY a registry row has a profile page. An off-registry target is named in
+        # plain text rather than linked to a page that was never built.
+        link = (f'<a href="{html.escape(target, quote=True)}.html">{label}</a>'
+                if target in names else label)
+        cite = f' ({html.escape(r["authority"])})' if r.get("authority") else ""
+        bits.append(f"{lead} {link}{cite}{tail}")
+        if brow != UNDETERMINED[1]:
+            eyebrow = brow
+    return Parentage(eyebrow, " · " + " · ".join(bits))
+
+
 def money(v: float) -> str:
     for cut, suf in ((1e9, "B"), (1e6, "M"), (1e3, "K")):
         if abs(v) >= cut:
@@ -132,6 +202,7 @@ def build_many():
     slug_of_code = {o["budget_agency_code"]: o["slug"]
                     for o in reg if o.get("budget_agency_code")}
     slug_of_name = slug_index(reg)
+    name_of = {o["slug"]: o["name"] for o in reg}   # every slug that HAS a profile page
 
     # rules + staleness per chapter -> per top-level slug (chapter owner)
     rules_per = defaultdict(lambda: [0, 0])       # slug -> [n, n_lag10]
@@ -256,17 +327,14 @@ def build_many():
             tiles.append(tile("Audit reports", str(len(auds)),
                               f'latest {y} ({ty}): <a href="{GH}/oregon-audits/blob/'
                               f'main/reports/{rid}.md">{html.escape(str(ttl)[:60])}…</a>'))
-        parent = ""
-        if o.get("parent_slug"):
-            parent = (f' · part of <a href="{o["parent_slug"]}.html">'
-                      f'{html.escape(next((p["name"] for p in reg if p["slug"] == o["parent_slug"]), o["parent_slug"]))}</a>')
+        rel = parentage(o, name_of)
 
         page = viz.chart_page(
             title=o["name"],
-            eyebrow=f"agency profile · {slug}{parent and ' · sub-unit'}",
+            eyebrow=f"agency profile · {slug}{rel.eyebrow}",
             lede_html=(f"What the Civic Corpus Platform holds for this agency, joined "
-                       f"on its registry identity{parent}. Every tile links to the "
-                       f"mirrored documents behind it."),
+                       f"on its registry identity{rel.lede_html}. Every tile links to "
+                       f"the mirrored documents behind it."),
             body_html="<div>" + "".join(tiles) + "</div>"
                       + ('<p style="font-size:13px"><a href="index.html">all agencies'
                          '</a></p>'),
