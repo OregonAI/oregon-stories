@@ -47,6 +47,37 @@ def _norm(name: str) -> str:
     return n
 
 
+def slug_index(reg: list[dict]) -> dict[str, str]:
+    """Normalized ERF registry string -> slug. The ONLY name-keyed join on this page.
+
+    KEYED ON `oar_name`, NOT `name`. ERF's ADR 0003 splits the registry's one name field
+    in two: `name` becomes the body's STATUTORY name, while `oar_name` keeps the OAR
+    chapter title and "remains the string OAR-derived joins must match". The strings fed
+    to this index are oregon-kpm's `agency` cover-page spellings, and they match the OAR
+    chapter titles today — so `oar_name` is the side of that split that preserves what
+    this join already resolves.
+
+    THIS PAGE IS BUILT FROM ERF's `main` OVER HTTP, not from a checkout, so the day #168
+    lands this join re-keys itself with no commit to this repo. Measured: on a registry
+    where the two fields disagree, keying on `name` drops the join from 75 agencies to 8.
+    That is why this moved before the values diverged and not after.
+
+    A row with no `oar_name` is NOT OAR-joinable and is skipped rather than crashing: 19
+    bodies hold no OAR chapter (ADR 0003 admits bodies on enabling authority alone), so
+    after #168 they have no chapter title to carry. KPM rows naming such a body land in
+    the unlinked count the page already reports — counted, never guessed.
+
+    Aliases are seeded too and deliberately unchanged: an alias asserts that two names
+    denote the same BODY, which stays true however the registry spells its own columns.
+    `setdefault` keeps a real entry winning over an alias that collides with it.
+    """
+    idx = {_norm(o["oar_name"]): o["slug"] for o in reg if o.get("oar_name")}
+    for o in reg:
+        for a in o.get("aliases") or []:
+            idx.setdefault(_norm(a), o["slug"])
+    return idx
+
+
 def money(v: float) -> str:
     for cut, suf in ((1e9, "B"), (1e6, "M"), (1e3, "K")):
         if abs(v) >= cut:
@@ -100,10 +131,7 @@ def build_many():
         by_chapter[o["oar_chapter"]].append(o)
     slug_of_code = {o["budget_agency_code"]: o["slug"]
                     for o in reg if o.get("budget_agency_code")}
-    slug_of_name = {_norm(o["name"]): o["slug"] for o in reg}
-    for o in reg:
-        for a in o.get("aliases") or []:
-            slug_of_name.setdefault(_norm(a), o["slug"])
+    slug_of_name = slug_index(reg)
 
     # rules + staleness per chapter -> per top-level slug (chapter owner)
     rules_per = defaultdict(lambda: [0, 0])       # slug -> [n, n_lag10]
@@ -176,15 +204,22 @@ def build_many():
         "agency; it assembles what the public record holds, with the linkage stated: "
         "budget spending joins on the registry's reviewed budget code; audits join on "
         "the audits corpus's human-reviewed name crosswalk; KPM rows join only on an "
-        "exact name match after mechanical normalization — anything else is excluded "
-        "and counted, never guessed. Spending is the agency's TOTAL recorded spending "
-        "from every source; it must never be read against any appropriation as though "
+        "exact match against the registry's OAR chapter name after mechanical "
+        "normalization — anything else is excluded and counted, never guessed. "
+        "Spending is the agency's TOTAL recorded spending from every source; it must "
+        "never be read against any appropriation as though "
         "one accounts for the other. Rule staleness is a candidate signal, not a "
         "violation (see the staleness story). 'None held' means the mirror holds none "
         "— never that the agency has none.</p>")
 
     pages = []
     dir_rows = []
+    # DISPLAY USES `name`, THE JOIN USES `oar_name` (slug_index), and that is the decision
+    # rather than an oversight. ADR 0003 promotes the statutory name precisely because "a
+    # body's name is the one its enabling authority gives it — the OAR index is a
+    # publisher, and publishers spell things their own way", so a page naming a body should
+    # name it the way its statute does. The sort key stays on `name` so the directory keeps
+    # sorting by the string it shows.
     for o in sorted(reg, key=lambda o: o["name"]):
         slug = o["slug"]
         nrules, nlag = rules_per.get(slug, (0, 0))
