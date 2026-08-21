@@ -7,16 +7,16 @@ join is what gets tested, not the page that renders it.
 """
 from stories.agency_profiles import slug_of_das_number
 
-# Copied from ERF _meta/catalog/agencies.yml, 2026-08-21, with `budget_agency_code`
-# dropped the way ERF #177 drops it from every row — verbatim in every other key. Both
-# keys hold the same value on all 80 rows that carry one today, and ERF's own
-# `deprecated-key-agrees` rule makes them impossible to diverge, so a fixture carrying
-# both would pass whichever key the code read. Dropping the deprecated one is the only
-# way this fixture can tell the two apart.
+# Slugs and numbers copied from ERF _meta/catalog/agencies.yml, 2026-08-21, carrying only
+# the two keys this join reads and with `budget_agency_code` dropped the way ERF #177
+# drops it from every row. Both keys hold the same value on all 80 rows that carry one
+# today, and ERF's own `deprecated-key-agrees` rule makes them impossible to diverge — so
+# a fixture carrying both would pass whichever key the code read. Dropping the deprecated
+# one is the only way this fixture can tell the two apart.
 POST_177 = [
     {"slug": "board-of-chiropractic-examiners", "das_agency_number": "811"},
     {"slug": "board-of-nursing", "das_agency_number": "851"},
-    {"slug": "bureau-of-labor-and-industries", "das_agency_number": "100"},
+    {"slug": "bureau-of-labor-and-industries", "das_agency_number": "839"},
 ]
 
 
@@ -25,7 +25,7 @@ def test_the_join_resolves_a_registry_that_carries_only_das_agency_number():
     `main` the day #177 merges — over HTTP, with no commit to this repo to catch it."""
     assert slug_of_das_number(POST_177) == {"811": "board-of-chiropractic-examiners",
                                             "851": "board-of-nursing",
-                                            "100": "bureau-of-labor-and-industries"}
+                                            "839": "bureau-of-labor-and-industries"}
 
 
 def test_the_deprecated_budget_agency_code_joins_nothing():
