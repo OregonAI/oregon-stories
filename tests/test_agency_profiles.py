@@ -11,7 +11,7 @@ NAMES = {"department-of-agriculture": "Department of Agriculture"}
 
 def test_undetermined_relation_still_names_the_parent():
     """Unknown is not none: the relationship stays, the kind is not claimed."""
-    org = {"slug": "x", "parent_slug": "department-of-agriculture",
+    org = {"slug": "x",
            "relations": [{"target": "department-of-agriculture",
                           "source": "oar-index", "kind": "undetermined"}]}
     lede = parentage(org, NAMES).lede_html
@@ -23,7 +23,7 @@ def test_undetermined_relation_still_names_the_parent():
 
 def test_part_of_relation_says_part_of():
     """A division's legal existence IS its parent's (ADR 0004), and the page says so."""
-    org = {"slug": "x", "parent_slug": "department-of-agriculture",
+    org = {"slug": "x",
            "relations": [{"target": "department-of-agriculture", "source": "registry",
                           "kind": "part_of"}]}
     got = parentage(org, NAMES)
@@ -36,7 +36,7 @@ def test_part_of_relation_says_part_of():
 def test_administered_by_relation_cites_its_authority():
     """A separately constituted body attached to a department for administration.
     The authority is the point of recording a relation (ADR 0004), so it renders."""
-    org = {"slug": "x", "parent_slug": "department-of-agriculture",
+    org = {"slug": "x",
            "relations": [{"target": "department-of-agriculture", "source": "statute",
                           "kind": "administered_by", "authority": "ORS 576.066"}]}
     got = parentage(org, NAMES)
@@ -46,14 +46,14 @@ def test_administered_by_relation_cites_its_authority():
     assert got.eyebrow == " · attached body"
 
 
-# Copied verbatim from ERF `main`, _meta/catalog/agencies.yml, 2026-08-21 — the row this
-# page was publishing as "part of Department of Agriculture" until this change. ORS
+# Copied verbatim from ERF `main`, _meta/catalog/agencies.yml, 2026-08-21, as that file
+# stands after ERF #174 retired `parent_slug` — the row this page was publishing as "part
+# of Department of Agriculture" until the relations landed. ORS
 # 576.062 establishes the commodity commissions AS STATE COMMISSIONS; the department's
 # role over them is ORS 576.066's oversight. All 23 of them read like this row today.
 ALBACORE = {"slug": "department-of-agriculture-oregon-albacore-commission",
             "name": "Department of Agriculture, Oregon Albacore Commission",
-            "oar_chapter": "972", "parent_slug": "department-of-agriculture",
-            "parent_chapter": "603",
+            "oar_chapter": "972", "parent_chapter": "603",
             "relations": [{"target": "department-of-agriculture",
                            "source": "oar-index", "kind": "undetermined"}]}
 
@@ -66,14 +66,13 @@ def test_a_commodity_commission_is_never_called_part_of_the_department():
     assert "Department of Agriculture" in got.lede_html
 
 
-def test_a_row_with_a_parent_and_no_relations_still_shows_its_parent():
-    """`relations` is the source of truth, but a row carrying only the older
-    `parent_slug` states a real relationship of unknown kind, and it renders as one."""
+def test_the_retired_parent_slug_places_nothing():
+    """ERF #174 removed `parent_slug` from the registry, so `relations` is the page's only
+    source of placement. A row carrying the retired key and no relations is under nothing
+    as far as this page is concerned — reading it would be this page keeping a hierarchy
+    alive that the registry has stopped stating, from a field no row carries."""
     org = {"slug": "x", "parent_slug": "department-of-agriculture"}
-    got = parentage(org, NAMES)
-    assert "Department of Agriculture" in got.lede_html
-    assert "part of" not in got.lede_html
-    assert "does not establish" in got.lede_html
+    assert parentage(org, NAMES) == ("", "")
 
 
 def test_a_row_under_nothing_says_nothing():
@@ -174,13 +173,15 @@ def test_the_same_claim_from_two_sources_is_stated_once_and_keeps_its_citation()
     assert "(ORS 576.066)" in lede
 
 
-def test_a_relation_to_somewhere_else_does_not_hide_the_parent_slug_parent():
-    """`relations` is the source of truth, but while `parent_slug` still exists a row
-    can carry a parent no relation names, and that parent must not vanish."""
+def test_the_retired_parent_slug_adds_no_parent_beside_the_relations():
+    """The fallback used to append the pointer's parent whenever no relation named it.
+    With the field retired (ERF #174) that is a body the page would place under a parent
+    on the strength of a key the registry no longer writes — so the relations are the
+    whole answer, and nothing else is added to them."""
     names = dict(NAMES, **{"oregon-health-authority": "Oregon Health Authority"})
     org = {"slug": "x", "parent_slug": "oregon-health-authority",
            "relations": [{"target": "department-of-agriculture", "source": "das",
                           "kind": "part_of"}]}
     lede = parentage(org, names).lede_html
-    assert "Oregon Health Authority" in lede
+    assert "Oregon Health Authority" not in lede
     assert "Department of Agriculture" in lede

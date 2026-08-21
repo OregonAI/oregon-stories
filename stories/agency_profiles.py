@@ -136,13 +136,12 @@ def parentage(o: dict, names: dict[str, str]) -> Parentage:
     `names` maps slug -> display name for every row in the registry, and doubles as the
     set of parents that HAVE a profile page to link to.
     """
+    # `relations` IS THE WHOLE ANSWER. This page carried a `parent_slug` fallback while
+    # ERF's registry held both fields; ERF #174 retired the pointer, so a row cannot
+    # carry one and reading it would place a body on the strength of a key nothing
+    # writes — and place it with no source, no kind and no authority, which is the
+    # difference ADR 0004 replaced the pointer to get.
     rels = list(o.get("relations") or [])
-    # ERF #174 removes `parent_slug`; until it does, the two fields co-exist and a row
-    # may carry either. `relations` is the source of truth, so the older pointer is
-    # added only where no relation already names that parent — as a relationship of
-    # unknown kind, which is all the bare pointer ever said.
-    if o.get("parent_slug") and o["parent_slug"] not in {r["target"] for r in rels}:
-        rels.append({"target": o["parent_slug"], "kind": "undetermined"})
     if not rels:
         return Parentage("", "")
 
