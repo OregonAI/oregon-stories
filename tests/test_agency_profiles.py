@@ -46,9 +46,9 @@ def test_administered_by_relation_cites_its_authority():
     assert got.eyebrow == " · attached body"
 
 
-# Copied verbatim from ERF `main`, _meta/catalog/agencies.yml, 2026-08-21, as that file
-# stands after ERF #174 retired `parent_slug` — the row this page was publishing as "part
-# of Department of Agriculture" until the relations landed. ORS
+# Copied from ERF _meta/catalog/agencies.yml, 2026-08-21, with `parent_slug` dropped the
+# way ERF #174 drops it from every row — verbatim in every other key. It is the row this
+# page was publishing as "part of Department of Agriculture" until the relations landed. ORS
 # 576.062 establishes the commodity commissions AS STATE COMMISSIONS; the department's
 # role over them is ORS 576.066's oversight. All 23 of them read like this row today.
 ALBACORE = {"slug": "department-of-agriculture-oregon-albacore-commission",
