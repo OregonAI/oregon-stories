@@ -1,6 +1,6 @@
 # Charts import the shared chrome; pyyaml reads the disposition catalog; pytest
 # runs tests/ in CI before the build (a page's wording is a claim, and claims
 # about a body's place in state government are tested, not eyeballed).
-corpus-toolkit[mcp] @ git+https://github.com/OregonAI/corpus-toolkit@v1.34.3
+corpus-toolkit[mcp] @ git+https://github.com/OregonAI/corpus-toolkit@v1.35.0
 pyyaml
 pytest
