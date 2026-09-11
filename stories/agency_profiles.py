@@ -22,6 +22,7 @@ from typing import NamedTuple
 import yaml
 
 from corpus_toolkit import viz
+from corpus_toolkit.crosswalk import norm_variants
 from data_sources import PAGES, RAW, fetch, sources_for_footer
 
 ERF = "executive-regulatory-frameworks"
@@ -33,47 +34,13 @@ SODA_AGG = ("https://data.oregon.gov/resource/y9g9-xsxs.json?"
             "&$limit=2000")
 
 
-# --- BEGIN VERBATIM SHARED BLOCK (norm_variants) ---------------------------------------
-# Kept BYTE-IDENTICAL with the copy in oregon-audits/src/link_agency_registry.py and
-# oregon-kpm/src/link_agency_registry.py (OregonAI/oregon-audits#30, OregonAI/oregon-kpm#51),
-# following the convention src/federal_ids.py states: "copy it verbatim ... both sides then
-# compute the same [answers] by construction instead of by agreement". A third copy of this
-# block is the point at which it needs a parity gate like the federal_ids.py one in
-# .github/workflows/ci.yml -- not yet wired here; flag it before a fourth copy lands.
-def norm_variants(name: str) -> set[str]:
-    """Every reading this join permits as 'the same name, normalized'.
-
-    Punctuation-stripping and comma-inversion are a SET of moves, not a pipeline that
-    must apply all of them. A comma does two different jobs in these strings: catalog
-    inversion ("Administrative Services, Department of") and a parent/child qualifier
-    ("Secretary of State, Audits Division"). Inverting the second is wrong and dropping
-    the comma in the first is not enough, so both readings are produced and a match on
-    either is a match.
-
-    Written this way because forcing a single reading is a MEASURED bug, not a
-    hypothetical: always-invert reported 'Secretary of State Audits Division' as
-    failing to match an oar_name that is the same name with a comma in it (the same
-    finding oregon-audits#30 made, which took its verification result from 30/31 to
-    31/31). Used ONLY to link KPM's name strings; anything that doesn't match on any
-    reading is counted unlinked, never guessed.
-    """
-    n = name.strip().replace("’", "'")
-    readings = {n.replace(",", " ")}
-    if "," in n:
-        head, tail = n.rsplit(",", 1)
-        readings.add(f"{tail.strip()} {head.strip()}")
-    out = set()
-    for r in readings:
-        r = " ".join(r.lower().replace(".", "").split())
-        for pre in ("oregon ", "state of oregon "):
-            if r.startswith(pre):
-                r = r[len(pre):]
-        out.add(r)
-    return out
-# --- END VERBATIM SHARED BLOCK ----------------------------------------------------------
+# norm_variants (case/punctuation/comma-inversion/leading-"Oregon" readings) lives once
+# in corpus_toolkit.crosswalk -- the platform's one implementation of this rule, which
+# oregon-audits and oregon-kpm also import rather than each keeping their own copy (see
+# that module's docstring, and ADR-0009's crosswalk rule).
 
 
-def resolve_via_registry(idx: dict[str, str], name: str) -> str | None:
+def slug_for_name(idx: dict[str, str], name: str) -> str | None:
     """Slug for `name` under any reading `norm_variants` permits, or None if none of its
     readings appear in `idx`. Both sides of the KPM join must try every reading -- the
     KPM-side name can carry the same qualifier comma the registry's oar_name does, and
@@ -371,7 +338,7 @@ def build_many():
     kpm_per = defaultdict(lambda: [0, 0])         # slug -> [judged, met]
     n_kpm_unlinked = set()
     for r in kpm_latest.values():
-        slug = resolve_via_registry(slug_of_name, r["agency"])
+        slug = slug_for_name(slug_of_name, r["agency"])
         if slug is None:
             n_kpm_unlinked.add(r["agency"])
             continue
@@ -391,8 +358,9 @@ def build_many():
         "agency; it assembles what the public record holds, with the linkage stated: "
         "budget spending joins on the registry's reviewed budget code; audits join on "
         "the audits corpus's human-reviewed name crosswalk; KPM rows join only on an "
-        "exact match against the registry's OAR chapter name after mechanical "
-        "normalization — anything else is excluded and counted, never guessed. "
+        "exact match against the registry's OAR chapter name under any reading the "
+        "platform's crosswalk rule permits (case, punctuation, comma-inversion, a "
+        "leading \"Oregon\") — anything else is excluded and counted, never guessed. "
         "Spending is the agency's TOTAL recorded spending from every source; it must "
         "never be read against any appropriation as though "
         "one accounts for the other. Rule staleness is a candidate signal, not a "
