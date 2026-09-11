@@ -22,6 +22,7 @@ from typing import NamedTuple
 import yaml
 
 from corpus_toolkit import viz
+from corpus_toolkit.crosswalk import norm_variants
 from data_sources import PAGES, RAW, fetch, sources_for_footer
 
 ERF = "executive-regulatory-frameworks"
@@ -33,19 +34,23 @@ SODA_AGG = ("https://data.oregon.gov/resource/y9g9-xsxs.json?"
             "&$limit=2000")
 
 
-def _norm(name: str) -> str:
-    """Comma-inversion + prefix normalization, the same mechanical moves the audits
-    crosswalk documents as 'exact'. Used ONLY to link KPM's name strings; anything
-    that doesn't match exactly after this is counted unlinked, never guessed."""
-    n = name.strip().replace("’", "'")
-    if "," in n:
-        head, tail = n.rsplit(",", 1)
-        n = f"{tail.strip()} {head.strip()}"
-    n = n.lower().replace(".", "").replace("  ", " ")
-    for pre in ("oregon ", "state of oregon "):
-        if n.startswith(pre):
-            n = n[len(pre):]
-    return n
+# norm_variants (case/punctuation/comma-inversion/leading-"Oregon" readings) lives once
+# in corpus_toolkit.crosswalk -- the platform's one implementation of this rule, which
+# oregon-audits and oregon-kpm also import rather than each keeping their own copy (see
+# that module's docstring, and ADR-0009's crosswalk rule).
+
+
+def slug_for_name(idx: dict[str, str], name: str) -> str | None:
+    """Slug for `name` under any reading `norm_variants` permits, or None if none of its
+    readings appear in `idx`. Both sides of the KPM join must try every reading -- the
+    KPM-side name can carry the same qualifier comma the registry's oar_name does, and
+    checking only one reading on the query side reintroduces the same forced-pipeline
+    miss on the other side of the join."""
+    for v in norm_variants(name):
+        slug = idx.get(v)
+        if slug is not None:
+            return slug
+    return None
 
 
 def slug_index(reg: list[dict]) -> dict[str, str]:
@@ -71,11 +76,21 @@ def slug_index(reg: list[dict]) -> dict[str, str]:
     Aliases are seeded too and deliberately unchanged: an alias asserts that two names
     denote the same BODY, which stays true however the registry spells its own columns.
     `setdefault` keeps a real entry winning over an alias that collides with it.
+
+    EVERY READING `norm_variants` PERMITS IS A KEY, not just one forced reading: a
+    qualifier comma ("Secretary of State, Audits Division") and a catalog-inversion
+    comma ("Administrative Services, Department of") both need to resolve, and only one
+    of the two readings is right for either — see `norm_variants`.
     """
-    idx = {_norm(o["oar_name"]): o["slug"] for o in reg if o.get("oar_name")}
+    idx: dict[str, str] = {}
+    for o in reg:
+        if o.get("oar_name"):
+            for v in norm_variants(o["oar_name"]):
+                idx.setdefault(v, o["slug"])
     for o in reg:
         for a in o.get("aliases") or []:
-            idx.setdefault(_norm(a), o["slug"])
+            for v in norm_variants(a):
+                idx.setdefault(v, o["slug"])
     return idx
 
 
@@ -323,7 +338,7 @@ def build_many():
     kpm_per = defaultdict(lambda: [0, 0])         # slug -> [judged, met]
     n_kpm_unlinked = set()
     for r in kpm_latest.values():
-        slug = slug_of_name.get(_norm(r["agency"]))
+        slug = slug_for_name(slug_of_name, r["agency"])
         if slug is None:
             n_kpm_unlinked.add(r["agency"])
             continue
@@ -343,8 +358,9 @@ def build_many():
         "agency; it assembles what the public record holds, with the linkage stated: "
         "budget spending joins on the registry's reviewed budget code; audits join on "
         "the audits corpus's human-reviewed name crosswalk; KPM rows join only on an "
-        "exact match against the registry's OAR chapter name after mechanical "
-        "normalization — anything else is excluded and counted, never guessed. "
+        "exact match against the registry's OAR chapter name under any reading the "
+        "platform's crosswalk rule permits (case, punctuation, comma-inversion, a "
+        "leading \"Oregon\") — anything else is excluded and counted, never guessed. "
         "Spending is the agency's TOTAL recorded spending from every source; it must "
         "never be read against any appropriation as though "
         "one accounts for the other. Rule staleness is a candidate signal, not a "
