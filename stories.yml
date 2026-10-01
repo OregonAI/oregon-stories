@@ -82,9 +82,8 @@ stories:
     the page now leads with data shape and real dollars.
 - {id: audit_mix, status: published, kind: local,
    title: "The audit mix, charted", corpora: [oregon-audits]}
-- {id: erf_agency_authority_graph,  status: published, kind: external, corpora: [executive-regulatory-frameworks], title: "The agency authority graph",
-   claim: "Agencies linked by the ORS chapters their rules jointly implement",
-   url: "https://oregonai.github.io/executive-regulatory-frameworks/agency-authority-graph.html"}
+- {id: agency_authority_graph, status: published, kind: local,
+   title: "The agency authority graph", corpora: [executive-regulatory-frameworks]}
 - {id: erf_authority_explorer,      status: published, kind: external, corpora: [executive-regulatory-frameworks], title: "The authority explorer",
    claim: "Walk any document's authority neighborhood, up and down",
    url: "https://oregonai.github.io/executive-regulatory-frameworks/authority-explorer.html"}
