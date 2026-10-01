@@ -20,6 +20,21 @@ SLUG = "rulemaking-and-stated-priorities"
 YEARS = list(range(2015, 2027))
 
 
+def chapter_rows(area: dict) -> list[dict]:
+    """The per-chapter breakdown for one priority area: which agency, which OAR
+    chapter, how many rules, its own recent-activity rate, and the catalog's own
+    REASONING for why that chapter was mapped to this priority — the curated judgment
+    call ERF's _meta/catalog/governor-priorities.yml records per chapter. Order follows
+    the catalog's own chapter order, never re-sorted by rate."""
+    rows = []
+    for ch in area.get("chapters", []):
+        nd = ch.get("n_dated") or 0
+        rows.append({"agency": ch["agency"], "oar_chapter": ch["oar_chapter"],
+                     "reasoning": ch["reasoning"], "n_rules": ch["n_rules"],
+                     "rate": (ch.get("recent_2yr", 0) / nd) if nd else 0})
+    return rows
+
+
 def build() -> tuple[str, str, str]:
     d = json.loads(fetch(f"{RAW}/{ERF}/main/_meta/governor_priorities.json",
                          "ERF governor-priorities dataset (curated mapping)"))
@@ -43,6 +58,18 @@ def build() -> tuple[str, str, str]:
         rate = area.get("recent_2yr", 0) / (area.get("n_dated") or 1)
         caveat = (f'<p style="margin:6px 0 0;font-size:12px;color:var(--muted)">'
                   f'{html.escape(area["caveat"])}</p>') if area.get("caveat") else ""
+        ch_rows = "".join(
+            f'<tr><td>{html.escape(r["agency"].replace("-", " "))}'
+            f'<div style="color:var(--muted);font-size:11.5px">'
+            f'{html.escape(r["reasoning"])}</div></td>'
+            f'<td class="num">OAR {r["oar_chapter"]}</td>'
+            f'<td class="num">{r["n_rules"]:,}</td>'
+            f'<td class="num">{r["rate"]:.0%}</td></tr>'
+            for r in chapter_rows(area))
+        ch_table = (f'<table style="margin-top:8px"><thead><tr>'
+                   f'<th>agency (mapped chapter, why)</th><th class="num">chapter</th>'
+                   f'<th class="num">rules</th><th class="num">recent 2y</th>'
+                   f'</tr></thead><tbody>{ch_rows}</tbody></table>')
         panels.append(
             f'<div class="panel" style="display:inline-block;width:calc(50% - 12px);'
             f'min-width:330px;vertical-align:top">'
@@ -51,7 +78,7 @@ def build() -> tuple[str, str, str]:
             f'{area["n_rules"]:,} rules in the mapped chapters · recent-2yr rate '
             f'<b>{rate:.0%}</b> vs {baseline:.0%} corpus-wide</p>'
             f'<svg viewBox="0 0 {W} {H}" role="img" aria-label="Rules amended per year, '
-            f'{html.escape(area["name"])}">{bars}{xticks}</svg>{caveat}</div>')
+            f'{html.escape(area["name"])}">{bars}{xticks}</svg>{caveat}{ch_table}</div>')
 
     script = """
 var tip=document.getElementById('tip');

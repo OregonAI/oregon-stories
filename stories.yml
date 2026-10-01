@@ -117,13 +117,10 @@ stories:
     decision required (leads with the candidate-not-finding banner; grouped by
     agency; type/severity charts; filter+search). Every item remains a CANDIDATE —
     the page says so before anything else.
-- id: erf_governor_priorities
-  status: draft
-  kind: external
-  corpora: [executive-regulatory-frameworks]
-  title: "Rulemaking and stated priorities"
-  claim: "Recent OAR rulemaking mapped to four stated priorities (interpretive)"
-  url: "https://oregonai.github.io/executive-regulatory-frameworks/governor-priorities.html"
-  note: >-
-    DRAFT by the 2026-08-02 decision: interpretive mapping, same triage bar as its
-    stories-side sibling. Off the policy-repo page in the same change.
+# erf_governor_priorities (kind: external, draft) retired here (oregon-stories#2):
+# its target, executive-regulatory-frameworks/governor-priorities.html, already
+# answers 404 — "the corpus page copy is already down," per this entry's own former
+# note — and rulemaking_and_stated_priorities above is its exact local sibling, same
+# source (_meta/governor_priorities.json), same draft status. The port closed the one
+# real content gap between them (the curated per-chapter reasoning table) on that
+# entry rather than standing up a second one for data already rendered once.
