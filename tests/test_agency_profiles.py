@@ -208,13 +208,13 @@ def test_undetermined_relation_in_directory_row_names_the_parent_but_claims_no_k
     `part_of` NOR `administered_by` — the whole point of #13's per-row decision over
     nesting, which would have had to pick one."""
     org = {"slug": "department-of-state-police-office-of-state-fire-marshal",
-           "relations": [{"target": "oregon-department-of-state-police",
+           "relations": [{"target": "department-of-state-police",
                           "source": "oar-index", "kind": "undetermined"}]}
     names = {**NAMES,
-             "oregon-department-of-state-police": "Oregon Department of State Police"}
+             "department-of-state-police": "Department of State Police"}
     note = dir_relation_html(parentage(org, names))
-    assert "Oregon Department of State Police" in note
-    assert "oregon-department-of-state-police.html" in note
+    assert "Department of State Police" in note
+    assert "department-of-state-police.html" in note
     assert "part of" not in note
     assert "administered by" not in note
 
@@ -227,3 +227,15 @@ def test_part_of_relation_in_directory_row_says_part_of():
     note = dir_relation_html(parentage(org, NAMES))
     assert "part of" in note
     assert "Department of Agriculture" in note
+
+
+def test_relation_note_is_styled_rather_than_relying_on_an_undefined_class():
+    """No stylesheet in this repo defines `.rel-note`, so the note must carry its own
+    styling (as the profile tiles already do with inline styles) rather than emit a
+    class name that promises styling nothing provides."""
+    org = {"slug": "x", "relations": [{"target": "department-of-agriculture",
+                                        "source": "registry", "kind": "part_of"}]}
+    note = dir_relation_html(parentage(org, NAMES))
+    assert "rel-note" not in note
+    assert "font-size:12px" in note
+    assert "var(--muted)" in note

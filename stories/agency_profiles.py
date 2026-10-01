@@ -247,7 +247,8 @@ def dir_relation_html(rel: Parentage) -> str:
     """
     if not rel.lede_html:
         return ""
-    return f'<div class="rel-note">{rel.lede_html[len(SEP):]}</div>'
+    return (f'<div style="font-size:12px;color:var(--muted)">'
+            f'{rel.lede_html[len(SEP):]}</div>')
 
 
 def money(v: float) -> str:
