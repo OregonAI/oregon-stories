@@ -80,9 +80,8 @@ stories:
     Refactor of the landing repo's chain.html (operator verdict 2026-08-03: the old
     card-stack told no story). The join walk and the drawn-gap convention survive;
     the page now leads with data shape and real dollars.
-- {id: audit_mix,                   status: published, kind: external, corpora: [oregon-audits], title: "The audit mix, charted",
-   claim: "Performance audits fell four-fold while financial audits held flat",
-   url: "https://oregonai.github.io/oregon-audits/audit-mix.html"}
+- {id: audit_mix, status: published, kind: local,
+   title: "The audit mix, charted", corpora: [oregon-audits]}
 - {id: erf_agency_authority_graph,  status: published, kind: external, corpora: [executive-regulatory-frameworks], title: "The agency authority graph",
    claim: "Agencies linked by the ORS chapters their rules jointly implement",
    url: "https://oregonai.github.io/executive-regulatory-frameworks/agency-authority-graph.html"}
