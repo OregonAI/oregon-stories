@@ -99,9 +99,8 @@ stories:
    url: "https://oregonai.github.io/executive-regulatory-frameworks/topic-map.html"}
 - {id: regulatory_freshness, status: published, kind: local,
    title: "Regulatory freshness", corpora: [executive-regulatory-frameworks]}
-- {id: erf_policy_age,              status: published, kind: external, corpora: [executive-regulatory-frameworks], title: "Policy age",
-   claim: "Time since last touch, against a two-year review cadence",
-   url: "https://oregonai.github.io/executive-regulatory-frameworks/policy-age.html"}
+- {id: policy_age, status: published, kind: local,
+   title: "Policy age", corpora: [executive-regulatory-frameworks]}
 - {id: leg_bill_statute_citations,  status: published, kind: external, corpora: [oregon-legislature], title: "What the Legislature amends",
    claim: "Which ORS chapters each session's measures touch",
    url: "https://oregonai.github.io/oregon-legislature/bill-statute-citations.html"}
