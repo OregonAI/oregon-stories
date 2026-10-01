@@ -97,9 +97,8 @@ stories:
 - {id: erf_topic_map,               status: published, kind: external, corpora: [executive-regulatory-frameworks], title: "The topic map",
    claim: "Every document in the regulatory corpus, mapped by meaning",
    url: "https://oregonai.github.io/executive-regulatory-frameworks/topic-map.html"}
-- {id: erf_regulatory_freshness,    status: published, kind: external, corpora: [executive-regulatory-frameworks], title: "Regulatory freshness",
-   claim: "Rules lagging the statutes they implement, by agency",
-   url: "https://oregonai.github.io/executive-regulatory-frameworks/regulatory-freshness.html"}
+- {id: regulatory_freshness, status: published, kind: local,
+   title: "Regulatory freshness", corpora: [executive-regulatory-frameworks]}
 - {id: erf_policy_age,              status: published, kind: external, corpora: [executive-regulatory-frameworks], title: "Policy age",
    claim: "Time since last touch, against a two-year review cadence",
    url: "https://oregonai.github.io/executive-regulatory-frameworks/policy-age.html"}
