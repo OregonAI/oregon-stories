@@ -83,6 +83,7 @@ def decline_stats(data: dict, partial_year: str | None) -> dict:
     n_total = sum(len(ids) for ts in data.values() for ids in ts.values())
     return {
         "years": years,
+        "complete_years": complete_years,
         "last_complete_year": complete_years[-1],
         "perf_first": len(data[complete_years[0]].get("performance", [])),
         "perf_last_complete": len(data[complete_years[-1]].get("performance", [])),
@@ -92,6 +93,11 @@ def decline_stats(data: dict, partial_year: str | None) -> dict:
 
 def render(data: dict, partial_year: str | None) -> tuple[str, str, str]:
     years = sorted(data)
+    stats = decline_stats(data, partial_year)
+    complete_years = stats["complete_years"]
+    # Only the partial year (if it IS the last year) is drawn "in progress" — a
+    # complete final year, with no partial year at all, must be solid throughout.
+    is_partial_last = partial_year is not None and partial_year == years[-1]
     all_types = sorted({t for ts in data.values() for t in ts},
                        key=lambda t: (t not in CHARTED,
                                       CHARTED.index(t) if t in CHARTED else 0, t))
@@ -121,10 +127,11 @@ def render(data: dict, partial_year: str | None) -> tuple[str, str, str]:
         if t not in all_types:
             continue
         pts = [(x(i), y(len(data[yr].get(t, [])))) for i, yr in enumerate(years)]
-        solid = " ".join(f"{px:.1f},{py:.1f}" for px, py in pts[:-1])
+        solid_pts = pts[:-1] if is_partial_last else pts
+        solid = " ".join(f"{px:.1f},{py:.1f}" for px, py in solid_pts)
         svg.append(f'<polyline points="{solid}" fill="none" stroke="var(--s{si})" '
                    f'stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>')
-        if len(pts) >= 2:
+        if is_partial_last and len(pts) >= 2:
             (x1, y1), (x2, y2) = pts[-2], pts[-1]
             svg.append(f'<line x1="{x1:.1f}" y1="{y1:.1f}" x2="{x2:.1f}" y2="{y2:.1f}" '
                        f'stroke="var(--s{si})" stroke-width="2" stroke-dasharray="4 4"/>')
@@ -135,9 +142,12 @@ def render(data: dict, partial_year: str | None) -> tuple[str, str, str]:
                        f'stroke="{"var(--s%d)" % si if partial else "var(--surface)"}" '
                        f'stroke-width="2"/>')
         if t in ("performance", "financial") and len(pts) >= 2:
-            n0 = len(data[years[0]].get(t, []))
-            n1 = len(data[years[-2] if partial_year == years[-1] else years[-1]].get(t, []))
-            svg.append(f'<text class="val" x="{W-PAD_R+10}" y="{pts[-2][1]+4:.1f}">'
+            # First/last-complete-year counts come from decline_stats, the one place
+            # that logic lives, instead of being recomputed (and drifting) here.
+            last_complete_idx = years.index(complete_years[-1])
+            n0 = len(data[complete_years[0]].get(t, []))
+            n1 = len(data[complete_years[-1]].get(t, []))
+            svg.append(f'<text class="val" x="{W-PAD_R+10}" y="{pts[last_complete_idx][1]+4:.1f}">'
                        f'{t} {n0}→{n1}</text>')
     if partial_year:
         svg.append(f'<text x="{x(len(years)-1):.1f}" y="{PAD_T+2}" text-anchor="middle" '
@@ -169,7 +179,6 @@ def render(data: dict, partial_year: str | None) -> tuple[str, str, str]:
         details.append(f"<details><summary>{yr}: {len(links)} report(s)</summary>"
                        f"<p>{' · '.join(links)}</p></details>")
 
-    stats = decline_stats(data, partial_year)
     n_total = stats["n_total"]
     n_none = sum(len(data[yr].get("none recorded", [])) for yr in years)
     table_only = sorted(set(all_types) - set(CHARTED))

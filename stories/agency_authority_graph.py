@@ -7,11 +7,16 @@ here on corpus_toolkit.viz with the SAME client-side force layout and edge proje
 reading ERF's committed _meta/agency-graph.json cache rather than depending on that
 corpus's own viz/agency-authority-graph.html page.
 
-Two pieces are computed on both sides and kept in sync by a shared test: `edge_weight`
-(the discount a shared ORS chapter's popularity gets, 1/ln(pop+e) — ERF's own formula,
-recomputed in the browser on every density-slider move) and `top_groups` (the house
-categorical-palette rule: at most 8 color slots, a 9th department folds into "other"
-rather than cycling colors or inventing a 9th hue).
+Two pieces exist as Python here even though they RUN client-side: `edge_weight` (the
+discount a shared ORS chapter's popularity gets, 1/ln(pop+e) — ERF's own formula,
+recomputed in the browser on every density-slider move) is pinned by a test against an
+independently worked value, but that test exercises only this Python copy — nothing
+ties it to the JS, which is the one that actually runs at render time, so a change to
+either side alone would go unnoticed. `top_groups` (the house categorical-palette rule:
+at most 8 color slots, a 9th department folds into "other" rather than cycling colors
+or inventing a 9th hue) runs server-side for real and its result (plus `slot_index`,
+the legend-order slot each kept group's nodes must draw in) is passed into the payload,
+so that one genuinely is single-sourced.
 """
 from __future__ import annotations
 
@@ -44,16 +49,25 @@ def top_groups(colored_groups: list[dict], slots: int = COLOR_SLOTS) -> tuple[li
     return ordered[:slots], max(0, len(ordered) - slots)
 
 
+def slot_index(kept_groups: list[dict]) -> dict[str, int]:
+    """The 1-based legend slot for each kept group's `slug`, in exactly the order the
+    legend lists them (`top_groups`' own order — largest member count first). The
+    browser must color a node by this same slot, never by first appearance in the
+    agency list, or the graph's colors stop matching the legend."""
+    return {g["slug"]: i for i, g in enumerate(kept_groups, 1)}
+
+
 def build() -> tuple[str, str, str]:
     d = json.loads(fetch(f"{RAW}/{ERF}/main/_meta/agency-graph.json",
                          "ERF agency shared-statutory-authority graph"))
     kept_groups, n_folded = top_groups(d["colored_groups"])
     kept_slugs = {g["slug"] for g in kept_groups}
+    kept_slot = slot_index(kept_groups)
 
     n_agencies = d["counts"]["agencies"]
     n_chapters = d["counts"]["ors_chapters"]
     top3 = sorted(d["colored_groups"], key=lambda g: -g["members"])[:3]
-    top3_text = ", ".join(f'{g["name"]} ({g["members"]})' for g in top3)
+    top3_text = ", ".join(f'{html.escape(g["name"])} ({g["members"]})' for g in top3)
 
     n_other_agencies = sum(1 for a in d["agencies"] if a["group"] not in kept_slugs)
     legend_rows = "".join(
@@ -70,6 +84,7 @@ def build() -> tuple[str, str, str]:
     payload = {
         "agencies": [{"slug": a["slug"], "name": a["name"], "rules": a["rules"],
                      "group": a["group"] if a["group"] in kept_slugs else None,
+                     "slot": kept_slot.get(a["group"]),
                      "groupName": a["group_name"] if a["group"] in kept_slugs
                                  else "Other / standalone",
                      "gov": a["governance"], "chapters": a["chapters"]}
@@ -85,9 +100,6 @@ var wrap = document.getElementById('graph-wrap');
 var cv = document.getElementById('graph-cv'), ctx = cv.getContext('2d');
 var tip = document.getElementById('graph-tip');
 function cssv(n){ return getComputedStyle(document.body).getPropertyValue(n).trim(); }
-var groupOrder = [];
-DATA.agencies.forEach(function(a){ if (a.group && groupOrder.indexOf(a.group) < 0) groupOrder.push(a.group); });
-function groupIndex(g){ return groupOrder.indexOf(g) % 8; }
 
 var W = 0, H = 0, DPR = Math.min(2, window.devicePixelRatio || 1);
 var view = {x: 0, y: 0, k: 1};
@@ -104,7 +116,7 @@ function buildNodes(){
   var cx = W/2, cy = H/2;
   nodes = DATA.agencies.map(function(a, i){
     var ang = i / DATA.agencies.length * Math.PI * 2;
-    return {id: a.slug, name: a.name, rules: a.rules, group: a.group,
+    return {id: a.slug, name: a.name, rules: a.rules, group: a.group, slot: a.slot,
             groupName: a.groupName, gov: a.gov, chapters: a.chapters,
             chSet: new Set(a.chapters),
             x: cx + Math.cos(ang)*220 + (Math.random()-.5)*40,
@@ -200,7 +212,7 @@ function draw(){
     var faded = (egoSet && !egoSet.has(n.id)) || (hover && hover!==n && !(egoSet&&egoSet.has(n.id)));
     ctx.globalAlpha = faded?0.22:1;
     ctx.beginPath(); ctx.arc(p[0],p[1],r,0,7);
-    ctx.fillStyle = n.group ? cssv('--s' + (groupIndex(n.group)+1)) : cssv('--muted');
+    ctx.fillStyle = n.slot ? cssv('--s' + n.slot) : cssv('--muted');
     ctx.fill();
     ctx.lineWidth = (n===hover||n===selected) ? 2 : 1;
     ctx.strokeStyle = (n===hover||n===selected) ? cssv('--ink') : cssv('--surface');
@@ -318,9 +330,9 @@ if (W > 0) for (var i = 0; i < 220; i++) step();
         f'<p>{html.escape(d["note"])}</p>'
         f'<p><b>Color caps at {len(kept_groups)} departments</b> (the house categorical '
         f'palette\'s validated slot count): the {len(kept_groups)} largest colored '
-        f'groupings by member count keep a dedicated color; every smaller colored '
-        f'department and every standalone agency shares the neutral "other" color '
-        f'— a position on the graph, not an erased identity (the tooltip and node '
+        f'groupings by member count keep a dedicated color; the other {n_folded} '
+        f'colored department(s) and every standalone agency share the neutral "other" '
+        f'color — a position on the graph, not an erased identity (the tooltip and node '
         f'size are unaffected). Edge weight sums 1/ln(chapter_pop + e) over shared ORS '
         f'chapters, so a chapter nearly every agency implements (the APA, public '
         f'records law) counts for little; the "include ubiquitous statutes" toggle '
@@ -328,8 +340,8 @@ if (W > 0) for (var i = 0; i < 220; i++) step();
 
     lede = (f"{n_agencies} Oregon agencies, linked whenever their administrative rules "
             f"implement the same ORS statute chapters — {n_chapters} chapters "
-            f"across the graph. The three largest colored departments by rule-sharing "
-            f"footprint: {top3_text}.")
+            f"across the graph. The three largest colored departments by member "
+            f"agencies: {top3_text}.")
 
     page = viz.chart_page(
         title=f"The agency authority graph: {n_agencies} agencies linked by "

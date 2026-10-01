@@ -7,7 +7,7 @@ computes server-side — `edge_weight` (the SAME formula the browser recomputes 
 slider move, so a Python test pins the one number both sides must agree on) and
 `top_groups` (the categorical-color cap the house palette rule requires: at most 8
 series, a 9th folds into "other" rather than cycling colors)."""
-from stories.agency_authority_graph import edge_weight, top_groups
+from stories.agency_authority_graph import edge_weight, slot_index, top_groups
 
 
 def test_edge_weight_discounts_more_popular_chapters():
@@ -47,3 +47,13 @@ def test_top_groups_with_room_to_spare_folds_nothing():
     kept, n_other = top_groups(groups, slots=8)
     assert len(kept) == 1
     assert n_other == 0
+
+
+def test_slot_index_matches_the_legend_order_largest_members_first():
+    """The legend gives slot 1 to the group top_groups put first (by member count); a
+    node's drawn color must index into the SAME order, not first-appearance-in-data —
+    that mismatch put the wrong department on every legend color in the built page."""
+    groups = [{"slug": "small", "name": "Small", "members": 3},
+             {"slug": "big", "name": "Big", "members": 50}]
+    kept, _ = top_groups(groups, slots=8)
+    assert slot_index(kept) == {"big": 1, "small": 2}

@@ -6,7 +6,7 @@ rebuilt from front matter records instead of files on disk) and
 `decline_stats(data, partial_year)`, the numbers the lede states as a claim.
 """
 import data_sources
-from stories.audit_mix import _condense_fetch_ledger, aggregate, decline_stats
+from stories.audit_mix import _condense_fetch_ledger, aggregate, decline_stats, render
 
 
 def test_reports_group_by_year_then_type():
@@ -67,6 +67,24 @@ def test_decline_stats_totals_every_report_across_years_and_types():
             "2021": {"performance": ["d"]}}
     stats = decline_stats(data, partial_year=None)
     assert stats["n_total"] == 4
+
+
+def test_the_final_complete_year_is_drawn_solid_when_no_year_is_partial():
+    """The module docstring says 'in progress' drawing (hollow point, dashed lead-in)
+    must happen ONLY for the partial year. With no partial year at all (e.g. built in
+    January before any current-year report exists), every year is complete and the
+    whole polyline must be solid — no dashed segment anywhere."""
+    data = {
+        "2020": {"performance": ["a", "b"]},
+        "2021": {"performance": ["c"]},
+        "2022": {"performance": ["d", "e"]},
+    }
+    _, _, page = render(data, partial_year=None)
+    assert "stroke-dasharray" not in page
+    # the solid polyline for the one charted series must include all three points
+    import re
+    pts = re.search(r'<polyline points="([^"]+)"', page).group(1)
+    assert len(pts.split()) == 3
 
 
 def test_the_fetch_ledger_condenses_per_report_rows_into_one_citable_entry():

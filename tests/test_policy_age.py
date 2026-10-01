@@ -7,7 +7,7 @@ and `agency_table` / `most_overdue` (the ranking panel and the "most overdue" li
 """
 import datetime
 
-from stories.policy_age import age_years, agency_table, most_overdue
+from stories.policy_age import age_years, agency_table, most_overdue, swarm_and_cite
 
 
 def test_age_years_is_the_days_since_last_touched_in_years():
@@ -52,3 +52,19 @@ def test_most_overdue_respects_the_limit():
     today = datetime.date(2026, 1, 1)
     docs = [{"id": str(i), "agency": "x", "last_touched": "2000-01-01"} for i in range(5)]
     assert len(most_overdue(docs, overdue=4, today=today, limit=2)) == 2
+
+
+def test_swarm_and_cite_maps_each_point_to_its_own_citation_even_after_an_undated_doc():
+    """A dated doc after an undated one must still map to its own citation — the swarm
+    is built only from the dated subset, so an index into `swarm` and the same index
+    into `cite` must always name the same document."""
+    today = datetime.date(2026, 1, 1)
+    docs = [
+        {"id": "a", "doc_type": "policy", "citation": "A-1", "last_touched": "2024-01-01"},
+        {"id": "b", "doc_type": "policy", "citation": "B-1", "last_touched": None},
+        {"id": "c", "doc_type": "procedure", "citation": "C-1", "last_touched": "2020-01-01"},
+    ]
+    swarm, cite = swarm_and_cite(docs, today)
+    assert len(swarm) == len(cite) == 2
+    last_idx = swarm[-1][2]
+    assert cite[last_idx] == "C-1"

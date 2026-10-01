@@ -10,6 +10,16 @@ reviewing" list surface the pattern a 42k-point cloud can't. FLAG and NOW are re
 build time, not hand-maintained — the lag threshold is the same editorial call ERF's
 page makes (10+ years is "worth reviewing", never "stale" or "a violation"), and the
 in-progress year moves forward with every rebuild instead of going stale in a constant.
+
+KNOWN CUT (flagged for operator sign-off, oregon-stories#2 code review): ERF's
+build_freshness.py lets a reader click an agency in the ranking panel to filter the
+scatter and the "most worth reviewing" list to just that agency. This port keeps the
+ranking table, the full scatter (with decade gridlines, axis labels, the diagonal, the
+FLAG threshold line and its shaded region, and a hover tooltip) and the offender list,
+but does not wire agency selection between them — ERF's own page carries a per-point
+agency index for that, which would roughly double this payload for an interaction the
+chart-card layout here has no seam for yet. Nothing is hidden: every flagged document
+is still in the table.
 """
 from __future__ import annotations
 
@@ -125,8 +135,13 @@ def build() -> tuple[str, str, str]:
 
     # Agency plays no part in the drawn scatter (it drives the ranking table instead,
     # already computed server-side) — carrying it per point would roughly double this
-    # payload for data the script never reads.
-    scatter = {"r": [[r["yr"], r["ay"]] for r in rules if r.get("yr") and r.get("ay")]}
+    # payload for data the script never reads. id/sid ARE carried (short strings) so a
+    # hover can name the actual document instead of drawing an unlabeled point.
+    datable_rules = [r for r in rules if r.get("yr") and r.get("ay")]
+    scatter = {"ry": [r["yr"] for r in datable_rules],
+              "ay": [r["ay"] for r in datable_rules],
+              "id": [r["id"] for r in datable_rules],
+              "sid": [r.get("sid") or "" for r in datable_rules]}
 
     rank_rows = "".join(
         f'<tr><td>{html.escape(a["name"])}</td>'
@@ -155,28 +170,97 @@ def build() -> tuple[str, str, str]:
     script = """
 var D = __DATA__;
 var cv = document.getElementById('scatter'), ctx = cv.getContext('2d');
-function X(yr, w){ return (yr - %(xmin)d) / (%(now)d - %(xmin)d) * w; }
-function Y(yr, h){ return h - (yr - %(xmin)d) / (%(now)d - %(xmin)d) * h; }
+var tip = document.getElementById('tip');
+function cssv(n){ return getComputedStyle(document.body).getPropertyValue(n).trim(); }
+function cite(id){ if (!id) return '\\u2014';
+  if (id.indexOf('ors-') === 0) return 'ORS ' + id.slice(4);
+  if (id.indexOf('oar-') === 0) return 'OAR ' + id.slice(4).replace(/-/g,' ');
+  return id.toUpperCase(); }
+var ML = 52, MR = 16, MT = 14, MB = 36;
+function X(ay, w){ return ML + (ay - %(xmin)d) / (%(now)d - %(xmin)d) * (w - ML - MR); }
+function Y(yr, h){ return h - MB - (yr - %(xmin)d) / (%(now)d - %(xmin)d) * (h - MT - MB); }
 function gapColor(g){
-  if (g >= 20) return 'var(--s4)';
-  if (g >= %(flag)d) return 'var(--s2)';
-  if (g >= 3) return 'var(--s3)';
-  return 'var(--muted)';
+  if (g >= 20) return cssv('--s4');
+  if (g >= %(flag)d) return cssv('--s2');
+  if (g >= 3) return cssv('--s3');
+  return cssv('--muted');
 }
+var DPR = Math.min(2, window.devicePixelRatio || 1), pts = [];
 function draw(){
   var w = cv.clientWidth, h = 260;
-  cv.width = w; cv.height = h; ctx.clearRect(0,0,w,h);
-  ctx.strokeStyle = 'var(--border)'; ctx.globalAlpha = 0.6;
-  ctx.beginPath(); ctx.moveTo(X(%(xmin)d,w), Y(%(xmin)d,h));
-  ctx.lineTo(X(%(now)d,w), Y(%(now)d,h)); ctx.stroke(); ctx.globalAlpha = 1;
-  for (var i = 0; i < D.r.length; i++){
-    var ry = D.r[i][0], ay = D.r[i][1], g = ay - ry;
+  cv.width = w * DPR; cv.height = h * DPR; ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+  ctx.clearRect(0, 0, w, h);
+  var x0 = ML, x1 = w - MR, y0 = h - MB, y1 = MT;
+  // FLAG threshold region: a rule/policy >= FLAG years behind its authority
+  ctx.fillStyle = cssv('--s2'); ctx.globalAlpha = 0.07;
+  ctx.beginPath();
+  ctx.moveTo(X(%(xmin)d + %(flag)d, w), Y(%(xmin)d, h));
+  ctx.lineTo(X(%(now)d, w), Y(%(now)d - %(flag)d, h));
+  ctx.lineTo(X(%(now)d, w), Y(%(xmin)d, h));
+  ctx.closePath(); ctx.fill(); ctx.globalAlpha = 1;
+  // decade gridlines + ticks
+  ctx.strokeStyle = cssv('--grid'); ctx.fillStyle = cssv('--muted');
+  ctx.font = '11px system-ui'; ctx.lineWidth = 1;
+  ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+  for (var yr = 1960; yr <= %(now)d; yr += 10){
+    var px = X(yr, w);
+    ctx.beginPath(); ctx.moveTo(px, y1); ctx.lineTo(px, y0); ctx.stroke();
+    ctx.fillText(yr, px, y0 + 6);
+  }
+  ctx.textAlign = 'right'; ctx.textBaseline = 'middle';
+  for (var yr2 = 1960; yr2 <= %(now)d; yr2 += 10){
+    var py = Y(yr2, h);
+    ctx.beginPath(); ctx.moveTo(x0, py); ctx.lineTo(x1, py); ctx.stroke();
+    ctx.fillText(yr2, x0 - 6, py);
+  }
+  // diagonal (in sync) + FLAG threshold line
+  ctx.strokeStyle = cssv('--border'); ctx.globalAlpha = 0.6;
+  ctx.beginPath(); ctx.moveTo(X(%(xmin)d, w), Y(%(xmin)d, h));
+  ctx.lineTo(X(%(now)d, w), Y(%(now)d, h)); ctx.stroke();
+  ctx.globalAlpha = 0.35; ctx.setLineDash([4, 4]);
+  ctx.beginPath();
+  ctx.moveTo(X(%(xmin)d + %(flag)d, w), Y(%(xmin)d, h));
+  ctx.lineTo(X(%(now)d, w), Y(%(now)d - %(flag)d, h));
+  ctx.stroke(); ctx.setLineDash([]); ctx.globalAlpha = 1;
+  // axis labels
+  ctx.fillStyle = cssv('--muted'); ctx.font = '600 11px system-ui';
+  ctx.textAlign = 'center'; ctx.textBaseline = 'bottom';
+  ctx.fillText('STATUTE last amended \\u2192', (x0 + x1) / 2, h - 4);
+  ctx.save(); ctx.translate(12, (y0 + y1) / 2); ctx.rotate(-Math.PI / 2);
+  ctx.textBaseline = 'top'; ctx.fillText('RULE last filed \\u2192', 0, 0); ctx.restore();
+  // points
+  pts = [];
+  for (var i = 0; i < D.ry.length; i++){
+    var ry = D.ry[i], ay = D.ay[i], g = ay - ry;
     ctx.fillStyle = gapColor(g);
     var s = g >= %(flag)d ? 2.6 : 2;
-    ctx.fillRect(X(ay,w) - s/2, Y(ry,h) - s/2, s, s);
+    var px2 = X(ay, w), py2 = Y(ry, h);
+    ctx.fillRect(px2 - s/2, py2 - s/2, s, s);
+    pts.push([px2, py2, i]);
   }
 }
 draw(); addEventListener('resize', draw);
+function nearest(mx, my){
+  var best = -1, bd = 36;
+  for (var j = 0; j < pts.length; j++){
+    var dx = pts[j][0] - mx, dy = pts[j][1] - my, d = dx*dx + dy*dy;
+    if (d < bd){ bd = d; best = pts[j][2]; }
+  }
+  return best;
+}
+cv.addEventListener('mousemove', function(ev){
+  var r = cv.getBoundingClientRect(), k = nearest(ev.clientX - r.left, ev.clientY - r.top);
+  if (k < 0){ tip.style.display = 'none'; return; }
+  var ry = D.ry[k], ay = D.ay[k], g = ay - ry;
+  tip.innerHTML = '<b>' + cite(D.id[k]) + '</b> filed ' + ry +
+    '<br><i>implements ' + cite(D.sid[k]) + ' \\u2014 last amended ' + ay + '</i>' +
+    '<br><i style="color:' + gapColor(g) + '">' +
+    (g > 0 ? ('+' + g + ' yrs behind') : (g === 0 ? 'in sync' : ((-g) + ' yrs ahead'))) + '</i>';
+  tip.style.display = 'block';
+  tip.style.left = Math.min(ev.clientX + 13, innerWidth - 300) + 'px';
+  tip.style.top = Math.min(ev.clientY + 13, innerHeight - 90) + 'px';
+});
+cv.addEventListener('mouseleave', function(){ tip.style.display = 'none'; });
 """ % {"xmin": XMIN, "now": now, "flag": FLAG}
     script = script.replace("__DATA__", json.dumps(scatter, separators=(",", ":")))
 
@@ -193,7 +277,7 @@ draw(); addEventListener('resize', draw);
         f'<div class="panel"><h2 style="font-size:14px;margin:0 0 8px">Agencies with '
         f'≥40 datable rules, ranked by share {FLAG}+ years behind</h2>{rank_table}</div>'
         f'<div class="panel"><h2 style="font-size:14px;margin:0 0 8px">Most worth '
-        f'reviewing — largest gap first, top 40 of {len(offenders):,} flagged'
+        f'reviewing — largest gap first, top 40 of {len(flagged_ids):,} flagged'
         f'</h2>{off_table}</div>')
 
     caveats = (

@@ -11,6 +11,15 @@ review, which is why age is recomputed here from each doc's `last_touched` date 
 OUR build time rather than carried over from whenever ERF's cache happened to be
 refreshed — the same document should not read a different age just because this page
 rebuilt on a different day than ERF's did.
+
+KNOWN CUT (flagged for operator sign-off, oregon-stories#2 code review): ERF's
+build_policy_age.py lets a reader click an agency in the ranking panel to filter the
+beeswarm and the "most overdue" list to just that agency. This port keeps the
+ranking table, the beeswarm (with its due/overdue bands, threshold lines, axis label
+and hover tooltip) and the overdue list, but does not wire agency selection between
+them — that would need an agency index carried per point (and re-deriving the ranked
+list and "most overdue" panel client-side), which the chart-card layout here does not
+yet have a seam for. Nothing is hidden: every document is still in the table.
 """
 from __future__ import annotations
 
@@ -82,6 +91,21 @@ def most_overdue(docs: list[dict], overdue: float = OVERDUE_YEARS,
     return items[:limit]
 
 
+def swarm_and_cite(docs: list[dict], today: datetime.date) -> tuple[list[list], list[str]]:
+    """The beeswarm's points and the citation each one's index names. Built from only
+    the DATED subset (`last_touched` present) — exactly the filter the chart draws —
+    so a point's flat index always lands on its own citation, never some other
+    document's (enumerating over ALL docs while only the dated ones are drawn was the
+    bug: an undated doc ahead of a dated one shifted every later point's index off by
+    one against `cite`)."""
+    dated = [x for x in docs if x.get("last_touched")]
+    kind_i = {k: i for i, k in enumerate(KINDS)}
+    swarm = [[round(age_years(x["last_touched"], today), 2), kind_i.get(x["doc_type"], 0), j]
+            for j, x in enumerate(dated)]
+    cite = [x.get("citation") or x["id"].upper() for x in dated]
+    return swarm, cite
+
+
 def build() -> tuple[str, str, str]:
     d = json.loads(fetch(f"{RAW}/{ERF}/main/_meta/policy_age.json",
                          "ERF policy-age dataset"))
@@ -123,7 +147,8 @@ def build() -> tuple[str, str, str]:
         return "var(--s1)"
 
     off_rows = "".join(
-        f'<tr><td style="color:{_age_dot(o["age"])}">{o["age"]:.1f}y</td>'
+        f'<tr><td><span class="chip" style="background:{_age_dot(o["age"])}"></span>'
+        f'{o["age"]:.1f}y</td>'
         f'<td><a href="{html.escape(o.get("source_url") or "#")}">'
         f'{html.escape(o.get("citation") or o["id"].upper())}</a>'
         f'<br><small>{html.escape(o.get("title", ""))}</small></td>'
@@ -132,36 +157,45 @@ def build() -> tuple[str, str, str]:
     off_table = (f'<table><thead><tr><th>age</th><th>document</th><th>agency</th></tr>'
                 f'</thead><tbody>{off_rows}</tbody></table>')
 
-    # Lean beeswarm payload: age + a doc_type row index + a flat index into `docid` for
-    # the tooltip — no titles or citations inline (those render server-side in the
-    # table above; the chart only needs to draw and identify a point on hover).
-    kind_i = {k: i for i, k in enumerate(KINDS)}
-    swarm = [[round(age_years(x["last_touched"], today), 2), kind_i.get(x["doc_type"], 0), i]
-            for i, x in enumerate(docs) if x.get("last_touched")]
-    docid = [x["id"] for x in docs if x.get("last_touched")]
-    cite = [x.get("citation") or x["id"].upper() for x in docs if x.get("last_touched")]
+    swarm, cite = swarm_and_cite(docs, today)
 
     script = """
 var D = __DATA__;
 var KINDS = %(kinds)s, DUE = %(due)s, OVERDUE = %(overdue)s;
 var cv = document.getElementById('swarm'), ctx = cv.getContext('2d');
-var tip = document.getElementById('swarm-tip');
+var tip = document.getElementById('tip');
+function cssv(n){ return getComputedStyle(document.body).getPropertyValue(n).trim(); }
 var maxAge = 1; D.pts.forEach(function(p){ if (p[0] > maxAge) maxAge = p[0]; });
 maxAge = Math.ceil(maxAge) + 1;
-var ML = 64, MR = 12, MT = 10, MB = 28;
-function ageColor(a){ return a >= OVERDUE ? 'var(--s4)' : a >= DUE ? 'var(--s3)' : 'var(--s1)'; }
+var ML = 64, MR = 12, MT = 10, MB = 34;
+function ageColor(a){ return a >= OVERDUE ? cssv('--s4') : a >= DUE ? cssv('--s3') : cssv('--s1'); }
 function X(a, w){ return ML + (a / maxAge) * (w - ML - MR); }
 function rowY(k, h){ var rows = KINDS.length, rh = (h - MT - MB) / rows; return MT + rh * (k + 0.5); }
 function jitter(i, h){ var rows = KINDS.length, rh = (h - MT - MB) / rows, span = rh * 0.6;
   var x = Math.sin(i * 12.9898) * 43758.5453; return ((x - Math.floor(x)) - 0.5) * span; }
-var pts = [];
+var pts = [], DPR = Math.min(2, window.devicePixelRatio || 1);
 function draw(){
-  var w = cv.clientWidth, h = 220; cv.width = w; cv.height = h;
+  var w = cv.clientWidth, h = 220;
+  cv.width = w * DPR; cv.height = h * DPR; ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
   ctx.clearRect(0, 0, w, h);
-  ctx.fillStyle = 'var(--muted)'; ctx.font = '11px system-ui'; ctx.textAlign = 'right';
+  // due / overdue shaded bands, drawn behind everything else
+  ctx.fillStyle = cssv('--s3'); ctx.globalAlpha = 0.07;
+  ctx.fillRect(X(DUE, w), MT, X(OVERDUE, w) - X(DUE, w), h - MT - MB);
+  ctx.fillStyle = cssv('--s4');
+  ctx.fillRect(X(OVERDUE, w), MT, w - MR - X(OVERDUE, w), h - MT - MB);
+  ctx.globalAlpha = 1;
+  // DUE / OVERDUE threshold lines
+  ctx.strokeStyle = cssv('--s3'); ctx.globalAlpha = 0.6; ctx.setLineDash([4, 4]);
+  ctx.beginPath(); ctx.moveTo(X(DUE, w), MT); ctx.lineTo(X(DUE, w), h - MB); ctx.stroke();
+  ctx.strokeStyle = cssv('--s4');
+  ctx.beginPath(); ctx.moveTo(X(OVERDUE, w), MT); ctx.lineTo(X(OVERDUE, w), h - MB); ctx.stroke();
+  ctx.setLineDash([]); ctx.globalAlpha = 1;
+  ctx.fillStyle = cssv('--muted'); ctx.font = '11px system-ui'; ctx.textAlign = 'right';
   KINDS.forEach(function(k, i){ ctx.fillText(k, ML - 8, rowY(i, h) + 4); });
   ctx.textAlign = 'center';
-  for (var yr = 0; yr <= maxAge; yr += 2) ctx.fillText(yr + 'y', X(yr, w), h - 8);
+  for (var yr = 0; yr <= maxAge; yr += 2) ctx.fillText(yr + 'y', X(yr, w), h - MB + 16);
+  ctx.font = '600 11px system-ui';
+  ctx.fillText('YEARS SINCE LAST TOUCHED \\u2192', (ML + w - MR) / 2, h - 6);
   pts = [];
   for (var i = 0; i < D.pts.length; i++){
     var age = D.pts[i][0], k = D.pts[i][1], px = X(age, w), py = rowY(k, h) + jitter(i, h);
@@ -202,14 +236,10 @@ cv.addEventListener('pointerleave', function(){ tip.style.display = 'none'; });
         f'({DUE_YEARS}–{OVERDUE_YEARS}y)</span>'
         f'<span><span class="chip" style="background:var(--s4)"></span>overdue '
         f'({OVERDUE_YEARS}y+)</span></p></div>'
-        f'<div style="position:relative"><div id="swarm-tip" style="display:none;'
-        f'position:fixed;pointer-events:none;background:var(--panel);'
-        f'border:1px solid var(--border);border-radius:8px;padding:6px 9px;'
-        f'font-size:12.5px;z-index:9;max-width:260px"></div></div>'
         f'<div class="panel"><h2 style="font-size:14px;margin:0 0 8px">Agencies with '
         f'≥3 dated documents, ranked by share due or overdue</h2>{rank_table}</div>'
         f'<div class="panel"><h2 style="font-size:14px;margin:0 0 8px">Most overdue for '
-        f'review — oldest first, top 40 of {len(overdue_list):,}</h2>{off_table}</div>')
+        f'review — oldest first, top 40 of {n_overdue:,}</h2>{off_table}</div>')
 
     caveats = (
         f'<p><b>This clock is absolute, not statute-relative</b> (unlike the '

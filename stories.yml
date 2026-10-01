@@ -69,6 +69,14 @@ stories:
    title: "Vendor concentration", corpora: [oregon-budget]}
 - {id: audits_kpm, status: published, kind: local,
    title: "Audits and the scorecards", corpora: [oregon-audits, oregon-kpm]}
+- {id: audit_mix, status: published, kind: local,
+   title: "The audit mix, charted", corpora: [oregon-audits]}
+- {id: agency_authority_graph, status: published, kind: local,
+   title: "The agency authority graph", corpora: [executive-regulatory-frameworks]}
+- {id: regulatory_freshness, status: published, kind: local,
+   title: "Regulatory freshness", corpora: [executive-regulatory-frameworks]}
+- {id: policy_age, status: published, kind: local,
+   title: "Policy age", corpora: [executive-regulatory-frameworks]}
 
 # ── external: rendering on corpus pages until their ports land ────────────────
 - id: one_thread_pers
@@ -80,10 +88,6 @@ stories:
     Refactor of the landing repo's chain.html (operator verdict 2026-08-03: the old
     card-stack told no story). The join walk and the drawn-gap convention survive;
     the page now leads with data shape and real dollars.
-- {id: audit_mix, status: published, kind: local,
-   title: "The audit mix, charted", corpora: [oregon-audits]}
-- {id: agency_authority_graph, status: published, kind: local,
-   title: "The agency authority graph", corpora: [executive-regulatory-frameworks]}
 - {id: erf_authority_explorer,      status: published, kind: external, corpora: [executive-regulatory-frameworks], title: "The authority explorer",
    claim: "Walk any document's authority neighborhood, up and down",
    url: "https://oregonai.github.io/executive-regulatory-frameworks/authority-explorer.html"}
@@ -96,10 +100,6 @@ stories:
 - {id: erf_topic_map,               status: published, kind: external, corpora: [executive-regulatory-frameworks], title: "The topic map",
    claim: "Every document in the regulatory corpus, mapped by meaning",
    url: "https://oregonai.github.io/executive-regulatory-frameworks/topic-map.html"}
-- {id: regulatory_freshness, status: published, kind: local,
-   title: "Regulatory freshness", corpora: [executive-regulatory-frameworks]}
-- {id: policy_age, status: published, kind: local,
-   title: "Policy age", corpora: [executive-regulatory-frameworks]}
 - {id: leg_bill_statute_citations,  status: published, kind: external, corpora: [oregon-legislature], title: "What the Legislature amends",
    claim: "Which ORS chapters each session's measures touch",
    url: "https://oregonai.github.io/oregon-legislature/bill-statute-citations.html"}
@@ -117,9 +117,10 @@ stories:
     agency; type/severity charts; filter+search). Every item remains a CANDIDATE —
     the page says so before anything else.
 # erf_governor_priorities (kind: external, draft) retired here (oregon-stories#2):
-# its target, executive-regulatory-frameworks/governor-priorities.html, already
-# answers 404 — "the corpus page copy is already down," per this entry's own former
-# note — and rulemaking_and_stated_priorities above is its exact local sibling, same
-# source (_meta/governor_priorities.json), same draft status. The port closed the one
+# its target, executive-regulatory-frameworks/governor-priorities.html, answers 404
+# (verified 2026-10-01) — the condition oregon-stories#2's checklist flagged this
+# conflict-candidate entry on — and rulemaking_and_stated_priorities above is its
+# exact local sibling, same source (_meta/governor_priorities.json), same draft
+# status. The port closed the one
 # real content gap between them (the curated per-chapter reasoning table) on that
 # entry rather than standing up a second one for data already rendered once.

@@ -1,6 +1,7 @@
 """oregon-stories#2: erf_governor_priorities (kind: external, draft) pointed at
-executive-regulatory-frameworks/governor-priorities.html, which already answers 404 —
-"the corpus page copy is already down" per stories.yml's own note. This story is its
+executive-regulatory-frameworks/governor-priorities.html, which answers 404 (verified
+2026-10-01) — the condition oregon-stories#2's checklist flagged that conflict-candidate
+entry on. This story is its
 local sibling, reading the SAME curated dataset (_meta/governor_priorities.json); the
 port is closing the one real content gap between them — the original page's per-chapter
 table (agency, chapter, rule count, recent-activity rate, and the curated REASONING for
