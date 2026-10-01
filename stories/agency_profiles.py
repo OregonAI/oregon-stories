@@ -229,6 +229,27 @@ def parentage(o: dict, names: dict[str, str]) -> Parentage:
     return Parentage(SEP + eyebrow, SEP + SEP.join(bits))
 
 
+def dir_relation_html(rel: Parentage) -> str:
+    """Render the directory row's per-row relation note from a `Parentage` — the same
+    object `parentage()` returns for the profile page — reusing its wording verbatim
+    rather than re-deriving it (#13's operator decision, 2026-09-12).
+
+    The profile page's `lede_html` is built to splice into a sentence ("joined on its
+    registry identity{rel.lede_html}"), so it leads with the SEP separator (" · "). A
+    directory cell is not that sentence, so the leading separator is dropped; the rest
+    — the bits already joined by SEP for a body with more than one claimed parent — is
+    kept as-is, because it is the exact wording #12 already reviewed for `settles`
+    (part_of / administered_by) and for the undetermined disclaimer that, by
+    construction, contains neither of those phrases.
+
+    A body with no relation gets back "" and the directory row is unchanged from
+    before #13; this function adds a note, it never nests, groups or indents a row.
+    """
+    if not rel.lede_html:
+        return ""
+    return f'<div class="rel-note">{rel.lede_html[len(SEP):]}</div>'
+
+
 def money(v: float) -> str:
     for cut, suf in ((1e9, "B"), (1e6, "M"), (1e3, "K")):
         if abs(v) >= cut:
@@ -427,15 +448,16 @@ def build_many():
             generated=__import__("datetime").date.today().isoformat())
         pages.append((f"agencies/{slug}.html", page))
         dir_rows.append((o["name"], slug, nrules, sum(vals), len(auds),
-                         f"{met}/{judged}" if judged else "—"))
+                         f"{met}/{judged}" if judged else "—", rel))
 
     dir_rows.sort(key=lambda r: -r[3])
     trs = "".join(
-        f'<tr><td><a href="{slug}.html">{html.escape(name)}</a></td>'
+        f'<tr><td><a href="{slug}.html">{html.escape(name)}</a>'
+        f'{dir_relation_html(rel)}</td>'
         f'<td class="num">{nr:,}</td>'
         f'<td class="num">{money(sp) if sp else "—"}</td>'
         f'<td class="num">{na or "—"}</td><td class="num">{kp}</td></tr>'
-        for name, slug, nr, sp, na, kp in dir_rows)
+        for name, slug, nr, sp, na, kp, rel in dir_rows)
     index = viz.chart_page(
         title=f"{len(reg)} Oregon agencies, profiled from the public record",
         eyebrow="oregon-stories · every corpus, joined on the agency registry",
