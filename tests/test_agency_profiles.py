@@ -4,7 +4,7 @@ The seam is `agency_profiles.parentage(org, names)`: registry row in, the two re
 strings the page shows out. Everything below asserts on that rendered text, because the
 rendered text is the claim the public reads.
 """
-from stories.agency_profiles import parentage
+from stories.agency_profiles import parentage, dir_relation_html
 
 NAMES = {"department-of-agriculture": "Department of Agriculture"}
 
@@ -185,3 +185,57 @@ def test_the_retired_parent_slug_adds_no_parent_beside_the_relations():
     lede = parentage(org, names).lede_html
     assert "Oregon Health Authority" not in lede
     assert "Department of Agriculture" in lede
+
+
+# --- the agency directory's per-row note (issue #13) ----------------------------------
+#
+# The directory (`build_many`'s `dir_rows`/`trs`) used to list all bodies flat, with no
+# mention of `relations` at all. #13's operator decision is a per-row note reusing this
+# same `parentage()` wording rather than nesting or grouping rows into a hierarchy the
+# data cannot support for a mixed `part_of`/`administered_by`/`undetermined` set. The
+# seam is `dir_relation_html(rel)`: a `Parentage` in, the directory cell's note out.
+
+
+def test_a_row_with_no_relation_gets_no_note():
+    """A body with no relation renders exactly as today: nothing added to the cell."""
+    assert dir_relation_html(parentage({"slug": "x"}, NAMES)) == ""
+
+
+def test_undetermined_relation_in_directory_row_names_the_parent_but_claims_no_kind():
+    """Three registry rows are still `undetermined` today (ERF's CONTEXT.md: bodies
+    detached by statute from a parent the OAR chapter registration still names). Their
+    directory row must say they sit under another body, and must assert NEITHER
+    `part_of` NOR `administered_by` — the whole point of #13's per-row decision over
+    nesting, which would have had to pick one."""
+    org = {"slug": "department-of-state-police-office-of-state-fire-marshal",
+           "relations": [{"target": "department-of-state-police",
+                          "source": "oar-index", "kind": "undetermined"}]}
+    names = {**NAMES,
+             "department-of-state-police": "Department of State Police"}
+    note = dir_relation_html(parentage(org, names))
+    assert "Department of State Police" in note
+    assert "department-of-state-police.html" in note
+    assert "part of" not in note
+    assert "administered by" not in note
+
+
+def test_part_of_relation_in_directory_row_says_part_of():
+    """A decided `part_of` relation (33 of the registry's 82 relations today) renders
+    the same wording the profile page uses, with no nesting or indentation implied."""
+    org = {"slug": "x", "relations": [{"target": "department-of-agriculture",
+                                        "source": "registry", "kind": "part_of"}]}
+    note = dir_relation_html(parentage(org, NAMES))
+    assert "part of" in note
+    assert "Department of Agriculture" in note
+
+
+def test_relation_note_is_styled_rather_than_relying_on_an_undefined_class():
+    """No stylesheet in this repo defines `.rel-note`, so the note must carry its own
+    styling (as the profile tiles already do with inline styles) rather than emit a
+    class name that promises styling nothing provides."""
+    org = {"slug": "x", "relations": [{"target": "department-of-agriculture",
+                                        "source": "registry", "kind": "part_of"}]}
+    note = dir_relation_html(parentage(org, NAMES))
+    assert "rel-note" not in note
+    assert "font-size:12px" in note
+    assert "var(--muted)" in note
