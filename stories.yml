@@ -109,13 +109,15 @@ stories:
 - id: conflict_candidates
   status: published
   kind: local
-  title: "Conflict candidates (pilot)"
+  title: "Conflict candidates"
   corpora: [executive-regulatory-frameworks]
   note: >-
     PUBLISHED by operator decision 2026-08-03, with the readability redesign that
     decision required (leads with the candidate-not-finding banner; grouped by
     agency; type/severity charts; filter+search). Every item remains a CANDIDATE —
-    the page says so before anything else.
+    the page says so before anything else. 2026-10-09: no longer framed as a pilot
+    (operator decision) after the chapter-unit screen; coverage is drawn from ERF's
+    coverage ledger, screened against unscreened, never claimed as complete.
 # erf_governor_priorities (kind: external, draft) retired here (oregon-stories#2):
 # its target, executive-regulatory-frameworks/governor-priorities.html, answers 404
 # (verified 2026-10-01) — the condition oregon-stories#2's checklist flagged this

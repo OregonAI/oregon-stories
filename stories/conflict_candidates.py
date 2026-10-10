@@ -1,5 +1,5 @@
-"""Story: the conflict-candidates pilot — a model read Oregon's shared-authority ORS
-chapters against their implementing OAR rules and flagged candidate inconsistencies.
+"""Story: conflict candidates — a model read Oregon's shared-authority ORS chapters
+against their implementing OAR rules and flagged candidate inconsistencies.
 
 Every item is a CANDIDATE awaiting human/legal review; none is a finding, all are
 currently unreviewed, and the page is built to say so before it says anything else —
@@ -7,7 +7,9 @@ the audience may include state leadership, and unreviewed AI output must never r
 as findings.
 
 Data: ERF's _meta/conflict_candidates.json (curated, AI-assisted, not mechanically
-derived). Its `mechanical` payload is dropped here — the dead-citation scan has other
+derived) and its coverage ledger, _meta/catalog/conflict-coverage.yml — the page states
+what was screened from the ledger, never from prose. The dataset's `mechanical` payload
+is dropped here — the dead-citation scan has other
 homes (the county-code-cites-dead-law story; resolve_citation itself).
 
 First story in this repo with client-side filtering. The JS is hand-written and passed
@@ -23,6 +25,8 @@ from __future__ import annotations
 import html
 import json
 import re
+
+import yaml
 from collections import Counter, defaultdict
 
 from corpus_toolkit import viz
@@ -34,7 +38,7 @@ SLUG = "conflict-candidates"
 esc = html.escape
 
 # Model-assigned type labels, slug -> readable. `narrowing` is folded into `narrows`
-# (same concept, two spellings across pilot batches); candidates with no type at all
+# (same concept, two spellings across early runs); candidates with no type at all
 # render as "untyped" and sort last, in muted ink.
 TYPE_LABELS = {
     "wrong_authority": "wrong authority",
@@ -63,6 +67,19 @@ _CSS = """<style>
 .lede strong{display:block;background:var(--surface);border:1px solid var(--border);
   border-left:4px solid #fab219;border-radius:8px;padding:10px 14px;color:var(--ink);
   font-size:15.5px;line-height:1.5}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;
+  margin:4px 0 14px}
+.tile{background:var(--surface);border:1px solid var(--border);border-radius:10px;
+  padding:14px 16px}
+.tile .n{font-size:28px;font-weight:650;line-height:1.1;color:var(--ink);
+  font-variant-numeric:tabular-nums}
+.tile .n small{font-size:14px;font-weight:500;color:var(--muted)}
+.tile .k{font-size:12.5px;color:var(--ink2);margin-top:5px}
+.covkey{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:12.5px;color:var(--ink2);
+  margin:8px 0 0}
+.covkey i{display:inline-block;width:10px;height:10px;border-radius:2px;
+  margin-right:6px;vertical-align:-1px}
+.covnote{font-size:12.5px;color:var(--muted);margin:8px 0 0;max-width:80ch}
 .filterbar{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;font-size:13px}
 .filterbar label{color:var(--muted);font-weight:600}
 .filterbar select,.filterbar input{font:inherit;font-size:13px;padding:6px 9px;
@@ -108,7 +125,8 @@ document.querySelectorAll('svg [data-n]').forEach(function(el){
     tip.textContent = '';
     var v = document.createElement('strong');
     v.textContent = Number(el.dataset.n).toLocaleString() + ' of ' +
-      TOTAL.toLocaleString() + ' candidates ';
+      Number(el.dataset.of || TOTAL).toLocaleString() + ' ' +
+      (el.dataset.unit || 'candidates') + ' ';
     tip.appendChild(v);
     tip.appendChild(document.createTextNode(el.dataset.what));
     tip.style.display = 'block';
@@ -233,9 +251,10 @@ def build() -> tuple[str, str, str]:
     # (the county-code-cites-dead-law story; resolve_citation answers renumbered/
     # repealed sections directly). This page's single job is the model candidates.
     data.pop("mechanical", None)
+    cov = yaml.safe_load(fetch(f"{RAW}/{ERF}/main/_meta/catalog/conflict-coverage.yml",
+                               "ERF conflict-coverage ledger"))
 
     n_cand = data["n_candidates"]
-    n_chapters = data["n_chapters"]
     names = {a["slug"]: a["name"] for a in data["all_agencies"]}
     names["unattributed"] = "No agency attributed"
 
@@ -250,7 +269,7 @@ def build() -> tuple[str, str, str]:
     for ch in data["chapters"]:
         for c in ch["candidates"]:
             t = c.get("type") or "untyped"
-            if t == "narrowing":            # two spellings across pilot batches
+            if t == "narrowing":            # two spellings across early runs
                 t = "narrows"
             slugs = c.get("agency_slugs") or []
             first = slugs[0] if slugs else "unattributed"
@@ -335,8 +354,7 @@ def build() -> tuple[str, str, str]:
         n = len(group)
         meta = f'{n:,} candidate{"s" if n != 1 else ""}'
         if slug == "unattributed":
-            meta += (" · the pilot did not attribute these to a specific "
-                     "agency’s rules")
+            meta += " · not attributed to a specific agency’s rules"
         sections.append(f'<section class="agsec" data-agency="{esc(slug)}">'
                         f'<h2>{esc(names[slug])}</h2>'
                         f'<p class="agmeta">{meta}</p>{"".join(cards)}</section>')
@@ -375,8 +393,66 @@ def build() -> tuple[str, str, str]:
         f'<span class="qv qv-no">not found in source</span> read the source before '
         f'relying on it.</p>')
 
+    # ---- coverage, from the ledger: sections (the unit actually compared) by the depth
+    # their chapter reached. Partial chapters count only the sections really screened.
+    cs = cov["summary"]
+    n_univ = cs["shared_authority_chapters"]
+    n_full, n_part, n_none = (cs.get("chapter", 0), cs.get("sections-partial", 0),
+                              cs.get("unscreened", 0))
+    sec_total = cs["sections_with_rules_total"]
+    sec_full = sum(r["sections_screened"] for r in cov["chapters"]
+                   if r["depth"] == "chapter")
+    sec_part = cs["sections_screened_total"] - sec_full
+    sec_none = sec_total - sec_full - sec_part
+    tri = data["triage_counts"]
+    n_reviewed = tri.get("confirmed", 0) + tri.get("dismissed", 0)
+    pct = round(100 * (sec_full + sec_part) / sec_total)
+
+    def tile(n: str, k: str) -> str:
+        return f'<div class="tile"><div class="n">{n}</div><div class="k">{k}</div></div>'
+    tiles = ('<div class="tiles">'
+             + tile(f"{n_cand:,}", "candidates, each with the quoted text it rests on")
+             + tile(f"{n_full} <small>of {n_univ}</small>",
+                    "multi-agency ORS chapters read in full")
+             + tile(f"{pct}% <small>of {sec_total:,}</small>",
+                    "statute sections with implementing rules screened")
+             + tile(f"{n_reviewed:,} <small>of {n_cand:,}</small>",
+                    "candidates reviewed by a person so far")
+             + "</div>")
+
+    W, BH = 880, 22
+    segs = [(sec_full, "var(--s1)", "1", "in chapters read in full"),
+            (sec_part, "var(--s1)", ".45", "screened in chapters read only in part"),
+            (sec_none, "var(--muted)", ".35", "not yet screened")]
+    x, parts = 0.0, []
+    for n, fill, op, what in segs:
+        w = W * n / sec_total
+        if n:
+            parts.append(f'<rect x="{x:.1f}" y="4" width="{max(w - 2, 1):.1f}" '
+                         f'height="{BH}" rx="3" fill="{fill}" fill-opacity="{op}" '
+                         f'data-n="{n}" data-of="{sec_total}" '
+                         f'data-unit="statute sections" data-what="{esc(what)}"/>')
+        x += w
+    svg_cov = (f'<svg viewBox="0 0 {W} {BH + 8}" role="img" aria-label="Statute '
+               f'sections by screening depth: {sec_full:,} in chapters read in full, '
+               f'{sec_part:,} in chapters read in part, {sec_none:,} not yet '
+               f'screened">{"".join(parts)}</svg>')
+    covkey = "".join(
+        f'<span><i style="background:{fill};opacity:{op}"></i>'
+        f'<b>{n:,}</b> {esc(what)}</span>' for n, fill, op, what in segs)
+    coverage = (
+        f'<div class="panel"><h2 style="font-size:14px;margin:0 0 8px">What has been '
+        f'screened: {sec_total:,} statute sections that have implementing rules</h2>'
+        f'{svg_cov}<div class="covkey">{covkey}</div>'
+        f'<p class="covnote">The screen covers the {n_univ} ORS chapters under which '
+        f'two or more agencies write rules: {n_full} read in full, {n_part} in part, '
+        f'{n_none} not at all. Chapters with a single rulemaking agency are outside '
+        f'it. A chapter with no candidates has not been shown to be consistent.</p>'
+        f'</div>')
+
     body = (
         _CSS
+        + tiles + coverage
         + f'<div class="panel"><h2 style="font-size:14px;margin:0 0 8px">Candidates '
           f'by model-assigned type</h2>{svg_types}</div>'
         + f'<div class="panel"><h2 style="font-size:14px;margin:0 0 8px">Where they '
@@ -393,31 +469,33 @@ def build() -> tuple[str, str, str]:
             f'{n_cand:,} are currently unreviewed.</strong>')
 
     sev = data["severity_counts"]
-    tri = data["triage_counts"]
     rules_total = sum(ch.get("rules_reviewed") or 0 for ch in data["chapters"])
     n_graded = n_cand - sev.get("ungraded", 0)
     caveats = (
-        f"<p><b>Coverage is a pilot, not a sweep.</b> The model read {n_chapters} "
-        f"ORS chapters — those in the shared-authority set, where multiple "
-        f"agencies implement the same statute — reviewing {rules_total:,} rules; "
-        f"{data.get('n_clean_chapters', 0)} chapters came back with no candidates. "
-        f"The rest of the ORS is simply unexamined, so absence from this page is not "
-        f"evidence of consistency. <b>Quotes were checked against the corpus "
+        f"<p><b>Coverage is partial, and stated from the ledger.</b> Of the "
+        f"{n_univ} ORS chapters under which two or more agencies write rules, "
+        f"{n_full} were read in full, {n_part} in part and {n_none} not at all "
+        f"— {sec_full + sec_part:,} of {sec_total:,} statute sections that have "
+        f"implementing rules. {rules_total:,} rule readings went into it, and "
+        f"{data.get('n_clean_chapters', 0)} chapters produced no candidates. "
+        f"<b>The screen misses things.</b> Scored against chapters with known "
+        f"candidates, the model behind most of this page recovered a minority of "
+        f"them (figures in the provenance note below), so absence from this page is "
+        f"not evidence of consistency. <b>Quotes were checked against the corpus "
         f"mechanically:</b> of {data['n_docs_verified']:,} quoted passages, "
         f"{data['n_quotes_grounded']:,} were found verbatim in the cited document, "
         f"{data['n_quotes_absence_claim']} assert an omission (nothing to match), and "
         f"{data['n_quotes_ungrounded']} could not be located verbatim — read "
-        f"those against the source before relying on them. <b>Severity is mostly "
-        f"absent and never human:</b> {sev.get('ungraded', 0):,} of {n_cand:,} "
-        f"candidates carry no grade at all, and the {n_graded} that do were graded "
-        f"by the model, not a person. <b>Human triage stands at "
-        f"{tri.get('unreviewed', 0):,} unreviewed, {tri.get('confirmed', 0)} "
-        f"confirmed, {tri.get('dismissed', 0)} dismissed.</b> "
-        f"{data.get('n_candidates_citing_repealed', 0)} candidates rest on a rule "
-        f"that has since been repealed (tagged on the card) — a repealed rule "
-        f"binds nobody. <b>Publishing this page (2026-08-03, an operator decision) "
-        f"publishes candidates, not findings</b>: presence here is not evidence that "
-        f"a conflict exists, and nothing here is legal advice or legal review.</p>"
+        f"those against the source before relying on them. <b>Severity is the "
+        f"model’s grade, never a person’s:</b> {n_graded:,} of {n_cand:,} "
+        f"candidates carry one and {sev.get('ungraded', 0):,} carry none. <b>Human "
+        f"triage stands at {tri.get('unreviewed', 0):,} unreviewed, "
+        f"{tri.get('confirmed', 0)} confirmed, {tri.get('dismissed', 0)} "
+        f"dismissed.</b> {data.get('n_candidates_citing_repealed', 0)} candidates "
+        f"rest on a rule that has since been repealed (tagged on the card) — a "
+        f"repealed rule binds nobody. <b>These are candidates, not findings</b>: "
+        f"presence here is not evidence that a conflict exists, and nothing here is "
+        f"legal advice or legal review.</p>"
         f"<details><summary>Full provenance note and methodology</summary>"
         f"<p>{esc(data.get('note') or '')}</p>"
         f"<p><b>Methodology:</b> {esc(data.get('methodology') or '')}</p>"
@@ -428,13 +506,13 @@ def build() -> tuple[str, str, str]:
     page = viz.chart_page(
         title=title,
         eyebrow="oregon-stories · from the executive-regulatory-frameworks "
-                "corpus · AI-assisted pilot",
+                "corpus · AI-assisted screen",
         lede_html=lede, body_html=body, caveats_html=caveats,
         sources=sources_for_footer(),
         generated=__import__("datetime").date.today().isoformat(),
         script=f"var TOTAL = {n_cand};" + _SCRIPT)
     assert_dom_contract(page)
-    claim = (f"{n_cand:,} candidate statute/rule inconsistencies across "
-             f"{n_chapters} ORS chapters — every one awaiting human review, "
-             f"none a finding")
+    claim = (f"{n_cand:,} candidate statute/rule inconsistencies from a screen of "
+             f"{n_full + n_part} of {n_univ} multi-agency ORS chapters — every one "
+             f"awaiting human review, none a finding")
     return SLUG, claim, page
