@@ -37,6 +37,14 @@ def _chapter_of(ors_id: str) -> str:
     return ors_id.split("-")[1].split(".")[0]
 
 
+def _implementing_edges(edges: list[dict]) -> list[dict]:
+    """The edges both the bars and the stated figures count: statute -> OAR rule
+    `implemented_by` (not the ors -> das policy edges the same graph carries)."""
+    return [e for e in edges
+            if e["type"] == "implemented_by" and e["from"].startswith("ors-")
+            and e["to"].startswith("oar-")]
+
+
 def rank_chapters(edges: list[dict], orgs: list[dict],
                   chapters: list[dict]) -> tuple[list[dict], int]:
     """(rows, total_links). One row per ORS chapter with at least one implementing OAR
@@ -48,10 +56,7 @@ def rank_chapters(edges: list[dict], orgs: list[dict],
     titles = {c["chapter"].lower(): c.get("title", "") for c in chapters}
     total: Counter = Counter()
     by_agency: dict[str, Counter] = defaultdict(Counter)
-    for e in edges:
-        if e["type"] != "implemented_by" or not e["from"].startswith("ors-") \
-                or not e["to"].startswith("oar-"):
-            continue
+    for e in _implementing_edges(edges):
         ch = _chapter_of(e["from"])
         org = by_oar.get(e["to"].split("-")[1])
         agency = (org.get("name") or org["slug"]) if org else UNASSIGNED
@@ -71,10 +76,7 @@ def link_stats(edges: list[dict]) -> dict:
     distinct OAR rules, and distinct (ORS chapter, rule) pairs (what 'rules per
     chapter' would be). The page states all three so the unit is never ambiguous."""
     links, rules, pairs = 0, set(), set()
-    for e in edges:
-        if e["type"] != "implemented_by" or not e["from"].startswith("ors-") \
-                or not e["to"].startswith("oar-"):
-            continue
+    for e in _implementing_edges(edges):
         links += 1
         rules.add(e["to"])
         pairs.add((_chapter_of(e["from"]), e["to"]))
@@ -170,8 +172,9 @@ def render(rows: list[dict], total_links: int, stats: dict | None = None,
                 f"bar as volume of citation, not as a count of rules.")
     caveats = (
         "<p><b>This counts rule-to-statute links in a mechanically derived graph, not "
-        "legal effect.</b> Each OAR rule's cited authority is linked to the ORS chapter "
-        "it names. THE UNIT IS A LINK, NOT A RULE: one link per (ORS section, OAR rule) "
+        "legal effect.</b> Each OAR rule's \u201cStatutes/Other Implemented\u201d "
+        "citations are linked to the ORS sections they name, then rolled up to the "
+        "chapter; a repealed rule contributes no links. THE UNIT IS A LINK, NOT A RULE: one link per (ORS section, OAR rule) "
         "pair, so a rule citing three sections of one chapter adds three, and a rule "
         "citing several chapters adds to each." + unit + " A chapter that no mapped rule cites does not "
         "appear here at all, and absence from the graph is not evidence that no rule "

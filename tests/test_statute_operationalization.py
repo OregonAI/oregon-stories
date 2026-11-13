@@ -67,7 +67,18 @@ def test_top_keeps_four_agencies_and_agencies_counts_all():
     assert len(r97["top"]) == 4 and r97["agencies"] == 7
 
 
+FETCHED_URLS = []
+
+
+def _caveats(page):
+    """The caveats section, which only this story supplies (the shell adds its own
+    heading and disclaimer outside it)."""
+    start = page.index("Read this before quoting the chart")
+    return page[start:page.index("</div>", start)]
+
+
 def _fake_fetch(url, label):
+    FETCHED_URLS.append(url)
     if url.endswith("graph.json"):
         body = {"nodes": [], "edges": FX["edges"]}
     elif url.endswith("agencies.yml"):
@@ -82,20 +93,37 @@ def _fake_fetch(url, label):
 
 
 def test_build_renders_a_page_from_the_fetched_artifacts_without_network(monkeypatch):
+    FETCHED_URLS.clear()
     monkeypatch.setattr(so, "fetch", _fake_fetch)
     slug, claim, page = so.build()
     assert slug == "statute-operationalization"
     assert "4 ORS chapters" in claim
-    assert "Non-authoritative" in page
     assert "ORS 97" in page or '"ch":"97"' in page
-    # never reads a corpus repo's rendered page
-    assert "viz/" not in page
+    # never reads a corpus repo's rendered page: every input is a raw _meta artifact
+    assert FETCHED_URLS and all("/main/_meta/" in u for u in FETCHED_URLS)
+    # build() hands link_stats to render: figures computed independently from the edges
+    impl = [e for e in FX["edges"] if e["type"] == "implemented_by"
+            and e["from"].startswith("ors-") and e["to"].startswith("oar-")]
+    rules = {e["to"] for e in impl}
+    pairs = {(e["from"].split("-")[1].split(".")[0], e["to"]) for e in impl}
+    assert f"{len(impl):,} links run between {len(rules):,} distinct rules" in page
+    assert f"({len(pairs):,} chapter" in page
 
 
-def test_page_states_the_counts_are_rules_naming_a_chapter_not_a_verdict():
+def test_caveats_state_the_unit_and_the_coverage_gap_in_the_stories_own_words():
+    rows, total = _rank()
+    cav = _caveats(so.render(rows, total))
+    assert "THE UNIT IS A LINK, NOT A RULE" in cav
+    assert "absence from the graph is not evidence" in cav
+
+
+def test_caveats_describe_the_source_as_statutes_implemented_not_cited_authority():
     rows, total = _rank()
     page = so.render(rows, total)
-    assert "not" in page.lower() and "Non-authoritative" in page
+    assert ("Each OAR rule's \u201cStatutes/Other Implemented\u201d citations are linked to "
+            "the ORS sections they name, then rolled up to the chapter; a repealed rule "
+            "contributes no links.") in _caveats(page)
+    assert "cited authority" not in page
 
 
 def test_link_stats_separates_links_from_distinct_rules_and_chapter_rule_pairs():
@@ -105,6 +133,7 @@ def test_link_stats_separates_links_from_distinct_rules_and_chapter_rule_pairs()
         {"from": "ors-2.001", "to": "oar-100-001-0010", "type": "implemented_by"},  # same rule, 2nd chapter
         {"from": "ors-2.001", "to": "oar-100-001-0020", "type": "implemented_by"},
         {"from": "oar-100-001-0020", "to": "ors-2.001", "type": "implements"},      # ignored
+        {"from": "ors-2.001", "to": "das-policy-1", "type": "implemented_by"},      # not a rule
     ]
     assert so.link_stats(edges) == {"links": 4, "rules": 2, "chapter_rule_pairs": 3}
 
@@ -115,3 +144,8 @@ def test_page_labels_the_unit_as_links_and_states_the_distinct_rule_count_from_d
     page = so.render(rows, total, stats=stats)
     assert "rule-to-section links" in page
     assert "10 links" in page and "4 distinct rules" in page and "6 chapter" in page
+
+
+def test_link_stats_links_equal_the_total_the_bars_are_drawn_from():
+    _, total = _rank()
+    assert so.link_stats(FX["edges"])["links"] == total

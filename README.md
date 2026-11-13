@@ -34,9 +34,9 @@ repo's own Pages site). Each port is one small PR; the first to follow this reci
 3. **Port the data shaping as pure functions** in `stories/<id>.py` (the module name is
    the manifest id), with the page as a `render(...)` function and `build()` doing only
    `fetch(...)` through `data_sources.fetch` so the footer cites each artifact's hash.
-   Reproduce what the chart shows; a port is not a redesign. Where the original's label
-   claims more than the data supports, keep the numbers and fix the label (state it in
-   the PR).
+   Reproduce what the chart shows; a port is not a redesign. If a label claims more
+   than the data supports, flag the mismatch in the PR for the owner; do not change
+   framing without that sign-off.
 4. **Test first, offline.** Commit an *excerpt* of the real artifacts under
    `tests/fixtures/` (whole-chapter slices, so counts are real, not hand-typed) together
    with the rows the corpus's own page carries for those slices (`expected_rows`) as the
