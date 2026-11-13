@@ -77,6 +77,8 @@ stories:
    title: "Regulatory freshness", corpora: [executive-regulatory-frameworks]}
 - {id: policy_age, status: published, kind: local,
    title: "Policy age", corpora: [executive-regulatory-frameworks]}
+- {id: statute_operationalization, status: published, kind: local,
+   title: "Statutes, operationalized", corpora: [executive-regulatory-frameworks]}
 
 # ── external: rendering on corpus pages until their ports land ────────────────
 - id: one_thread_pers
@@ -91,9 +93,6 @@ stories:
 - {id: erf_authority_explorer,      status: published, kind: external, corpora: [executive-regulatory-frameworks], title: "The authority explorer",
    claim: "Walk any document's authority neighborhood, up and down",
    url: "https://oregonai.github.io/executive-regulatory-frameworks/authority-explorer.html"}
-- {id: erf_statute_operationalization, status: published, kind: external, corpora: [executive-regulatory-frameworks], title: "Statutes, operationalized",
-   claim: "Which ORS chapters spawn the most rules — and which lie dormant",
-   url: "https://oregonai.github.io/executive-regulatory-frameworks/statute-operationalization.html"}
 - {id: erf_policy_documentation_gap, status: published, kind: external, corpora: [executive-regulatory-frameworks], title: "The policy documentation gap",
    claim: "93 agencies write rules; 9 have internal policy anywhere public",
    url: "https://oregonai.github.io/executive-regulatory-frameworks/policy-documentation-gap.html"}

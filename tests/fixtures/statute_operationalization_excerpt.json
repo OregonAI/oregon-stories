@@ -1,0 +1,1376 @@
+{
+"_provenance": "Excerpt of executive-regulatory-frameworks @ 50f77ca4b4de (origin/main, 2026-11-12): _meta/graph.json edges touching ORS chapters 10, 97, 464, 543A; the _meta/catalog/agencies.yml organizations those rules' OAR chapters name (slug, name, oar_chapter); _meta/catalog/ors.yml chapter titles; and expected_rows = those chapters' rows as ERF's own viz/statute-operationalization.html (built by src/build_statute_fan.py) carries them - the independent oracle the port must reproduce.",
+"edges": [
+{
+"from": "das-60-000-12",
+"to": "ors-10.061",
+"type": "implements"
+},
+{
+"from": "das-60-000-12",
+"to": "ors-10.090",
+"type": "implements"
+},
+{
+"from": "deq-imd-7070287",
+"to": "ors-97.740",
+"type": "implements"
+},
+{
+"from": "eo-20-60",
+"to": "ors-97.745",
+"type": "implements"
+},
+{
+"from": "oar-137-025-0020",
+"to": "ors-464.250",
+"type": "implements"
+},
+{
+"from": "oar-137-025-0060",
+"to": "ors-464.250",
+"type": "implements"
+},
+{
+"from": "oar-137-025-0060",
+"to": "ors-464.280",
+"type": "implements"
+},
+{
+"from": "oar-137-025-0060",
+"to": "ors-464.510",
+"type": "implements"
+},
+{
+"from": "oar-137-025-0070",
+"to": "ors-464.250",
+"type": "implements"
+},
+{
+"from": "oar-137-025-0080",
+"to": "ors-464.250",
+"type": "implements"
+},
+{
+"from": "oar-137-025-0090",
+"to": "ors-464.250",
+"type": "implements"
+},
+{
+"from": "oar-137-025-0090",
+"to": "ors-464.280",
+"type": "implements"
+},
+{
+"from": "oar-137-025-0091",
+"to": "ors-464.280",
+"type": "implements"
+},
+{
+"from": "oar-137-025-0100",
+"to": "ors-464.250",
+"type": "implements"
+},
+{
+"from": "oar-137-025-0110",
+"to": "ors-464.250",
+"type": "implements"
+},
+{
+"from": "oar-137-025-0120",
+"to": "ors-464.250",
+"type": "implements"
+},
+{
+"from": "oar-137-025-0130",
+"to": "ors-464.250",
+"type": "implements"
+},
+{
+"from": "oar-137-025-0140",
+"to": "ors-464.250",
+"type": "implements"
+},
+{
+"from": "oar-137-025-0150",
+"to": "ors-464.250",
+"type": "implements"
+},
+{
+"from": "oar-137-025-0160",
+"to": "ors-464.250",
+"type": "implements"
+},
+{
+"from": "oar-137-025-0170",
+"to": "ors-464.250",
+"type": "implements"
+},
+{
+"from": "oar-137-025-0189",
+"to": "ors-464.250",
+"type": "implements"
+},
+{
+"from": "oar-137-025-0191",
+"to": "ors-464.310",
+"type": "implements"
+},
+{
+"from": "oar-137-025-0200",
+"to": "ors-464.250",
+"type": "implements"
+},
+{
+"from": "oar-137-025-0210",
+"to": "ors-464.250",
+"type": "implements"
+},
+{
+"from": "oar-137-025-0210",
+"to": "ors-464.280",
+"type": "implements"
+},
+{
+"from": "oar-137-025-0220",
+"to": "ors-464.250",
+"type": "implements"
+},
+{
+"from": "oar-137-025-0230",
+"to": "ors-464.250",
+"type": "implements"
+},
+{
+"from": "oar-137-025-0240",
+"to": "ors-464.250",
+"type": "implements"
+},
+{
+"from": "oar-137-025-0250",
+"to": "ors-464.250",
+"type": "implements"
+},
+{
+"from": "oar-137-025-0260",
+"to": "ors-464.250",
+"type": "implements"
+},
+{
+"from": "oar-137-025-0270",
+"to": "ors-464.250",
+"type": "implements"
+},
+{
+"from": "oar-137-025-0280",
+"to": "ors-464.250",
+"type": "implements"
+},
+{
+"from": "oar-137-025-0290",
+"to": "ors-464.250",
+"type": "implements"
+},
+{
+"from": "oar-137-025-0291",
+"to": "ors-464.250",
+"type": "implements"
+},
+{
+"from": "oar-137-025-0310",
+"to": "ors-464.250",
+"type": "implements"
+},
+{
+"from": "oar-137-025-0400",
+"to": "ors-464.250",
+"type": "implements"
+},
+{
+"from": "oar-137-025-0435",
+"to": "ors-464.250",
+"type": "implements"
+},
+{
+"from": "oar-137-025-0450",
+"to": "ors-464.250",
+"type": "implements"
+},
+{
+"from": "oar-137-025-0475",
+"to": "ors-464.250",
+"type": "implements"
+},
+{
+"from": "oar-137-025-0480",
+"to": "ors-464.250",
+"type": "implements"
+},
+{
+"from": "oar-137-025-0530",
+"to": "ors-464.250",
+"type": "implements"
+},
+{
+"from": "oar-170-050-0010",
+"to": "ors-97.820",
+"type": "implements"
+},
+{
+"from": "oar-333-056-0045",
+"to": "ors-97.010",
+"type": "implements"
+},
+{
+"from": "oar-333-056-0045",
+"to": "ors-97.745",
+"type": "implements"
+},
+{
+"from": "oar-340-048-0020",
+"to": "ors-543a.095",
+"type": "implements"
+},
+{
+"from": "oar-340-048-0037",
+"to": "ors-543a.100",
+"type": "implements"
+},
+{
+"from": "oar-340-048-0037",
+"to": "ors-543a.110",
+"type": "implements"
+},
+{
+"from": "oar-340-048-0042",
+"to": "ors-543a.025",
+"type": "implements"
+},
+{
+"from": "oar-340-048-0045",
+"to": "ors-543a.025",
+"type": "implements"
+},
+{
+"from": "oar-345-050-0025",
+"to": "ors-97.153",
+"type": "implements"
+},
+{
+"from": "oar-413-090-0400",
+"to": "ors-97.170",
+"type": "implements"
+},
+{
+"from": "oar-441-001-0030",
+"to": "ors-97.948",
+"type": "implements"
+},
+{
+"from": "oar-441-930-0010",
+"to": "ors-97.926",
+"type": "implements"
+},
+{
+"from": "oar-441-930-0030",
+"to": "ors-97.935",
+"type": "implements"
+},
+{
+"from": "oar-441-930-0035",
+"to": "ors-97.935",
+"type": "implements"
+},
+{
+"from": "oar-441-930-0045",
+"to": "ors-97.935",
+"type": "implements"
+},
+{
+"from": "oar-441-930-0065",
+"to": "ors-97.935",
+"type": "implements"
+},
+{
+"from": "oar-441-930-0068",
+"to": "ors-97.935",
+"type": "implements"
+},
+{
+"from": "oar-441-930-0070",
+"to": "ors-97.935",
+"type": "implements"
+},
+{
+"from": "oar-441-930-0070",
+"to": "ors-97.947",
+"type": "implements"
+},
+{
+"from": "oar-441-930-0080",
+"to": "ors-97.935",
+"type": "implements"
+},
+{
+"from": "oar-441-930-0085",
+"to": "ors-97.935",
+"type": "implements"
+},
+{
+"from": "oar-441-930-0210",
+"to": "ors-97.933",
+"type": "implements"
+},
+{
+"from": "oar-441-930-0210",
+"to": "ors-97.948",
+"type": "implements"
+},
+{
+"from": "oar-441-930-0220",
+"to": "ors-97.933",
+"type": "implements"
+},
+{
+"from": "oar-441-930-0230",
+"to": "ors-97.933",
+"type": "implements"
+},
+{
+"from": "oar-441-930-0240",
+"to": "ors-97.933",
+"type": "implements"
+},
+{
+"from": "oar-441-930-0250",
+"to": "ors-97.933",
+"type": "implements"
+},
+{
+"from": "oar-441-930-0255",
+"to": "ors-97.933",
+"type": "implements"
+},
+{
+"from": "oar-441-930-0260",
+"to": "ors-97.947",
+"type": "implements"
+},
+{
+"from": "oar-441-930-0267",
+"to": "ors-97.939",
+"type": "implements"
+},
+{
+"from": "oar-441-930-0267",
+"to": "ors-97.943",
+"type": "implements"
+},
+{
+"from": "oar-441-930-0270",
+"to": "ors-97.933",
+"type": "implements"
+},
+{
+"from": "oar-441-930-0270",
+"to": "ors-97.935",
+"type": "implements"
+},
+{
+"from": "oar-441-930-0290",
+"to": "ors-97.933",
+"type": "implements"
+},
+{
+"from": "oar-441-930-0290",
+"to": "ors-97.935",
+"type": "implements"
+},
+{
+"from": "oar-441-930-0290",
+"to": "ors-97.941",
+"type": "implements"
+},
+{
+"from": "oar-441-930-0290",
+"to": "ors-97.948",
+"type": "implements"
+},
+{
+"from": "oar-441-930-0300",
+"to": "ors-97.933",
+"type": "implements"
+},
+{
+"from": "oar-441-930-0300",
+"to": "ors-97.935",
+"type": "implements"
+},
+{
+"from": "oar-441-930-0310",
+"to": "ors-97.948",
+"type": "implements"
+},
+{
+"from": "oar-441-930-0320",
+"to": "ors-97.936",
+"type": "implements"
+},
+{
+"from": "oar-441-930-0320",
+"to": "ors-97.948",
+"type": "implements"
+},
+{
+"from": "oar-441-930-0330",
+"to": "ors-97.947",
+"type": "implements"
+},
+{
+"from": "oar-441-930-0350",
+"to": "ors-97.945",
+"type": "implements"
+},
+{
+"from": "oar-441-930-0360",
+"to": "ors-97.929",
+"type": "implements"
+},
+{
+"from": "oar-690-054-0000",
+"to": "ors-543a.305",
+"type": "implements"
+},
+{
+"from": "oar-690-054-0010",
+"to": "ors-543a.305",
+"type": "implements"
+},
+{
+"from": "oar-690-054-0020",
+"to": "ors-543a.305",
+"type": "implements"
+},
+{
+"from": "oar-690-054-0030",
+"to": "ors-543a.305",
+"type": "implements"
+},
+{
+"from": "oar-690-054-0040",
+"to": "ors-543a.305",
+"type": "implements"
+},
+{
+"from": "oar-690-054-0050",
+"to": "ors-543a.305",
+"type": "implements"
+},
+{
+"from": "oar-690-054-0060",
+"to": "ors-543a.305",
+"type": "implements"
+},
+{
+"from": "oar-690-054-0070",
+"to": "ors-543a.305",
+"type": "implements"
+},
+{
+"from": "oar-690-054-0080",
+"to": "ors-543a.305",
+"type": "implements"
+},
+{
+"from": "oar-736-051-0020",
+"to": "ors-97.740",
+"type": "implements"
+},
+{
+"from": "oar-736-051-0020",
+"to": "ors-97.750",
+"type": "implements"
+},
+{
+"from": "oar-736-054-0000",
+"to": "ors-97.780",
+"type": "implements"
+},
+{
+"from": "oar-736-054-0005",
+"to": "ors-97.780",
+"type": "implements"
+},
+{
+"from": "oar-736-054-0010",
+"to": "ors-97.780",
+"type": "implements"
+},
+{
+"from": "oar-736-054-0015",
+"to": "ors-97.780",
+"type": "implements"
+},
+{
+"from": "oar-736-054-0020",
+"to": "ors-97.780",
+"type": "implements"
+},
+{
+"from": "oar-736-054-0025",
+"to": "ors-97.780",
+"type": "implements"
+},
+{
+"from": "oar-736-054-0030",
+"to": "ors-97.780",
+"type": "implements"
+},
+{
+"from": "oar-830-011-0000",
+"to": "ors-97.931",
+"type": "implements"
+},
+{
+"from": "oar-830-011-0070",
+"to": "ors-97.931",
+"type": "implements"
+},
+{
+"from": "oar-830-011-0080",
+"to": "ors-97.931",
+"type": "implements"
+},
+{
+"from": "oar-830-020-0040",
+"to": "ors-97.931",
+"type": "implements"
+},
+{
+"from": "oar-830-030-0010",
+"to": "ors-97.130",
+"type": "implements"
+},
+{
+"from": "oar-830-040-0090",
+"to": "ors-97.170",
+"type": "implements"
+},
+{
+"from": "oar-830-050-0050",
+"to": "ors-97.931",
+"type": "implements"
+},
+{
+"from": "oar-839-005-0130",
+"to": "ors-10.090",
+"type": "implements"
+},
+{
+"from": "oar-839-005-0135",
+"to": "ors-10.090",
+"type": "implements"
+},
+{
+"from": "oha-osh-6-005",
+"to": "ors-97.082",
+"type": "implements"
+},
+{
+"from": "oha-osh-6-005",
+"to": "ors-97.130",
+"type": "implements"
+},
+{
+"from": "oha-osh-6-005",
+"to": "ors-97.160",
+"type": "implements"
+},
+{
+"from": "oha-osh-6-005",
+"to": "ors-97.170",
+"type": "implements"
+},
+{
+"from": "oha-osh-6-005",
+"to": "ors-97.190",
+"type": "implements"
+},
+{
+"from": "oha-osh-6-005",
+"to": "ors-97.951",
+"type": "implements"
+},
+{
+"from": "oha-osh-6-005",
+"to": "ors-97.985",
+"type": "implements"
+},
+{
+"from": "oha-osh-9-002",
+"to": "ors-97.951",
+"type": "implements"
+},
+{
+"from": "oha-osh-9-002",
+"to": "ors-97.978",
+"type": "implements"
+},
+{
+"from": "ors-10.061",
+"to": "das-60-000-12",
+"type": "implemented_by"
+},
+{
+"from": "ors-10.090",
+"to": "das-60-000-12",
+"type": "implemented_by"
+},
+{
+"from": "ors-10.090",
+"to": "oar-839-005-0130",
+"type": "implemented_by"
+},
+{
+"from": "ors-10.090",
+"to": "oar-839-005-0135",
+"type": "implemented_by"
+},
+{
+"from": "ors-464.250",
+"to": "oar-137-025-0020",
+"type": "implemented_by"
+},
+{
+"from": "ors-464.250",
+"to": "oar-137-025-0060",
+"type": "implemented_by"
+},
+{
+"from": "ors-464.250",
+"to": "oar-137-025-0070",
+"type": "implemented_by"
+},
+{
+"from": "ors-464.250",
+"to": "oar-137-025-0080",
+"type": "implemented_by"
+},
+{
+"from": "ors-464.250",
+"to": "oar-137-025-0090",
+"type": "implemented_by"
+},
+{
+"from": "ors-464.250",
+"to": "oar-137-025-0100",
+"type": "implemented_by"
+},
+{
+"from": "ors-464.250",
+"to": "oar-137-025-0110",
+"type": "implemented_by"
+},
+{
+"from": "ors-464.250",
+"to": "oar-137-025-0120",
+"type": "implemented_by"
+},
+{
+"from": "ors-464.250",
+"to": "oar-137-025-0130",
+"type": "implemented_by"
+},
+{
+"from": "ors-464.250",
+"to": "oar-137-025-0140",
+"type": "implemented_by"
+},
+{
+"from": "ors-464.250",
+"to": "oar-137-025-0150",
+"type": "implemented_by"
+},
+{
+"from": "ors-464.250",
+"to": "oar-137-025-0160",
+"type": "implemented_by"
+},
+{
+"from": "ors-464.250",
+"to": "oar-137-025-0170",
+"type": "implemented_by"
+},
+{
+"from": "ors-464.250",
+"to": "oar-137-025-0189",
+"type": "implemented_by"
+},
+{
+"from": "ors-464.250",
+"to": "oar-137-025-0200",
+"type": "implemented_by"
+},
+{
+"from": "ors-464.250",
+"to": "oar-137-025-0210",
+"type": "implemented_by"
+},
+{
+"from": "ors-464.250",
+"to": "oar-137-025-0220",
+"type": "implemented_by"
+},
+{
+"from": "ors-464.250",
+"to": "oar-137-025-0230",
+"type": "implemented_by"
+},
+{
+"from": "ors-464.250",
+"to": "oar-137-025-0240",
+"type": "implemented_by"
+},
+{
+"from": "ors-464.250",
+"to": "oar-137-025-0250",
+"type": "implemented_by"
+},
+{
+"from": "ors-464.250",
+"to": "oar-137-025-0260",
+"type": "implemented_by"
+},
+{
+"from": "ors-464.250",
+"to": "oar-137-025-0270",
+"type": "implemented_by"
+},
+{
+"from": "ors-464.250",
+"to": "oar-137-025-0280",
+"type": "implemented_by"
+},
+{
+"from": "ors-464.250",
+"to": "oar-137-025-0290",
+"type": "implemented_by"
+},
+{
+"from": "ors-464.250",
+"to": "oar-137-025-0291",
+"type": "implemented_by"
+},
+{
+"from": "ors-464.250",
+"to": "oar-137-025-0310",
+"type": "implemented_by"
+},
+{
+"from": "ors-464.250",
+"to": "oar-137-025-0400",
+"type": "implemented_by"
+},
+{
+"from": "ors-464.250",
+"to": "oar-137-025-0435",
+"type": "implemented_by"
+},
+{
+"from": "ors-464.250",
+"to": "oar-137-025-0450",
+"type": "implemented_by"
+},
+{
+"from": "ors-464.250",
+"to": "oar-137-025-0475",
+"type": "implemented_by"
+},
+{
+"from": "ors-464.250",
+"to": "oar-137-025-0480",
+"type": "implemented_by"
+},
+{
+"from": "ors-464.250",
+"to": "oar-137-025-0530",
+"type": "implemented_by"
+},
+{
+"from": "ors-464.280",
+"to": "oar-137-025-0060",
+"type": "implemented_by"
+},
+{
+"from": "ors-464.280",
+"to": "oar-137-025-0090",
+"type": "implemented_by"
+},
+{
+"from": "ors-464.280",
+"to": "oar-137-025-0091",
+"type": "implemented_by"
+},
+{
+"from": "ors-464.280",
+"to": "oar-137-025-0210",
+"type": "implemented_by"
+},
+{
+"from": "ors-464.310",
+"to": "oar-137-025-0191",
+"type": "implemented_by"
+},
+{
+"from": "ors-464.510",
+"to": "oar-137-025-0060",
+"type": "implemented_by"
+},
+{
+"from": "ors-543a.025",
+"to": "oar-340-048-0042",
+"type": "implemented_by"
+},
+{
+"from": "ors-543a.025",
+"to": "oar-340-048-0045",
+"type": "implemented_by"
+},
+{
+"from": "ors-543a.095",
+"to": "oar-340-048-0020",
+"type": "implemented_by"
+},
+{
+"from": "ors-543a.100",
+"to": "oar-340-048-0037",
+"type": "implemented_by"
+},
+{
+"from": "ors-543a.110",
+"to": "oar-340-048-0037",
+"type": "implemented_by"
+},
+{
+"from": "ors-543a.305",
+"to": "oar-690-054-0000",
+"type": "implemented_by"
+},
+{
+"from": "ors-543a.305",
+"to": "oar-690-054-0010",
+"type": "implemented_by"
+},
+{
+"from": "ors-543a.305",
+"to": "oar-690-054-0020",
+"type": "implemented_by"
+},
+{
+"from": "ors-543a.305",
+"to": "oar-690-054-0030",
+"type": "implemented_by"
+},
+{
+"from": "ors-543a.305",
+"to": "oar-690-054-0040",
+"type": "implemented_by"
+},
+{
+"from": "ors-543a.305",
+"to": "oar-690-054-0050",
+"type": "implemented_by"
+},
+{
+"from": "ors-543a.305",
+"to": "oar-690-054-0060",
+"type": "implemented_by"
+},
+{
+"from": "ors-543a.305",
+"to": "oar-690-054-0070",
+"type": "implemented_by"
+},
+{
+"from": "ors-543a.305",
+"to": "oar-690-054-0080",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.010",
+"to": "oar-333-056-0045",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.082",
+"to": "oha-osh-6-005",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.130",
+"to": "oar-830-030-0010",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.130",
+"to": "oha-osh-6-005",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.153",
+"to": "oar-345-050-0025",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.160",
+"to": "oha-osh-6-005",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.170",
+"to": "oar-413-090-0400",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.170",
+"to": "oar-830-040-0090",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.170",
+"to": "oha-osh-6-005",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.190",
+"to": "oha-osh-6-005",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.740",
+"to": "deq-imd-7070287",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.740",
+"to": "oar-736-051-0020",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.745",
+"to": "eo-20-60",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.745",
+"to": "oar-333-056-0045",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.750",
+"to": "oar-736-051-0020",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.780",
+"to": "oar-736-054-0000",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.780",
+"to": "oar-736-054-0005",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.780",
+"to": "oar-736-054-0010",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.780",
+"to": "oar-736-054-0015",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.780",
+"to": "oar-736-054-0020",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.780",
+"to": "oar-736-054-0025",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.780",
+"to": "oar-736-054-0030",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.820",
+"to": "oar-170-050-0010",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.926",
+"to": "oar-441-930-0010",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.929",
+"to": "oar-441-930-0360",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.931",
+"to": "oar-830-011-0000",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.931",
+"to": "oar-830-011-0070",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.931",
+"to": "oar-830-011-0080",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.931",
+"to": "oar-830-020-0040",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.931",
+"to": "oar-830-050-0050",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.933",
+"to": "oar-441-930-0210",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.933",
+"to": "oar-441-930-0220",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.933",
+"to": "oar-441-930-0230",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.933",
+"to": "oar-441-930-0240",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.933",
+"to": "oar-441-930-0250",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.933",
+"to": "oar-441-930-0255",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.933",
+"to": "oar-441-930-0270",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.933",
+"to": "oar-441-930-0290",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.933",
+"to": "oar-441-930-0300",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.935",
+"to": "oar-441-930-0030",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.935",
+"to": "oar-441-930-0035",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.935",
+"to": "oar-441-930-0045",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.935",
+"to": "oar-441-930-0065",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.935",
+"to": "oar-441-930-0068",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.935",
+"to": "oar-441-930-0070",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.935",
+"to": "oar-441-930-0080",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.935",
+"to": "oar-441-930-0085",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.935",
+"to": "oar-441-930-0270",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.935",
+"to": "oar-441-930-0290",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.935",
+"to": "oar-441-930-0300",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.936",
+"to": "oar-441-930-0320",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.939",
+"to": "oar-441-930-0267",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.941",
+"to": "oar-441-930-0290",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.943",
+"to": "oar-441-930-0267",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.945",
+"to": "oar-441-930-0350",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.947",
+"to": "oar-441-930-0070",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.947",
+"to": "oar-441-930-0260",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.947",
+"to": "oar-441-930-0330",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.948",
+"to": "oar-441-001-0030",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.948",
+"to": "oar-441-930-0210",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.948",
+"to": "oar-441-930-0290",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.948",
+"to": "oar-441-930-0310",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.948",
+"to": "oar-441-930-0320",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.951",
+"to": "oha-osh-6-005",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.951",
+"to": "oha-osh-9-002",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.978",
+"to": "oha-osh-9-002",
+"type": "implemented_by"
+},
+{
+"from": "ors-97.985",
+"to": "oha-osh-6-005",
+"type": "implemented_by"
+}
+],
+"organizations": [
+{
+"slug": "bureau-of-labor-and-industries",
+"name": "Bureau of Labor and Industries",
+"oar_chapter": "839"
+},
+{
+"slug": "department-of-consumer-and-business-services-finance-and-securities-regulation",
+"name": "Department of Consumer and Business Services, Finance and Securities Regulation",
+"oar_chapter": "441"
+},
+{
+"slug": "department-of-energy-energy-facility-siting-council",
+"name": "Energy Facility Siting Council",
+"oar_chapter": "345"
+},
+{
+"slug": "department-of-environmental-quality",
+"name": "Department of Environmental Quality",
+"oar_chapter": "340"
+},
+{
+"slug": "department-of-human-services-child-welfare-programs",
+"name": "Department of Human Services, Child Welfare Programs",
+"oar_chapter": "413"
+},
+{
+"slug": "department-of-justice",
+"name": "Department of Justice",
+"oar_chapter": "137"
+},
+{
+"slug": "mortuary-and-cemetery-board",
+"name": "State Mortuary and Cemetery Board",
+"oar_chapter": "830"
+},
+{
+"slug": "oregon-health-authority-public-health-division",
+"name": "Oregon Health Authority, Public Health Division",
+"oar_chapter": "333"
+},
+{
+"slug": "oregon-state-treasury",
+"name": "Oregon State Treasury",
+"oar_chapter": "170"
+},
+{
+"slug": "parks-and-recreation-department",
+"name": "State Parks and Recreation Department",
+"oar_chapter": "736"
+},
+{
+"slug": "water-resources-department",
+"name": "Water Resources Department",
+"oar_chapter": "690"
+}
+],
+"chapters": [
+{
+"chapter": "10",
+"title": "Juries"
+},
+{
+"chapter": "464",
+"title": "Games"
+},
+{
+"chapter": "543A",
+"title": "Reauthorizing and Decommissioning Hydroelectric Project"
+},
+{
+"chapter": "97",
+"title": "Rights and Duties Relating to Cemeteries, Human Bodies and Anatomical Gifts"
+}
+],
+"expected_rows": [
+{
+"ch": "97",
+"title": "Rights and Duties Relating to Cemeteries, Human Bodies and Anatomical Gifts",
+"n": 56,
+"agencies": 7,
+"top": [
+{
+"a": "Dept. of Consumer and Business Services, Finance and Securities Regulation",
+"n": 35
+},
+{
+"a": "State Parks and Recreation Department",
+"n": 9
+},
+{
+"a": "State Mortuary and Cemetery Board",
+"n": 7
+},
+{
+"a": "Oregon Health Authority, Public Health Division",
+"n": 2
+}
+]
+},
+{
+"ch": "464",
+"title": "Games",
+"n": 38,
+"agencies": 1,
+"top": [
+{
+"a": "Dept. of Justice",
+"n": 38
+}
+]
+},
+{
+"ch": "543A",
+"title": "Reauthorizing and Decommissioning Hydroelectric Project",
+"n": 14,
+"agencies": 2,
+"top": [
+{
+"a": "Water Resources Department",
+"n": 9
+},
+{
+"a": "Dept. of Environmental Quality",
+"n": 5
+}
+]
+},
+{
+"ch": "10",
+"title": "Juries",
+"n": 2,
+"agencies": 1,
+"top": [
+{
+"a": "Bureau of Labor and Industries",
+"n": 2
+}
+]
+}
+]
+}
